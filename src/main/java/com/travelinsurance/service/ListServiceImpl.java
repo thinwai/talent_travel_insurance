@@ -11,6 +11,7 @@ import com.travelinsurance.dto.Proposal;
 import com.travelinsurance.dto.User;
 import com.travelinsurance.repository.ListRepository;
 import com.travelinsurance.view_model.ListModel;
+import com.travelinsurance.view_model.SearchModel;
 
 @Service
 public class ListServiceImpl implements ListService{
@@ -19,9 +20,9 @@ public class ListServiceImpl implements ListService{
 	ListRepository listRepo;
 
 	@Override
-	public List<ListModel> detailList(User user) {
-		
-		List<Proposal> propo=listRepo.viewList(user);
+	public List<ListModel> detailList(User user, SearchModel search) {
+
+		List<Proposal> propo=listRepo.viewList(user,search);
 		
 		List<ListModel> list = new ArrayList<ListModel>();
 		

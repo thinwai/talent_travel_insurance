@@ -13,15 +13,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.travelinsurance.dto.User;
 import com.travelinsurance.service.ListService;
 import com.travelinsurance.view_model.ListModel;
+import com.travelinsurance.view_model.SearchModel;
 
 @Named
 @ViewScoped
 public class ListController {
 	
-	private ListModel detailList =new ListModel();
+	private SearchModel searchModel =new SearchModel();
 	private List<ListModel> listModels=new ArrayList<ListModel>();
 	
-	private List<ListModel> filteredList;
 	
 	@Autowired
 	ListService listService;
@@ -30,54 +30,39 @@ public class ListController {
 		return "listPage.xhtml?faces-redirect=true";
 	}
 	
-	//@PostConstruct
+	@PostConstruct
 	public void viewList() {
 		User user=new User();
 		user.setuId(1);
 		user.setEmail("aa@gmail.com");
-		listModels=listService.detailList(user);
+		
+		System.out.println("searchNo |"+searchModel.getSearchNo());
+		System.out.println("searchData |"+searchModel.getSearchData());
+		
+		System.out.println(searchModel);
+		
+		listModels=listService.detailList(user,searchModel);
+		
+		searchModel=new SearchModel();
 	}
 	
-	public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
-        String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
-        if (filterText == null || filterText.equals("")) {
-            return true;
-        }
- 
-        ListModel listModel = (ListModel) value;
-        return listModel.getPropoId().toLowerCase().contains(filterText)
-                || listModel.getHolderName().toLowerCase().contains(filterText)
-                || listModel.getTravelFromPlace().toLowerCase().contains(filterText)
-                || listModel.getTravelToPlace().toLowerCase().contains(filterText)
-                
-                || listModel.getBeneficialName().toLowerCase().contains(filterText);
-    }
-
-
-	public ListModel getDetailList() {
-		return detailList;
-	}
-
-	public void setDetailList(ListModel detailList) {
-		this.detailList = detailList;
-	}
+	/**/
 
 	public List<ListModel> getListModels() {
 		return listModels;
 	}
 
+	public SearchModel getSearchModel() {
+		return searchModel;
+	}
+
+	public void setSearchModel(SearchModel searchModel) {
+		this.searchModel = searchModel;
+	}
+
 	public void setListModels(List<ListModel> listModels) {
 		this.listModels = listModels;
 	}
-
-	public List<ListModel> getFilteredList() {
-		return filteredList;
-	}
-
-	public void setFilteredList(List<ListModel> filteredList) {
-		this.filteredList = filteredList;
-	}
-	
 	
 
 }

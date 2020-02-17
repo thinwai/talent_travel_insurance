@@ -90,23 +90,22 @@
 	                </div>
 	            </div>
 	            
+	            <h:form>
+	            <p:selectOneMenu value="#{listController.searchModel.searchNo}" style="width:250px">
+	                <f:selectItem itemLabel="Find All" itemValue="1" />
+	                <f:selectItem itemLabel="Search By Proposal ID" itemValue="2" />
+	                <f:selectItem itemLabel="Search By HolderName" itemValue="3" />
+	                <f:selectItem itemLabel="Search By BeneficialName" itemValue="4" />
+	            </p:selectOneMenu>
 	            
+	             <p:inputText value="#{listController.searchModel.searchData}" />
+	             
+	             <h:commandButton action="#{listController.viewList()}" value="Search" class="btn btn-success" style="width:80px; height:40px;" />
+	            </h:form>
 	            
 	            <h:form name="listForm" >
-					<p:dataTable var="list" value="#{listController.listModels}" id="eee" widgetVar="searchData" emptyMessage="No data found with given criteria" 
-					filteredValue="#{listController.filteredList}" globalFilterFunction="#{listController.globalFilterFunction}">
+					<p:dataTable var="list" value="#{listController.listModels}" id="eee" >
 					
-					<f:facet name="header">
-			            <p:outputPanel>
-						            <div class="ui-inputgroup">
-							            <p:inputText placeholder="Search" id="globalFilter" onkeyup="PF('searchData').filter()"/>
-							            <p:commandButton icon="pi pi-search"  styleClass="white-button"/>  
-							        </div>
-					            
-			                <!-- <h:outputText value="Search all fields using globalFilterFunction:" />
-			                <p:inputText id="globalFilter" onkeyup="PF('carsTable2').filter()" style="width:150px" placeholder="Enter keyword"/> -->
-			            </p:outputPanel>
-			        </f:facet>
 					    <p:column headerText="Proposal Id">
 					        <h:outputText value="#{list.propoId}" />
 					    </p:column>
