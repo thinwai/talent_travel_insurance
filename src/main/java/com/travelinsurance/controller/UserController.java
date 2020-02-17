@@ -1,5 +1,6 @@
 package com.travelinsurance.controller;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -7,6 +8,8 @@ import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.travelinsurance.dto.User;
+import com.travelinsurance.service.MyAccountService;
 import com.travelinsurance.service.UserService;
 import com.travelinsurance.util.MessagesUtil;
 import com.travelinsurance.view_model.UserModel;         //com.travelinsurance.view_model.UserModel
@@ -19,6 +22,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService uService;
+	
+	@Autowired
+	private MyAccountService accService;
 	
 	@Autowired
 	MessagesUtil msg;
@@ -41,6 +47,13 @@ public class UserController {
 		}else {
 			msg.messageInfo("Email is already in used!");
 		}
+	}
+	
+	@PostConstruct
+	public void totalPolicy() {
+		User user = new User();
+		user.setuId(1);
+		accService.totalPolicy(user);
 	}
 	
 	public UserModel getUser() {
