@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>
+	<h:form>
+		<table>
+			<tr>
+				<td><h:outputLabel for="bname" class="col-sm-2 col-form-label">BeneficialName : </h:outputLabel>
+				</td>
+				<td><p:inputText id="bname"
+						value="#{beneficialController.uProposalModel.beneficialName}"
+						class="form-control" placeholder="BeneficialName" required="true"
+						requiredMessage="Name is Required!"
+						validatorMessage="Name length must be 3~20!">
+						<f:validateLength minimum="3" maximum="20" />
+					</p:inputText> <h:message for="bname" style="color: red;"></h:message></td>
+			</tr>
+			<!-- bname -->
+
+			<tr>
+				<td><h:outputLabel for="NRC" class="col-sm-2 col-form-label">NRC : </h:outputLabel></td>
+				<td><p:inputText id="NRC"
+						value="#{beneficialController.uProposalModel.benificalNrc}"
+						class="form-control" placeholder="NRC:" required="true"
+						requiredMessage="NRC is Required!">
+					</p:inputText> <h:message for="NRC" style="color: red;"></h:message></td>
+				<!-- NRC -->
+			</tr>
+
+
+			<tr>
+				<td><h:outputLabel for="rs" class="col-sm-2 col-form-label">Relationship : </h:outputLabel></td>
+				<td><p:inputText id="rs"
+						value="#{beneficialController.uProposalModel.relationship}"
+						class="form-control" placeholder="Relation" required="true"
+						requiredMessage="Please enter your Relationship!">
+					</p:inputText> <h:message for="rs" style="color: red;"></h:message></td>
+				<!-- RelationShip -->
+			</tr>
+
+			<tr>
+				<td><p:outputLabel for="phone" class="col-sm-2 col-form-label">Ph : </p:outputLabel></td>
+				<td><p:inputMask id="phone"
+						value="#{beneficialController.uProposalModel.beneficialPh}"
+						class="form-control" placeholder="Phone no."
+						mask="(99) 999-999-999" required="true"
+						requiredMessage="Please fill of your No.!"></p:inputMask>
+					<h:message for="phone" style="color: red;"></h:message></td>
+				<!-- ph -->
+			</tr>
+
+			<tr>
+				<td><h:outputLabel for="address"
+						class="col-sm-2 col-form-label">Address : </h:outputLabel></td>
+				<td><p:inputText id="address"
+						value="#{beneficialController.uProposalModel.address}"
+						class="form-control" placeholder="Address" required="true"
+						requiredMessage="Address is Required!">
+					</p:inputText> <h:message for="address" style="color: red;"></h:message></td>
+				<!-- phone number -->
+			</tr>
+
+		</table>
+		<br />
+		<div id="btnGroup">
+			<h:commandButton action="#{beneficialController.beneficialSave()}"
+				value="Register" class="btn btn-primary"
+				onclick="javascript:insert()" />
+		</div>
+	</h:form>
+</h:body>
+</html>
