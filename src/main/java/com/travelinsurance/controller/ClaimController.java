@@ -56,7 +56,7 @@ public class ClaimController {
 					if(payStatusCheck) {
 						//msg.messageInfo("SUCCESS");
 						ctModel=ctService.searchClaimType(propoModel.getPlan());
-						return "claimPage2.xhtml";
+						return "claimFormPage.xhtml";
 					}else {
 						msg.messageInfo("Your Payment was not Exist!");
 					}
@@ -74,7 +74,7 @@ public class ClaimController {
 	}
 	
 	public void claimSave() {
-		
+		System.out.println("<<<<<<<<<<>>>>>>>>>>>>>>>>>>");
 		int result=ctService.findToClaim(claimModel);
 		
 		if(result==0) {

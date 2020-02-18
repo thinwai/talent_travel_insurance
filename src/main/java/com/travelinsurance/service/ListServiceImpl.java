@@ -36,6 +36,13 @@ public class ListServiceImpl implements ListService{
 			listModel.setTravelToPlace(temp.getToPlace());
 			listModel.setStartDate(temp.getStartDate());
 			listModel.setEndDate(temp.getEndDate());
+			
+			if(!temp.getBeneficial().isEmpty()) {
+				listModel.setBeneficialName(temp.getBeneficial().get(0).getBeneficialName());
+			}else {
+				listModel.setBeneficialName("");
+			}
+			
 			//listModel.setBeneficialName(temp.getBeneficial().get(0).getBeneficialName());
 			/*
 			List<Beneficial>beni=temp.getBeneficial();
@@ -44,8 +51,18 @@ public class ListServiceImpl implements ListService{
 			}
 			*/
 			listModel.setPropoStatus(temp.getProposalStatus());
-			listModel.setPayStatus(temp.getPayment().getPayStatus());
-			listModel.setClaimStatus(temp.getPayment().getClaim().getClaimStatus());
+			
+			try {
+				listModel.setPayStatus(temp.getPayment().getPayStatus());
+			}catch (Exception e) {
+				listModel.setPayStatus(0);
+			}
+			
+			try {
+				listModel.setClaimStatus(temp.getPayment().getClaim().getClaimStatus());
+			}catch (Exception e) {
+				listModel.setClaimStatus(0);
+			}
 			
 			list.add(listModel);
 		}

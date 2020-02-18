@@ -3,7 +3,6 @@ package com.travelinsurance.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 
@@ -11,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.travelinsurance.dto.Plan;
 import com.travelinsurance.dto.Vehicle;
+import com.travelinsurance.service.BeneficialService;
 import com.travelinsurance.service.PlanService;
 import com.travelinsurance.service.ProposalService;
 import com.travelinsurance.service.VehicleService;
@@ -33,28 +33,43 @@ public class ProposalController {
 	@Autowired
 	ProposalService propoService;
 	
+	@Autowired
+	private BeneficialService bService;
+	
 	private UserProposalModel uProposal=new UserProposalModel();
 	private List<Vehicle> vehicles = new ArrayList<>();
 	private List<Plan> plans=new ArrayList<>();
 	
 	public String proposal() {
+		
+		newProposal();
+		
 		return "proposalPage.xhtml?faces-redirect=true";
 	}
 	
-	public void test() {
-		this.uProposal.setpId(msg.proposalId());
-		propoService.saveProposal(uProposal);
-		System.out.println("CONTROLLER PASS | "+uProposal.getVehicle());
-		msg.messageWarn("Success");
-	}
-	@PostConstruct
-	public void vehicle() {
-		vehicles=vehicleService.findAllVehicle();
-		plans=planService.findAllPlan();
-		uProposal.setpId(msg.proposalId());
+	public String saveProposal() {
 		
+		propoService.saveProposal(uProposal);
+		msg.messageInfo("Success");
+		this.setuProposal(uProposal);
+		System.out.println(">>>>>>>>>>>> ? |" +uProposal.getpId());
+		return "beneficialPage.xhtml?faces-redirect=true";
 	}
 	
+	public void beneficialSave() {
+		System.out.println(">>>>>>>>>>>> ? |" +uProposal.getpId());
+		bService.beneficialSave(uProposal);
+		msg.messageInfo("Successfully Proposal Request!");
+	}
+	
+	public void newProposal() {
+		uProposal=new UserProposalModel();
+		
+		vehicles=vehicleService.findAllVehicle();
+		plans=planService.findAllPlan();
+		
+		uProposal.setpId(msg.proposalId());
+	}
 
 	public UserProposalModel getuProposal() {
 		return uProposal;

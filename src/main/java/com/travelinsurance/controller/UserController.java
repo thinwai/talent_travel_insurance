@@ -53,7 +53,14 @@ public class UserController {
 	public void totalPolicy() {
 		User user = new User();
 		user.setuId(1);
-		accService.totalPolicy(user);
+		
+		this.user.setTotalPolicy(accService.totalPolicy(user));
+		this.user.setTotalClaim(accService.totalClaimt(user));
+		
+		int totalPolicy=accService.totalPolicy(user);
+		int totalClaim=accService.totalClaimt(user);
+		System.out.println(totalPolicy);
+		System.out.println(totalClaim);
 	}
 	
 	public UserModel getUser() {

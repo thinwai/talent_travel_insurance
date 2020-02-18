@@ -11,13 +11,15 @@ public class MyAccountServiceImpl implements MyAccountService {
 
 	@Autowired
 	MyAccountRepository accRepo;
-	
-	@Override
-	public Long totalPolicy(User user) {
-		Long totalPolicy =accRepo.totalPolicy(user);
-		System.out.println("mmcs   " + totalPolicy);
-		return null;
-	}
 
-	
+	@Override
+	public Integer totalPolicy(User user) {
+		// TODO Auto-generated method stub
+		return accRepo.findTotalpolicy(user);
+	}
+	@Override
+	public Integer totalClaimt(User user) {
+		// TODO Auto-generated method stub
+		return accRepo.findTotalClaim(user);
+	}
 }

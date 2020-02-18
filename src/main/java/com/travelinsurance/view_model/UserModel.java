@@ -13,6 +13,12 @@ public class UserModel {
 	private String username;
 	private String password;
 	private String conPassword;
+	private int userAccStatus;
+	private List<Proposal> proposals;
+	private int totalPolicy;
+	private int totalClaim;
+	
+	
 	public int getuId() {
 		return uId;
 	}
@@ -55,7 +61,18 @@ public class UserModel {
 	public void setProposals(List<Proposal> proposals) {
 		this.proposals = proposals;
 	}
-	private int userAccStatus;
-	private List<Proposal> proposals;
+	public int getTotalPolicy() {
+		return totalPolicy;
+	}
+	public void setTotalPolicy(int totalPolicy) {
+		this.totalPolicy = totalPolicy;
+	}
+	public int getTotalClaim() {
+		return totalClaim;
+	}
+	public void setTotalClaim(int totalClaim) {
+		this.totalClaim = totalClaim;
+	}
+	
 
 }

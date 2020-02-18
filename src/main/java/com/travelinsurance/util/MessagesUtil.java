@@ -19,12 +19,10 @@ public class MessagesUtil {
 	}
 	
 	public void messageError(String sms) {
-		FacesContext facesContext=FacesContext.getCurrentInstance();
 		FacesContext.getCurrentInstance().addMessage(null, 
 				new FacesMessage(FacesMessage.SEVERITY_ERROR, sms,"ERROR Messages"));
 	}
 	public void messageInfo(String sms) {
-		FacesContext facesContext=FacesContext.getCurrentInstance();
 		FacesContext.getCurrentInstance().addMessage(null, 
 				new FacesMessage(FacesMessage.SEVERITY_INFO, sms,"INFO Messages"));
 	}

@@ -4,5 +4,6 @@ import com.travelinsurance.dto.User;
 
 public interface MyAccountService {
 
-	Long totalPolicy(User user);
+	Integer totalPolicy(User user);
+	Integer totalClaimt(User user);
 }
