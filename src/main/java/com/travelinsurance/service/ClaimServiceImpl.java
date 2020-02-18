@@ -122,5 +122,12 @@ public class ClaimServiceImpl implements ClaimService{
 		claim.save(cl);
 	}
 
+	@Override
+	public Integer findClaimByPropoId(String propoId) {
+		// TODO Auto-generated method stub
+		return claim.findClaimByProposalId(propoId);
+	}
+
+
 	
 }

@@ -30,10 +30,10 @@ public class ListController {
 		return "listPage.xhtml?faces-redirect=true";
 	}
 	
-	//@PostConstruct
+	@PostConstruct
 	public void viewList() {
 		User user=new User();
-		user.setuId(2);
+		user.setuId(1);
 		user.setEmail("aa@gmail.com");
 		
 		System.out.println("searchNo |"+searchModel.getSearchNo());

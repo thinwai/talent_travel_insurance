@@ -37,6 +37,9 @@ public class ClaimController {
 	private List<ClaimTypeModel> ctModel=new ArrayList<ClaimTypeModel>();
 	
 	public String claim() {
+		claimModel=new ClaimModel();
+		propoModel=new UserProposalModel();
+		ctModel=new ArrayList<ClaimTypeModel>();
 		return "claimPage.xhtml?faces-redirect=true";
 	}
 	
@@ -44,31 +47,36 @@ public class ClaimController {
 		
 		String propoId=claimModel.getPropoId();
 		
-		System.out.println("____CONTROLLER____");
-		try {
-			propoModel=propoService.searchPropoId(propoId);
-			if(propoModel.equals("") || propoModel.equals(null)) {
-				msg.messageInfo("Your Proposal was not Exist!");
-			}else {
-				if(propoModel.getProposalStatus()==3) {
-					
-					boolean payStatusCheck=payService.searchPayment(propoId, true);
-					if(payStatusCheck) {
-						//msg.messageInfo("SUCCESS");
-						ctModel=ctService.searchClaimType(propoModel.getPlan());
-						return "claimFormPage.xhtml";
-					}else {
-						msg.messageInfo("Your Payment was not Exist!");
-					}
+		if(ctService.findClaimByPropoId(propoId) == 0) {
+			System.out.println("____CONTROLLER____");
+			try {
+				propoModel=propoService.searchPropoId(propoId);
+				if(propoModel.equals("") || propoModel.equals(null)) {
+					msg.messageInfo("Your Proposal was not Exist!");
 				}else {
-					msg.messageInfo("Your Proposal was not Accepted Our Company!");
+					if(propoModel.getProposalStatus()==3) {
+						
+						boolean payStatusCheck=payService.searchPayment(propoId, true);
+						if(payStatusCheck) {
+							//msg.messageInfo("SUCCESS");
+							ctModel=ctService.searchClaimType(propoModel.getPlan());
+							return "claimFormPage.xhtml";
+						}else {
+							msg.messageInfo("Your Payment was not Exist!");
+						}
+					}else {
+						msg.messageInfo("Your Proposal was not Accepted Our Company!");
+					}
 				}
+			}catch (NullPointerException e) {
+				msg.messageInfo("Your Proposal was not Exist!");
+			}catch (Exception e) {
+				msg.messageInfo("Error!");
+				System.out.println(e);
 			}
-		}catch (NullPointerException e) {
-			msg.messageInfo("Your Proposal was not Exist!");
-		}catch (Exception e) {
-			msg.messageInfo("Error!");
-			System.out.println(e);
+		}
+		else {
+			msg.messageInfo("Your Proposal was already Claim!");
 		}
 		return null;
 	}

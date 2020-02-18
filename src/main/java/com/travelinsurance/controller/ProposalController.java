@@ -51,9 +51,8 @@ public class ProposalController {
 		
 		propoService.saveProposal(uProposal);
 		msg.messageInfo("Success");
-		this.setuProposal(uProposal);
 		System.out.println(">>>>>>>>>>>> ? |" +uProposal.getpId());
-		return "beneficialPage.xhtml?faces-redirect=true";
+		return "beneficialPage.xhtml";
 	}
 	
 	public void beneficialSave() {
