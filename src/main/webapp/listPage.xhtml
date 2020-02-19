@@ -91,16 +91,18 @@
 	            </div>
 	            
 	            <h:form>
+	            <h:panelGrid columns="5" cellpadding="5">
 	            <p:selectOneMenu value="#{listController.searchModel.searchNo}" style="width:250px;">
 	                <f:selectItem itemLabel="Find All" itemValue="1" />
 	                <f:selectItem itemLabel="Search By Proposal ID" itemValue="2" />
 	                <f:selectItem itemLabel="Search By HolderName" itemValue="3" />
 	                <f:selectItem itemLabel="Search By BeneficialName" itemValue="4" />
 	            </p:selectOneMenu>
-	            
+	            &nbsp;&nbsp;
 	             <p:inputText value="#{listController.searchModel.searchData}" />
-	             
-	             <h:commandButton action="#{listController.list()}" value="Search" class="btn btn-success" style="width:80px; height:40px;" />
+	            &nbsp;&nbsp; 
+	             <h:commandButton action="#{listController.list()}" value="Search" class="btn btn-success fa fa-search" style="width:80px; height:40px;"></h:commandButton>
+	            </h:panelGrid>
 	            </h:form>
 	            
 	            <h:form name="listForm" >
