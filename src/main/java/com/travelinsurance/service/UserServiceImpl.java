@@ -22,6 +22,7 @@ public class UserServiceImpl implements UserService{
 	public void userSave(UserModel user) {															//Chit Su
 
 		User userdto = new User();
+		userdto.setuId(user.getuId());
 		userdto.setEmail(user.getEmail());
 		userdto.setUsername(user.getUsername());
 		userdto.setPassword(user.getPassword());
@@ -88,8 +89,19 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User session(User user) {
-		// TODO Auto-generated method stub
 		return  uRepo.findByEmail(user);
+	}
+
+	@Override
+	public void userDelete(UserModel user) {
+		User userdto = new User();
+		userdto.setuId(user.getuId());
+		userdto.setEmail(user.getEmail());
+		userdto.setUsername(user.getUsername());
+		userdto.setPassword(user.getPassword());
+		userdto.setUserAccStatus(2);
+		uRepo.save(userdto);
+		
 	}
 	
 }

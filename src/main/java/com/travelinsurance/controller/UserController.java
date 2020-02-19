@@ -39,7 +39,7 @@ public class UserController {
 		FacesContext facesContext=FacesContext.getCurrentInstance();
 		HttpSession session=(HttpSession) facesContext.getExternalContext().getSession(true);
 		
-		
+		System.out.println("login 2");
 		User user=new User();
 		user=(User) session.getAttribute("session");
 		
@@ -50,23 +50,36 @@ public class UserController {
 		this.user.setUsername(user.getUsername());
 		this.user.setPassword(user.getPassword());
 		this.user.setConPassword(user.getPassword());
-
 		this.user.setTotalPolicy(accService.totalPolicy(uService.session(user)));
 		this.user.setTotalClaim(accService.totalClaimt(uService.session(user)));
-		
+		System.out.println("login 3");
 		return "myaccPage.xhtml?faces-redirect=true";
 	}
 	
-	public void userSave() {																						// Chit Su
+	public String userSave() {																						// Chit Su
 		
-		System.out.println("controller 1 "+user.getEmail());
-		boolean status=uService.findByEmail(user);
-		if(status) {
+		System.out.println("1");
+		if(this.user.getuId()!=0) {
+			System.out.println("2");
+			System.out.println(user.getuId());
 			uService.userSave(user);
-			msg.messageInfo("Register Successfully");
+			user=new UserModel();
+			System.out.println("login 1");
+			myAcc();
+			msg.messageInfo("Update Successfully");
+			return "myaccPage.xhtml?faces-redirect=true";
 		}else {
-			msg.messageInfo("Email is already in used!");
+			System.out.println("controller 1 "+user.getEmail());
+			boolean status=uService.findByEmail(user);
+			if(status) {
+				uService.userSave(user);
+				user=new UserModel();
+				msg.messageInfo("Register Successfully");
+			}else {
+				msg.messageInfo("Email is already in used!");
+			}
 		}
+		return null;
 	}
 	
 	public String userLogin() {
@@ -91,6 +104,14 @@ public class UserController {
 	public String userEdit() {
 		
 		return "userRegistrationPage.xhtml?faces-redirect=true";
+	}
+	
+	public String userDelete() {
+		uService.userDelete(user);
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		msg.messageError("Delete Successfully");
+		
+		return "loginPage.xhtml?faces-redirect=true";
 	}
 	
 	public UserModel getUser() {

@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.travelinsurance.dto.Plan;
+import com.travelinsurance.dto.User;
 import com.travelinsurance.dto.Vehicle;
 import com.travelinsurance.service.BeneficialService;
 import com.travelinsurance.service.PlanService;
@@ -48,6 +51,12 @@ public class ProposalController {
 	}
 	
 	public String saveProposal() {
+		FacesContext facesContext=FacesContext.getCurrentInstance();
+		HttpSession session=(HttpSession) facesContext.getExternalContext().getSession(true);
+		
+		User user=new User();
+		user=(User) session.getAttribute("session");
+		this.uProposal.setUser(user);
 		
 		propoService.saveProposal(uProposal);
 		System.out.println(">>>>>>>>>>>> ? |" +uProposal.getpId());

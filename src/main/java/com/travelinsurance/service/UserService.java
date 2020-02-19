@@ -12,5 +12,6 @@ public interface UserService {
 	boolean findByEmail(UserModel user);
 	Integer userLogin(UserModel user);
 	User session(User user);
+	void userDelete(UserModel user);
 	
 }

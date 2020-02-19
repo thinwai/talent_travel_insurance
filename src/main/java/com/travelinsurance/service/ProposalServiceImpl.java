@@ -35,7 +35,7 @@ public class ProposalServiceImpl implements ProposalService{
 		
 		propo.setProposalStatus(1);
 		
-		//propo.setUser();
+		propo.setUser(propoModel.getUser());
 		Vehicle v=new Vehicle();
 		v.setVehicleId(propoModel.getVehicle());
 		
