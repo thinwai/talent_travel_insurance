@@ -55,18 +55,21 @@ public class ClaimServiceImpl implements ClaimService{
 
 	@Override
 	public Integer findToClaim(ClaimModel cModel) {
-		
+		System.out.println("s2");
 		Proposal propo=ctRepo.findToClaim(cModel.getPropoId());
-		
-		String name=cModel.getClaimName().toLowerCase();
-		String holderName=propo.getHolderName().toLowerCase();
-		String beneficialName=propo.getBeneficial().get(0).getBeneficialName().toLowerCase();
+		System.out.println("s3");
+		String name=cModel.getClaimName().toLowerCase();System.out.println("s4");
+		String holderName=propo.getHolderName().toLowerCase();System.out.println("s5");
 		
 		int lostDate=msg.dateToInteger(cModel.getLostDate());
 		int endDate=msg.dateToInteger(propo.getEndDate());
 		int startDate=msg.dateToInteger(propo.getStartDate());
 		
 		int result = 0;
+		try {
+		String beneficialName=propo.getBeneficial().get(0).getBeneficialName().toLowerCase();System.out.println("s6");
+		
+		
 		if (holderName.equals(name) || beneficialName.equals(name)) {
 			if(holderName.equals(name)) {
 				if(propo.getNrc().equals(cModel.getClaimNrc())) {
@@ -91,6 +94,22 @@ public class ClaimServiceImpl implements ClaimService{
 			}
 		}else {
 			result=1;															//Name must be policy holder Name or Beneficial Name
+		}
+		}catch (Exception e) {
+			System.out.println("s7");
+			if(holderName.equals(name)) {
+				if(propo.getNrc().equals(cModel.getClaimNrc())) {
+					if(startDate<lostDate && lostDate<endDate) {
+						result=0;
+					}else {
+						result=4;												//Lost_Date Must Be Your Duration of Your Travelling
+					}
+				}else {
+					result=2;													// Your Nrc No is not Right!
+				}
+			}else {
+				result=1;
+			}
 		}
 		
 		return result;

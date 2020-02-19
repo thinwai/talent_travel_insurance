@@ -91,7 +91,7 @@
 	            </div>
 	            
 	            <h:form>
-	            <p:selectOneMenu value="#{listController.searchModel.searchNo}" style="width:250px">
+	            <p:selectOneMenu value="#{listController.searchModel.searchNo}" style="width:250px;">
 	                <f:selectItem itemLabel="Find All" itemValue="1" />
 	                <f:selectItem itemLabel="Search By Proposal ID" itemValue="2" />
 	                <f:selectItem itemLabel="Search By HolderName" itemValue="3" />
@@ -100,7 +100,7 @@
 	            
 	             <p:inputText value="#{listController.searchModel.searchData}" />
 	             
-	             <h:commandButton action="#{listController.viewList()}" value="Search" class="btn btn-success" style="width:80px; height:40px;" />
+	             <h:commandButton action="#{listController.list()}" value="Search" class="btn btn-success" style="width:80px; height:40px;" />
 	            </h:form>
 	            
 	            <h:form name="listForm" >
@@ -128,15 +128,40 @@
 					    </p:column>
 					    
 					    <p:column headerText="Proposal Status">
-					        <h:commandButton value="#{list.propoStatus}" />
+					    	<h:panelGroup rendered="#{1 == list.propoStatus}">
+					    		<span style="color:blue;" ><span class="glyphicon glyphicon-hourglass"/>Pending</span>
+							</h:panelGroup>
+						    <h:panelGroup rendered="#{2 == list.propoStatus}">
+						    	<span style="color:red;" ><span class="glyphicon glyphicon-remove"/>Cancle</span>
+							</h:panelGroup>
+							<h:panelGroup rendered="#{3 == list.propoStatus}">
+								<span style="color:green;" ><span class="glyphicon glyphicon-ok"/>Accepted</span>
+							</h:panelGroup>
 					    </p:column>
 					    
 					    <p:column headerText="Payment Status">
-					        <h:commandButton value="#{list.payStatus}" />
+					    	<h:panelGroup rendered="#{1 == list.payStatus}">
+					    		<span style="color:blue;" ><span class="glyphicon glyphicon-hourglass"/>Pending</span>
+							</h:panelGroup>
+						    <h:panelGroup rendered="#{2 == list.payStatus}">
+						    	<span style="color:red;" ><span class="glyphicon glyphicon-remove"/>Cancle</span>
+							</h:panelGroup>
+							<h:panelGroup rendered="#{3 == list.payStatus}">
+								<span style="color:green;" ><span class="glyphicon glyphicon-ok"/>Accepted</span>
+							</h:panelGroup>
 					    </p:column>
 					    
 					    <p:column headerText="Claim Status">
-					        <h:commandButton value="#{list.claimStatus}" />
+					    	<h:outputLabel value="#{list.claimStatus}"/>
+					    	<h:panelGroup rendered="#{1 == list.claimStatus}">
+					    		<span style="color:blue;" ><span class="glyphicon glyphicon-hourglass"/>Pending</span>
+							</h:panelGroup>
+						    <h:panelGroup rendered="#{2 == list.claimStatus}">
+						    	<span style="color:red;" ><span class="glyphicon glyphicon-remove"/>Cancle</span>
+							</h:panelGroup>
+							<h:panelGroup rendered="#{3 == list.claimStatus}">
+								<span style="color:green;" ><span class="glyphicon glyphicon-ok"/>Accepted</span>
+							</h:panelGroup>
 					    </p:column>
 					    
 					     <p:column headerText="Action">

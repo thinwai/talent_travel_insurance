@@ -10,8 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Travel Insuance</title>
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />     
+        <!-- CSS -->        
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400|Roboto:300,400,500" />
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" />
@@ -63,19 +62,19 @@
 			</div>
 		</nav>
     
-    	<h:form>
+        <h:form>
     	<!-- Card Section -->
         <div class="features-container section-container">
 	        <div class="container">
         		 <div class="row">
 	                <div class="col-sm-12 features section-description wow fadeIn">
-	                    <h2 style="color:green;">Benificial Form</h2>
+	                   	<h2 style="color:green;">Proposal Form</h2>
 	                    <div class="divider-1"><div class="line"></div></div>
 	                </div>
 	            </div>
 				<div class="row">
-				<div class="col-md-3"></div>
-				<div class="col-md-6">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
 					<!-- message Row -->
 					<div class="row">
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
@@ -84,6 +83,27 @@
 		                		</div>
 		                		<div class="col-sm-9">
 		                			<p:messages id="msgs" severity="info"/>
+		                			<br />
+		                			<p:outputLabel value="#{proposalController.uProposal.pId}" style="font-size:25px;"></p:outputLabel>
+		                		</div>
+		                	</div>
+		                </div>
+		            </div>
+		            <!-- 0 -->
+					<div class="row">
+		            	<div class="col-sm-12 features-box wow fadeInLeft">
+		                	<div class="row">
+		                		<div class="col-sm-2 features-box-icon">
+		                			<i class="fa fa-twitter"></i>
+		                		</div>
+		                		<div class="col-sm-9">
+		                			<p:outputLabel for="plan">Plan</p:outputLabel><br />
+									<p:selectOneMenu id="plan" value="#{proposalController.uProposal.plan}" required="true" requiredMessage="Choose Your Plan!" style="width: 100%;" >
+						                <f:selectItem itemLabel="" itemValue="" noSelectionOption="true" />
+						                
+						                <f:selectItems value="#{proposalController.plans}" itemValue="#{plans.planId}" var="plans" itemLabel="#{plans.planType}" />
+						            </p:selectOneMenu><br />
+						            <h:message for="plan" style="color: red;" />
 		                		</div>
 		                	</div>
 		                </div>
@@ -96,12 +116,12 @@
 		                			<i class="fa fa-twitter"></i>
 		                		</div>
 		                		<div class="col-sm-9">
-		                			<p:outputLabel for="bname">BeneficialName</p:outputLabel>
-		                			<p:inputText id="bname" value="#{proposalController.uProposal.beneficialName}" class="form-control" required="true"
+		                			<p:outputLabel for="uname">Holder Name</p:outputLabel>
+			                    	<p:inputText id="uname" value="#{proposalController.uProposal.holderName}" class="form-control" required="true"
 											requiredMessage="Name is Required!" validatorMessage="Name without space between 3 to 20 charater !">
 											<f:validateRegex pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" />
 									</p:inputText>
-									<h:message for="bname" style="color: red;"/>
+									<h:message for="uname" style="color: red;"/>
 		                		</div>
 		                	</div>
 		                </div>
@@ -115,10 +135,11 @@
 		                			<i class="fa fa-twitter"></i>
 		                		</div>
 		                		<div class="col-sm-9">
-		                			<p:outputLabel for="NRC">NRC</p:outputLabel>
-			                    	<p:inputText id="NRC" value="#{proposalController.uProposal.benificalNrc}" class="form-control" required="true" requiredMessage="NRC is Required!">
+		                			<p:outputLabel for="nrc">NRC</p:outputLabel>
+			                    	<p:inputText id="nrc" value="#{proposalController.uProposal.holderNrc}" required="true" requiredMessage="NRC is Required!" validatorMessage="NRC length must be 8~20!" class="form-control">
+									      	<f:validateLength minimum="3" maximum="20" /> 
 									</p:inputText>
-									<h:message for="NRC" style="color: red;" />
+									<h:message for="nrc" style="color: red;" />
 		                		</div>
 		                	</div>
 		                </div>
@@ -132,12 +153,9 @@
 		                			<i class="fa fa-twitter"></i>
 		                		</div>
 		                		<div class="col-sm-9">
-		                			<p:outputLabel for="rs">Relationship</p:outputLabel>
-		                			<p:inputText id="rs" value="#{proposalController.uProposal.relationship}" class="form-control" required="true"
-											requiredMessage="Relation is Required!" validatorMessage="Without space between 3 to 20 charater !">
-											<f:validateRegex pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" />
-									</p:inputText>
-									<h:message for="rs" style="color: red;"></h:message>
+		                			<p:outputLabel for="dateOfBirth">Date of Birth</p:outputLabel><br />
+									<p:calendar id="dateOfBirth" value="#{proposalController.uProposal.dob}" locale="en" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Choose your Birthday Date!"/>
+									<br /><h:message for="dateOfBirth" style="color: red;" />
 		                		</div>
 		                	</div>
 		                </div>
@@ -151,10 +169,9 @@
 		                			<i class="fa fa-twitter"></i>
 		                		</div>
 		                		<div class="col-sm-9">
-		                			<p:outputLabel for="phone">Phone No</p:outputLabel>
-			                    	<p:inputMask id="phone" value="#{proposalController.uProposal.beneficialPh}" class="form-control" mask="(99) 999-999-999" required="true" requiredMessage="Please fill of your No.!">
-			                    	</p:inputMask>
-									<h:message for="phone" style="color: red;"></h:message>
+		                			<p:outputLabel for="phone">Ph : </p:outputLabel>
+									<p:inputMask id="phone" value="#{proposalController.uProposal.holderPhone}" class="form-control" mask="(99) 999-999-999" required="true" requiredMessage="Please fill of your No.!"></p:inputMask>
+									<h:message for="phone" style="color: red;" />
 		                		</div>
 		                	</div>
 		                </div>
@@ -168,41 +185,101 @@
 		                			<i class="fa fa-twitter"></i>
 		                		</div>
 		                		<div class="col-sm-9">
-		                			<p:outputLabel for="address">Address</p:outputLabel><br />
-			                    	<!-- <p:inputText id="address" value="#{proposalController.uProposal.address}" class="form-control" required="true" requiredMessage="Address is Required!">
-									</p:inputText>
-									<h:message for="address" style="color: red;"></h:message> -->
-									
-									<p:inputTextarea id="address" value="#{proposalController.uProposal.address}" class="form-control" required="true" requiredMessage="Address is Required!  " rows="5" cols="53" counter="display" maxlength="100" counterTemplate="{0} characters remaining." autoResize="true" />
-								   
-								    <h:message for="address" style="color: red;" /> <h:outputText id="display" />
+		                			<div class="col-sm-6">
+			                			<p:outputLabel for="fromPlace">From Place</p:outputLabel>
+										<p:inputText id="fromPlace" value="#{proposalController.uProposal.fromPlace}" class="form-control" required="true" requiredMessage="From Place!" />
+									    <h:message for="fromPlace" style="color: red;" />
+									</div>
+									<div class="col-sm-6">
+			                			<p:outputLabel for="toPlace">To Place</p:outputLabel>
+										<p:inputText id="toPlace" value="#{proposalController.uProposal.toPlace}" class="form-control" required="true" requiredMessage="To Place!" />
+										<h:message for="toPlace" style="color: red;" />
+									</div>
 		                		</div>
 		                	</div>
 		                </div>
 		            </div>
 		            
-		            <!-- 6 -->
+		             <!-- 6 -->
+					<div class="row">
+		            	<div class="col-sm-12 features-box wow fadeInLeft">
+		                	<div class="row">
+		                		<div class="col-sm-2 features-box-icon">
+		                			<i class="fa fa-twitter"></i>
+		                		</div>
+		                		<div class="col-sm-9">
+		                			<p:outputLabel for="vehicleType">Vehicle type</p:outputLabel><br />
+									<p:selectOneMenu id="vehicleType" value="#{proposalController.uProposal.vehicle}" style="width: 100%;" required="true" requiredMessage="Choose Your Vehicle Type!" >
+						                <f:selectItem itemLabel="" itemValue="" noSelectionOption="true" />
+						                
+						                <f:selectItems value="#{proposalController.vehicles}" itemValue="#{vehicles.vehicleId}" var="vehicles" itemLabel="#{vehicles.vehicleType}" />
+						            </p:selectOneMenu>
+						            <br />
+						            <h:message for="vehicleType" style="color: red;" />
+		                		</div>
+		                	</div>
+		                </div>
+		            </div>
+		            
+		             <!-- 7 -->
+					<div class="row">
+		            	<div class="col-sm-12 features-box wow fadeInLeft">
+		                	<div class="row">
+		                		<div class="col-sm-2 features-box-icon">
+		                			<i class="fa fa-twitter"></i>
+		                		</div>
+		                		<div class="col-sm-9">
+		                			<p:outputLabel for="vehicleNo">Vehicle No</p:outputLabel>
+									<p:inputText id="vehicleNo" value="#{proposalController.uProposal.vehicleNo}" required="true" requiredMessage="Travel Vehicle No!" validatorMessage="Name length must be 3~20!" class="form-control">
+								      	<f:validateLength minimum="3" maximum="20" /> 
+								    </p:inputText>
+								    <h:message for="vehicleNo" style="color: red;" />
+		                		</div>
+		                	</div>
+		                </div>
+		            </div>
+		            
+		             <!-- 8 -->
+					<div class="row">
+		            	<div class="col-sm-12 features-box wow fadeInLeft">
+		                	<div class="row">
+		                		<div class="col-sm-2 features-box-icon">
+		                			<i class="fa fa-twitter"></i>
+		                		</div>
+		                		<div class="col-sm-9">
+		                			<div class="col-sm-6">
+			                			<p:outputLabel for="startDate">Start Date</p:outputLabel><br />
+										<p:calendar id="startDate" value="#{proposalController.uProposal.startDate}" locale="en" yearRange="2020:2023" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Travel Start Date!" />
+										<br /><h:message for="startDate" style="color: red;" />
+									</div>
+									<div class="col-sm-6">
+			                			<p:outputLabel for="endDate">End Date</p:outputLabel><br />
+										<p:calendar id="endDate" value="#{proposalController.uProposal.endDate}" locale="en" yearRange="2020:2023" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Travel End Date!"/>
+										<br /><h:message for="endDate" style="color: red;" />
+									</div>
+		                		</div>
+		                	</div>
+		                </div>
+		            </div>
+		            
+		            <!-- 9 -->
 					<div class="row">
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">
 		                		<div class="col-sm-5 features-box-icon">
 		                		</div>
 		                		<div class="col-sm-6">
-		                			<h:commandButton action="#{proposalController.beneficialSave()}" value="Save" class="btn btn-success" style="width:100px; height:50px;" />
+		                			<h:commandButton action="#{proposalController.saveProposal()}" value="Save" class="btn btn-success" style="width:100px; height:50px;"/>
 		                		</div>
 		                	</div>
 		                </div>
 		            </div>
 				</div>
-				<div class="col-md-3"></div>	
+				<div class="col-md-2"></div>	
 				</div>
 			</div>
         </div> 
         </h:form>
-        <!-- Card Section -->
-        
-    
-        
 
         <!-- Footer -->
         <footer>

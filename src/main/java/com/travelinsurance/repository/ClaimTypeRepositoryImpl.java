@@ -42,16 +42,30 @@ public class ClaimTypeRepositoryImpl implements ClaimTypeRepositoryCustom{
 
 	@Override
 	public Proposal findToClaim(String propoId) {
-		CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Proposal> cq = cb.createQuery(Proposal.class);
- 
-        Root<Proposal> proposal = cq.from(Proposal.class);
-        Fetch<Proposal, Beneficial> beneficialPerson=proposal.fetch("beneficial", JoinType.INNER);
-        Predicate claimPreidcate = cb.equal( proposal.get("pId"), propoId);
-        cq.where(claimPreidcate).distinct(true);
- 
-        TypedQuery<Proposal> query = em.createQuery(cq);
-        Proposal propo=query.getSingleResult();
-		return propo;
+		try {
+			System.out.println("Repo 1");
+			CriteriaBuilder cb = em.getCriteriaBuilder();
+	        CriteriaQuery<Proposal> cq = cb.createQuery(Proposal.class);
+	        System.out.println("Repo 2");
+	        Root<Proposal> proposal = cq.from(Proposal.class);
+	        Fetch<Proposal, Beneficial> beneficialPerson=proposal.fetch("beneficial", JoinType.INNER);
+	        Predicate claimPreidcate = cb.equal( proposal.get("pId"), propoId);
+	        cq.where(claimPreidcate).distinct(true);
+	        System.out.println("Repo 3");
+	        TypedQuery<Proposal> query = em.createQuery(cq);
+	        Proposal propo=query.getSingleResult();System.out.println("Repo 4");
+			return propo;
+		}catch (Exception e) {System.out.println("Repo 5");
+			CriteriaBuilder cb = em.getCriteriaBuilder();
+	        CriteriaQuery<Proposal> cq = cb.createQuery(Proposal.class);
+	 
+	        Root<Proposal> proposal = cq.from(Proposal.class);System.out.println("Repo 6");
+	        Predicate claimPreidcate = cb.equal( proposal.get("pId"), propoId);
+	        cq.where(claimPreidcate).distinct(true);
+	 
+	        TypedQuery<Proposal> query = em.createQuery(cq);
+	        Proposal propo=query.getSingleResult();System.out.println("Repo 7");
+			return propo;
+		}
 	}
 }

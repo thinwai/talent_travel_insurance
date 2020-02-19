@@ -27,26 +27,16 @@ public class ListController {
 	ListService listService;
 	
 	public String list() {
-		return "listPage.xhtml?faces-redirect=true";
-	}
-	
-	@PostConstruct
-	public void viewList() {
+		
 		User user=new User();
 		user.setuId(1);
 		user.setEmail("aa@gmail.com");
 		
-		System.out.println("searchNo |"+searchModel.getSearchNo());
-		System.out.println("searchData |"+searchModel.getSearchData());
-		
-		System.out.println(searchModel);
-		
+		System.out.println("1");
 		listModels=listService.detailList(user,searchModel);
 		
-		searchModel=new SearchModel();
+		return "listPage.xhtml?faces-redirect=true";
 	}
-	
-	/**/
 
 	public List<ListModel> getListModels() {
 		return listModels;

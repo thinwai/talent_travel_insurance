@@ -57,10 +57,10 @@ public class ListServiceImpl implements ListService{
 			}catch (Exception e) {
 				listModel.setPayStatus(0);
 			}
-			
+			System.out.println("List 1");
 			try {
-				listModel.setClaimStatus(temp.getPayment().getClaim().getClaimStatus());
-			}catch (Exception e) {
+				listModel.setClaimStatus(temp.getPayment().getClaim().getClaimStatus());System.out.println("List 2");
+			}catch (Exception e) {System.out.println("List 3 |"+e);
 				listModel.setClaimStatus(0);
 			}
 			

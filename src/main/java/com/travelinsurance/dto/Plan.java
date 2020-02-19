@@ -19,7 +19,7 @@ public class Plan {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int planId;
 	private String planType;
-	private String planPrice;
+	private int planPrice;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="pId")
@@ -43,12 +43,12 @@ public class Plan {
 	public void setPlanType(String planType) {
 		this.planType = planType;
 	}
-
-	public String getPlanPrice() {
+	
+	public int getPlanPrice() {
 		return planPrice;
 	}
 
-	public void setPlanPrice(String planPrice) {
+	public void setPlanPrice(int planPrice) {
 		this.planPrice = planPrice;
 	}
 

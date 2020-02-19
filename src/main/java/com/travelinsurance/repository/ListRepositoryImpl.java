@@ -51,7 +51,17 @@ public class ListRepositoryImpl implements ListRepositoryCustom {
         	Predicate propoUserIdPreidcate = cb.equal(propo.get("user"), user);
         	Predicate propoIdPreidcate = cb.equal(propo.get("pId"), search.getSearchData());
         	cq.where(cb.and(propoUserIdPreidcate, propoIdPreidcate)).distinct(true);
-        	System.out.println("Repo______________10");
+        	System.out.println("Repo______________2");
+        }else if(search.getSearchNo()==3) {
+        	Predicate propoUserIdPreidcate = cb.equal(propo.get("user"), user);
+        	Predicate propoIdPreidcate = cb.like(propo.get("holderName"), search.getSearchData()+"%");
+        	cq.where(cb.and(propoUserIdPreidcate, propoIdPreidcate)).distinct(true);
+        	System.out.println("Repo______________3");
+        }else if(search.getSearchNo()==4) {
+        	Predicate propoUserIdPreidcate = cb.equal(propo.get("user"), user);
+        	Predicate propoIdPreidcate = cb.like(((Path<Object>) beneficial).get("beneficialName"), search.getSearchData()+"%");
+        	cq.where(cb.and(propoUserIdPreidcate, propoIdPreidcate)).distinct(true);
+        	System.out.println("Repo______________4");
         }
        
         TypedQuery<Proposal> query = em.createQuery(cq);

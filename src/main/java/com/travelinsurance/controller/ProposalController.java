@@ -50,7 +50,6 @@ public class ProposalController {
 	public String saveProposal() {
 		
 		propoService.saveProposal(uProposal);
-		msg.messageInfo("Success");
 		System.out.println(">>>>>>>>>>>> ? |" +uProposal.getpId());
 		return "beneficialPage.xhtml";
 	}

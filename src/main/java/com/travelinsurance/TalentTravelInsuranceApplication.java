@@ -6,6 +6,7 @@ import javax.faces.webapp.FacesServlet;
 import javax.servlet.DispatcherType;
 
 import org.ocpsoft.rewrite.servlet.RewriteFilter;
+import org.primefaces.webapp.filter.FileUploadFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -48,5 +49,13 @@ public class TalentTravelInsuranceApplication {
                 DispatcherType.ASYNC, DispatcherType.ERROR));
         rwFilter.addUrlPatterns("/*");
         return rwFilter;
+    }
+    @Bean
+    public FilterRegistrationBean facesUploadFilterRegistration() {
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean(new FileUploadFilter(), facesServletRegistration());
+        registrationBean.setName("PrimeFaces FileUpload Filter");
+        registrationBean.addUrlPatterns("/*");
+        registrationBean.setDispatcherTypes(DispatcherType.FORWARD, DispatcherType.REQUEST);
+        return registrationBean;
     }
 }

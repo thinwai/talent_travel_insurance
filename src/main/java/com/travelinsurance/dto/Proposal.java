@@ -28,6 +28,7 @@ public class Proposal {
 	private String vehicleNo;
 	private double sumInsurance;
 	private int proposalStatus;
+	private int status;
 	
 	@ManyToOne
 	private User user;
@@ -178,5 +179,13 @@ public class Proposal {
 
 	public void setVehicle(Vehicle vehicle) {
 		this.vehicle = vehicle;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 }
