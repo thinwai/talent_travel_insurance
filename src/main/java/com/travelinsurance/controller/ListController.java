@@ -6,7 +6,9 @@ import java.util.Locale;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -28,11 +30,12 @@ public class ListController {
 	
 	public String list() {
 		
-		User user=new User();
-		user.setuId(1);
-		user.setEmail("aa@gmail.com");
+		FacesContext facesContext=FacesContext.getCurrentInstance();
+		HttpSession session=(HttpSession) facesContext.getExternalContext().getSession(true);
 		
-		System.out.println("1");
+		User user=new User();
+		user=(User) session.getAttribute("session");
+		
 		listModels=listService.detailList(user,searchModel);
 		
 		return "listPage.xhtml?faces-redirect=true";
