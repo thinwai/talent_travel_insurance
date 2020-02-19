@@ -5,6 +5,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -34,6 +35,25 @@ public class UserController {
 	}
 	
 	public String myAcc() {
+		
+		FacesContext facesContext=FacesContext.getCurrentInstance();
+		HttpSession session=(HttpSession) facesContext.getExternalContext().getSession(true);
+		
+		
+		User user=new User();
+		user=(User) session.getAttribute("session");
+		
+		user=uService.session(user);
+		
+		this.user.setuId(user.getuId());
+		this.user.setEmail(user.getEmail());
+		this.user.setUsername(user.getUsername());
+		this.user.setPassword(user.getPassword());
+		this.user.setConPassword(user.getPassword());
+
+		this.user.setTotalPolicy(accService.totalPolicy(uService.session(user)));
+		this.user.setTotalClaim(accService.totalClaimt(uService.session(user)));
+		
 		return "myaccPage.xhtml?faces-redirect=true";
 	}
 	
@@ -49,18 +69,28 @@ public class UserController {
 		}
 	}
 	
-	@PostConstruct
-	public void totalPolicy() {
-		User user = new User();
-		user.setuId(1);
+	public String userLogin() {
 		
-		this.user.setTotalPolicy(accService.totalPolicy(user));
-		this.user.setTotalClaim(accService.totalClaimt(user));
+		int result=uService.userLogin(user);
+		System.out.println("<<<<<<<<<<<<<<<<< _____ " +result);
+		if(result==1) {
+			msg.messageInfo("User Does not Exist!");
+		}else if(result==2) {
+			msg.messageInfo("Password is not Correct!");
+		}else if(result==3) {
+			msg.messageInfo("Your Account is Already Delete!");
+		}else {
+			
+			msg.messageInfo("Success!");
+			return "homePage.xhtml?faces-redirect=true";
+		}
+		//return "homePage.xhtml?faces-redirect=true";
+		return null;
+	}
+	
+	public String userEdit() {
 		
-		int totalPolicy=accService.totalPolicy(user);
-		int totalClaim=accService.totalClaimt(user);
-		System.out.println(totalPolicy);
-		System.out.println(totalClaim);
+		return "userRegistrationPage.xhtml?faces-redirect=true";
 	}
 	
 	public UserModel getUser() {

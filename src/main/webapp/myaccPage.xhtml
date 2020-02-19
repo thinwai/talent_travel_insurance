@@ -40,30 +40,11 @@
 		href="assets/ico/apple-touch-icon-57-precomposed.png" />
 		
 		<style>																					
-			.mybtn {
-						box-shadow:inset 0px 1px 0px 0px #a4e271;
-						background:linear-gradient(to bottom, #89c403 5%, #77a809 100%);
-						background-color:#89c403;
-						border-radius:6px;
-						border:1px solid #74b807;
-						display:inline-block;
-						cursor:pointer;
-						color:#ffffff;
-						font-family:Arial;
-						font-size:15px;
-						font-weight:bold;
-						padding:6px 24px;
-						text-decoration:none;
-						text-shadow:0px 1px 0px #528009;
-						&:hover; {
-						background:linear-gradient(to bottom, #77a809 5%, #89c403 100%);
-						background-color:#77a809;
-					}
-					 &:active; {
-						position:relative;
-						top:1px;
-					}
-					 }
+			
+			.mybtn:hover{
+						background-color :#5cbf2a;
+			}
+
 		</style>
 			<!--Edit Button -->
 </h:head>
@@ -119,45 +100,60 @@
 						<h:form>
 							<table align="center">
 								<tr>
-									<td>
-										<h:outputLabel>User Name </h:outputLabel>
+									<td align="left">
+										<h:outputLabel style="color: #4e6096;">Email</h:outputLabel>
 									</td>
-									<td><h:outputLabel>&emsp;:&emsp;&emsp;&emsp;</h:outputLabel></td>
-									<td>
-										<h:outputLabel>Chit Su</h:outputLabel>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h:outputLabel>Email </h:outputLabel>
-									</td>
-									<td><h:outputLabel>&emsp;:&emsp;&emsp;&emsp;</h:outputLabel></td>
-									<td>
-										<h:outputLabel>cs@gmail.com</h:outputLabel>
+									<td><h:outputLabel style="color: #4e6096;">&emsp;:&emsp;&emsp;&emsp;</h:outputLabel></td>
+									<td align="left">
+										<h:outputLabel value="#{userController.user.email}" style="color: #4e6096;"></h:outputLabel>
 									</td>
 								</tr>
 								<tr>
-									<td>
-										<h:outputLabel>Policy</h:outputLabel>
+									<td align="left">
+										<h:outputLabel style="color: #4e6096;">User Name</h:outputLabel>
 									</td>
-									<td><h:outputLabel>&emsp;:&emsp;&emsp;&emsp;</h:outputLabel></td>
-									<td>
-										<h:outputLabel>1</h:outputLabel>
+									<td><h:outputLabel style="color: #4e6096;">&emsp;:&emsp;&emsp;&emsp;</h:outputLabel></td>
+									<td align="left">
+										<h:outputLabel value="#{userController.user.username}" style="color: #4e6096;"></h:outputLabel>
+									</td>
+								</tr>
+								
+								<tr>
+									<td align="left">
+										<h:outputLabel style="color: #4e6096;">Total Policy</h:outputLabel>
+									</td>
+									<td><h:outputLabel style="color: #4e6096;">&emsp;:&emsp;&emsp;&emsp;</h:outputLabel></td>
+									<td align="left">
+										<h:outputLabel value="#{userController.user.totalPolicy}" style="color: #4e6096;"></h:outputLabel>
 									</td>
 								</tr>
 								<tr>
-									<td>
-										<h:outputLabel>Claim</h:outputLabel>
+									<td align="left">
+										<h:outputLabel style="color: #4e6096;">Total Claim</h:outputLabel>
 									</td>
-									<td><h:outputLabel>&emsp;:&emsp;&emsp;&emsp;</h:outputLabel></td>
-									<td>
-										<h:outputLabel>100,000 MMK</h:outputLabel>
+									<td><h:outputLabel style="color: #4e6096;">&emsp;:&emsp;&emsp;&emsp;</h:outputLabel></td>
+									<td align="left">
+										<h:outputLabel value="#{userController.user.totalClaim}" style="color: #4e6096;"></h:outputLabel>
 									</td>
 								</tr>
 							</table>
 							<br />
 							<div id="btnGroup">
-								<h:commandButton value="Edit" class="mybtn" onclick="javascript:insert()" />
+								
+								
+								<div class="btn-group" role="group" aria-label="Basic example">
+									<p:commandButton action="#{userController.userEdit()}" value="Delete" >
+								        <p:confirm header="Confirmation" message="DELETE My_Account?" />
+								    </p:commandButton>
+							    	<p:commandButton action="#{userController.userEdit()}" value="Edit" >
+								        <p:confirm header="Confirmation" message="Are you sure Update?" />
+								    </p:commandButton>
+								</div>
+							     
+							    <p:confirmDialog global="true" showEffect="explode" hideEffect="bounce">
+							        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+							        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+							    </p:confirmDialog>
 							</div>
 				
 						</h:form>

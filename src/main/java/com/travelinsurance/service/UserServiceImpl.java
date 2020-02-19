@@ -1,5 +1,7 @@
 package com.travelinsurance.service;
 
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +48,48 @@ public class UserServiceImpl implements UserService{
 		}catch (Exception e) {
 			return true;
 		}
+	}
+
+	@Override
+	public Integer userLogin(UserModel user) {
+		
+		int loginResult=0;
+		
+		User usr=new User();
+		usr.setEmail(user.getEmail());
+		
+		try {
+			User result=uRepo.findByEmail(usr);
+			
+			
+			if(result.getPassword().equals(user.getPassword())){
+				
+				if(result.getUserAccStatus() == 1) {
+					
+					FacesContext facesContext=FacesContext.getCurrentInstance();
+					HttpSession session=(HttpSession) facesContext.getExternalContext().getSession(true);
+					session.setAttribute("session", result);
+					
+				}else {
+					loginResult=3;
+				}
+				
+			}else {
+				loginResult=2;
+			}
+			
+		}catch (Exception e) {
+			System.out.println("3");
+			loginResult=1;
+		}
+		
+		return loginResult;
+	}
+
+	@Override
+	public User session(User user) {
+		// TODO Auto-generated method stub
+		return  uRepo.findByEmail(user);
 	}
 	
 }
