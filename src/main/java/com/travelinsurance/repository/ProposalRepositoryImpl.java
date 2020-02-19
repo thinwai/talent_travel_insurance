@@ -14,22 +14,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.travelinsurance.dto.Proposal;
+import com.travelinsurance.dto.User;
 
 @Repository
 public class ProposalRepositoryImpl implements ProposalRepositoryCustom{
 	
 	@Autowired
 	EntityManager em;
-	
+
 	@Override
-	public Proposal searchProposalId(String propoId) {
+	public Proposal searchProposalId(String propoId, User user) {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Proposal> cq = cb.createQuery(Proposal.class);
  
         Root<Proposal> proposal = cq.from(Proposal.class);
         
 	    Predicate proposalPredicate = cb.equal(proposal.get("pId"), propoId);
-	    cq.where(proposalPredicate).distinct(true);
+	    Predicate accPredicate = cb.equal(proposal.get("user"), user);
+	    cq.where(cb.and(proposalPredicate, accPredicate)).distinct(true);
         
         TypedQuery<Proposal> query = em.createQuery(cq);
         Proposal propo=new Proposal();
@@ -46,5 +48,4 @@ public class ProposalRepositoryImpl implements ProposalRepositoryCustom{
 		}
 		return propo;
 	}
-
 }

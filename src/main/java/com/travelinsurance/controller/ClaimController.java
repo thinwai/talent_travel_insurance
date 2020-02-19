@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.travelinsurance.dto.User;
 import com.travelinsurance.service.ClaimService;
 import com.travelinsurance.service.PaymentService;
 import com.travelinsurance.service.ProposalService;
@@ -42,12 +45,18 @@ public class ClaimController {
 	
 	public String claimIdSave(){
 		
+		FacesContext facesContext=FacesContext.getCurrentInstance();
+		HttpSession session=(HttpSession) facesContext.getExternalContext().getSession(true);
+		
+		User user=new User();
+		user=(User) session.getAttribute("session");
+		
 		String propoId=claimModel.getPropoId();
 		if(ctService.findClaimByPropoId(propoId) == 0) {
 			
 			System.out.println("____CONTROLLER____");
 			try {
-				propoModel=propoService.searchPropoId(propoId);
+				propoModel=propoService.searchPropoId(propoId,user);
 				if(propoModel.equals("") || propoModel.equals(null)) {
 					msg.messageInfo("Your Proposal was not Exist!");
 				}else {

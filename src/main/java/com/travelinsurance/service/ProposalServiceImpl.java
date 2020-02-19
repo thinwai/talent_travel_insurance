@@ -51,7 +51,7 @@ public class ProposalServiceImpl implements ProposalService{
 	}
 
 	@Override
-	public UserProposalModel searchPropoId(String propoId) {
+	public UserProposalModel searchPropoId(String propoId, User user) {
 		Proposal result=propoRepo.searchProposalId(propoId);
 		
 		UserProposalModel proposal=new UserProposalModel();
