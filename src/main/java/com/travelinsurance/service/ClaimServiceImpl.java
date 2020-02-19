@@ -73,7 +73,7 @@ public class ClaimServiceImpl implements ClaimService{
 		if (holderName.equals(name) || beneficialName.equals(name)) {
 			if(holderName.equals(name)) {
 				if(propo.getNrc().equals(cModel.getClaimNrc())) {
-					if(startDate<lostDate && lostDate<endDate) {
+					if(startDate<=lostDate && lostDate<=endDate) {
 						result=0;
 					}else {
 						result=4;												//Lost_Date Must Be Your Duration of Your Travelling

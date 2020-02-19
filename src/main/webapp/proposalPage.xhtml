@@ -129,9 +129,8 @@
 	                		</div>
 	                		<div class="col-sm-9">
 	                			<p:outputLabel for="nrc">NRC</p:outputLabel>
-		                    	<p:inputText id="nrc" value="#{proposalController.uProposal.holderNrc}" required="true" requiredMessage="NRC is Required!" validatorMessage="NRC length must be 8~20!" class="form-control">
-								      	<f:validateLength minimum="3" maximum="20" /> 
-								</p:inputText>
+		                    	<p:inputMask id="nrc" value="#{proposalController.uProposal.holderNrc}" class="form-control" mask="99/ a***** (a) 999999" required="true" requiredMessage="Please fill of your No.!"></p:inputMask>
+								  
 								<h:message for="nrc" style="color: red;" />
 	                		</div>
 	                	</div>
@@ -147,7 +146,7 @@
 	                		</div>
 	                		<div class="col-sm-9">
 		                		<p:outputLabel for="dateOfBirth">Date of Birth</p:outputLabel><br />
-								<p:calendar id="dateOfBirth" value="#{proposalController.uProposal.dob}" style="width:500px;" locale="en" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Choose your Birthday Date!"/>
+								<p:calendar id="dateOfBirth" value="#{proposalController.uProposal.dob}" yearRange="1910:2020" style="width:500px;" locale="en" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Choose your Birthday Date!"/>
 								<br /><h:message for="dateOfBirth" style="color: red;" />
 	                		</div>
 	                	</div>

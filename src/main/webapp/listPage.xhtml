@@ -106,7 +106,7 @@
 	            </h:form>
 	            
 	            <h:form name="listForm" >
-					<p:dataTable var="list" value="#{listController.listModels}" id="eee" >
+					<p:dataTable var="list" value="#{listController.listModels}" id="eee" resizableColumns="true">
 					
 					    <p:column headerText="Proposal Id">
 					        <h:outputText value="#{list.propoId}" />
@@ -154,7 +154,6 @@
 					    </p:column>
 					    
 					    <p:column headerText="Claim Status">
-					    	<h:outputLabel value="#{list.claimStatus}"/>
 					    	<h:panelGroup rendered="#{1 == list.claimStatus}">
 					    		<span style="color:blue;" ><span class="glyphicon glyphicon-hourglass"/>Pending</span>
 							</h:panelGroup>

@@ -107,9 +107,7 @@
 		                		</div>
 		                		<div class="col-sm-9">
 		                			<p:outputLabel for="nrc">NRC</p:outputLabel>
-			                    	<p:inputText id="nrc" value="#{claimController.claimModel.claimNrc}" required="true" requiredMessage="NRC is Required!" validatorMessage="NRC length must be 8~20!" class="form-control">
-									      	<f:validateLength minimum="3" maximum="20" /> 
-									</p:inputText>
+		                			<p:inputMask id="nrc" value="#{claimController.claimModel.claimNrc}" class="form-control" mask="99/ a***** (a) 999999" required="true" requiredMessage="Please fill of your No.!"></p:inputMask>			                    	
 									<h:message for="nrc" style="color: red;" />
 		                		</div>
 		                	</div>

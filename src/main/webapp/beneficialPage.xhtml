@@ -116,8 +116,7 @@
 		                		</div>
 		                		<div class="col-sm-9">
 		                			<p:outputLabel for="NRC">NRC</p:outputLabel>
-			                    	<p:inputText id="NRC" value="#{proposalController.uProposal.benificalNrc}" class="form-control" required="true" requiredMessage="NRC is Required!">
-									</p:inputText>
+		                			<p:inputMask id="NRC" value="#{proposalController.uProposal.benificalNrc}" class="form-control" mask="99/ a***** (a) 999999" required="true" requiredMessage="NRC is Required!"></p:inputMask>			                    	
 									<h:message for="NRC" style="color: red;" />
 		                		</div>
 		                	</div>
