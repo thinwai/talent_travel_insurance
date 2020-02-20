@@ -60,11 +60,8 @@ public class UserController {
 		
 		System.out.println("1");
 		if(this.user.getuId()!=0) {
-			System.out.println("2");
-			System.out.println(user.getuId());
 			uService.userSave(user);
 			user=new UserModel();
-			System.out.println("login 1");
 			myAcc();
 			msg.messageInfo("Update Successfully");
 			return "myaccPage.xhtml?faces-redirect=true";
