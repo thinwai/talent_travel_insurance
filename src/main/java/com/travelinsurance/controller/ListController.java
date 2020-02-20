@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.travelinsurance.dto.User;
 import com.travelinsurance.service.ListService;
+import com.travelinsurance.util.MessagesUtil;
 import com.travelinsurance.view_model.ListModel;
 import com.travelinsurance.view_model.SearchModel;
 import com.travelinsurance.view_model.UserProposalModel;
@@ -29,6 +30,9 @@ public class ListController {
 	@Autowired
 	ListService listService;
 	
+	@Autowired
+	MessagesUtil msg;
+	
 	public String list() {
 		
 		FacesContext facesContext=FacesContext.getCurrentInstance();
@@ -43,8 +47,15 @@ public class ListController {
 	}
 	
 	public void deleteProposal(String Id) {
-		System.out.println("Delete___"+Id);
-		listService.deleteProposal(Id);
+		
+		Boolean result=listService.deleteProposal(Id);
+		
+		if(result) {
+			list();
+			msg.messageInfo("Successfully DELETE!");
+		}else {
+			msg.messageInfo("Your Proposal are not allowed to DELETE!");
+		}
 		
 	}
 

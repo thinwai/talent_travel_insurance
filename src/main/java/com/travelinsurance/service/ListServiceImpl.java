@@ -78,16 +78,24 @@ public class ListServiceImpl implements ListService{
 	}
 
 	@Override
-	public void deleteProposal(String id) {
+	public Boolean deleteProposal(String id) {
+		
+		Boolean result;
 		
 		Proposal propo= new Proposal();
 		propo=propoRepo.searchProId(id);
 		
-		propo.setStatus(2);
-		System.out.println("Service ____________"+id);
+		if(propo.getProposalStatus()!=3) {
+			propo.setStatus(2);
+			System.out.println("Service ____________"+id);
+			
+			propoRepo.save(propo);
+			
+			result=true;
+		}else {
+			result=false;
+		}
 		
-		propoRepo.save(propo);
-		
+		return result;
 	}
-
 }

@@ -37,8 +37,9 @@ public class MyAccountRepositoryImpl implements MyAccountRepositoryCustom {
 	        
 	        Predicate proposalPredicate = cb.equal(proposal.get("user"), user.getuId());
 	        Predicate propoStatus= cb.equal(proposal.get("proposalStatus"), 3);
+	        Predicate status= cb.equal(proposal.get("status"), 1);
 	        Predicate paymentStatus= cb.equal(((Path<Proposal>) proposalPayment).get("payStatus"), 3);
-	        cq.where(cb.and(proposalPredicate, propoStatus, paymentStatus)).distinct(true);
+	        cq.where(cb.and(proposalPredicate, propoStatus,status, paymentStatus)).distinct(true);
 	 
 	        List<Proposal> result = em.createQuery(cq).getResultList();
 	        
@@ -61,9 +62,10 @@ public class MyAccountRepositoryImpl implements MyAccountRepositoryCustom {
 	        
 	        Predicate proposalPredicate = cb.equal(proposal.get("user"), user.getuId());
 	        Predicate propoStatus= cb.equal(proposal.get("proposalStatus"), 3);
+	        Predicate status= cb.equal(proposal.get("status"), 1);
 	        Predicate paymentStatus= cb.equal(((Path<Proposal>) proposalPayment).get("payStatus"), 3);
 	        Predicate claimPredicate= cb.equal(((Path<Proposal>) claim).get("claimStatus"), 3);
-	        cq.where(cb.and(proposalPredicate, propoStatus, paymentStatus,claimPredicate)).distinct(true);
+	        cq.where(cb.and(proposalPredicate, propoStatus,status, paymentStatus,claimPredicate)).distinct(true);
 	 
 	        List<Proposal> result = em.createQuery(cq).getResultList();
 	        

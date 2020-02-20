@@ -10,7 +10,7 @@ public interface ListService {
 	
 	List<ListModel> detailList(User user,SearchModel search);
 
-	void deleteProposal(String id);
+	Boolean deleteProposal(String id);
 	
 
 
