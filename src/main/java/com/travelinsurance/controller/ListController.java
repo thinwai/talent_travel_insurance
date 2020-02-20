@@ -16,6 +16,7 @@ import com.travelinsurance.dto.User;
 import com.travelinsurance.service.ListService;
 import com.travelinsurance.view_model.ListModel;
 import com.travelinsurance.view_model.SearchModel;
+import com.travelinsurance.view_model.UserProposalModel;
 
 @Named
 @ViewScoped
@@ -39,6 +40,11 @@ public class ListController {
 		listModels=listService.detailList(user,searchModel);
 		
 		return "listPage.xhtml?faces-redirect=true";
+	}
+	
+	public void deleteProposal(String Id) {
+		System.out.println("Delete___"+Id);
+		
 	}
 
 	public List<ListModel> getListModels() {

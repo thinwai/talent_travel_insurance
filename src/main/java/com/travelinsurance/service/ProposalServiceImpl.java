@@ -34,6 +34,7 @@ public class ProposalServiceImpl implements ProposalService{
 		propo.setSumInsurance(propoModel.getSumInsurance());
 		
 		propo.setProposalStatus(1);
+		propo.setStatus(1);
 		
 		propo.setUser(propoModel.getUser());
 		Vehicle v=new Vehicle();
