@@ -10,6 +10,7 @@ import com.travelinsurance.dto.Beneficial;
 import com.travelinsurance.dto.Proposal;
 import com.travelinsurance.dto.User;
 import com.travelinsurance.repository.ListRepository;
+import com.travelinsurance.util.MessagesUtil;
 import com.travelinsurance.view_model.ListModel;
 import com.travelinsurance.view_model.SearchModel;
 
@@ -18,6 +19,9 @@ public class ListServiceImpl implements ListService{
 	
 	@Autowired
 	ListRepository listRepo;
+	
+	@Autowired
+	MessagesUtil msg;
 
 	@Override
 	public List<ListModel> detailList(User user, SearchModel search) {
@@ -34,8 +38,8 @@ public class ListServiceImpl implements ListService{
 			listModel.setHolderName(temp.getHolderName());
 			listModel.setTravelFromPlace(temp.getFromPlace());
 			listModel.setTravelToPlace(temp.getToPlace());
-			listModel.setStartDate(temp.getStartDate());
-			listModel.setEndDate(temp.getEndDate());
+			listModel.setStartDate(msg.dateFormat(temp.getStartDate()));
+			listModel.setEndDate(msg.dateFormat(temp.getEndDate()));
 			
 			if(!temp.getBeneficial().isEmpty()) {
 				listModel.setBeneficialName(temp.getBeneficial().get(0).getBeneficialName());

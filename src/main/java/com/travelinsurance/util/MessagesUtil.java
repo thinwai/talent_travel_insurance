@@ -53,4 +53,12 @@ public class MessagesUtil {
 		System.out.println("Date Ulti Result + |"+result);
 		return Integer.parseInt(result);
 	}
+	
+	public String dateFormat(Date date) {
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		String strDate= formatter.format(date);
+		
+		return strDate;
+	}
 }

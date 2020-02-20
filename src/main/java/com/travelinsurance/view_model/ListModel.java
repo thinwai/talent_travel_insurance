@@ -10,8 +10,8 @@ public class ListModel {
 	private String holderName;
 	private String travelFromPlace;
 	private String travelToPlace;
-	private Date startDate;
-	private Date endDate;
+	private String startDate;
+	private String endDate;
 	private String beneficialName;
 	private int propoStatus;
 	private int payStatus;
@@ -41,16 +41,16 @@ public class ListModel {
 	public void setTravelToPlace(String travelToPlace) {
 		this.travelToPlace = travelToPlace;
 	}
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 	public String getBeneficialName() {
