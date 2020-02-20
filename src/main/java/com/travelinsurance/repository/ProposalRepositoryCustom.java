@@ -8,5 +8,6 @@ import com.travelinsurance.dto.User;
 public interface ProposalRepositoryCustom {
 	
 	Proposal searchProposalId(String propoId, User user);
+	Proposal searchProId(String propoId);
 
 }

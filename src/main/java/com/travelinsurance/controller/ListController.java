@@ -44,6 +44,7 @@ public class ListController {
 	
 	public void deleteProposal(String Id) {
 		System.out.println("Delete___"+Id);
+		listService.deleteProposal(Id);
 		
 	}
 

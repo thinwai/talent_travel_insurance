@@ -10,6 +10,7 @@ import com.travelinsurance.dto.Beneficial;
 import com.travelinsurance.dto.Proposal;
 import com.travelinsurance.dto.User;
 import com.travelinsurance.repository.ListRepository;
+import com.travelinsurance.repository.ProposalRepository;
 import com.travelinsurance.util.MessagesUtil;
 import com.travelinsurance.view_model.ListModel;
 import com.travelinsurance.view_model.SearchModel;
@@ -19,6 +20,9 @@ public class ListServiceImpl implements ListService{
 	
 	@Autowired
 	ListRepository listRepo;
+	
+	@Autowired
+	ProposalRepository propoRepo;
 	
 	@Autowired
 	MessagesUtil msg;
@@ -71,6 +75,19 @@ public class ListServiceImpl implements ListService{
 			list.add(listModel);
 		}
 		return list;
+	}
+
+	@Override
+	public void deleteProposal(String id) {
+		
+		Proposal propo= new Proposal();
+		propo=propoRepo.searchProId(id);
+		
+		propo.setStatus(2);
+		System.out.println("Service ____________"+id);
+		
+		propoRepo.save(propo);
+		
 	}
 
 }

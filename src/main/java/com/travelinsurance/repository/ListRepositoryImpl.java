@@ -45,22 +45,26 @@ public class ListRepositoryImpl implements ListRepositoryCustom {
     	
         if(search.getSearchNo()==0 || search.getSearchNo()==1) {
         	Predicate propoIdPreidcate = cb.equal(propo.get("user"), user);
-        	cq.where(propoIdPreidcate).distinct(true);
+        	Predicate deleteStatus = cb.equal(propo.get("status"), 1);
+        	cq.where(cb.and(propoIdPreidcate, deleteStatus)).distinct(true);
         	System.out.println("Repo______________1");
         }else if(search.getSearchNo()==2) {
         	Predicate propoUserIdPreidcate = cb.equal(propo.get("user"), user);
+        	Predicate deleteStatus = cb.equal(propo.get("status"), 1);
         	Predicate propoIdPreidcate = cb.equal(propo.get("pId"), search.getSearchData());
-        	cq.where(cb.and(propoUserIdPreidcate, propoIdPreidcate)).distinct(true);
+        	cq.where(cb.and(propoUserIdPreidcate, deleteStatus, propoIdPreidcate)).distinct(true);
         	System.out.println("Repo______________2");
         }else if(search.getSearchNo()==3) {
         	Predicate propoUserIdPreidcate = cb.equal(propo.get("user"), user);
+        	Predicate deleteStatus = cb.equal(propo.get("status"), 1);
         	Predicate propoIdPreidcate = cb.like(propo.get("holderName"), search.getSearchData()+"%");
-        	cq.where(cb.and(propoUserIdPreidcate, propoIdPreidcate)).distinct(true);
+        	cq.where(cb.and(propoUserIdPreidcate, deleteStatus, propoIdPreidcate)).distinct(true);
         	System.out.println("Repo______________3");
         }else if(search.getSearchNo()==4) {
         	Predicate propoUserIdPreidcate = cb.equal(propo.get("user"), user);
+        	Predicate deleteStatus = cb.equal(propo.get("status"), 1);
         	Predicate propoIdPreidcate = cb.like(((Path<Object>) beneficial).get("beneficialName"), search.getSearchData()+"%");
-        	cq.where(cb.and(propoUserIdPreidcate, propoIdPreidcate)).distinct(true);
+        	cq.where(cb.and(propoUserIdPreidcate, deleteStatus, propoIdPreidcate)).distinct(true);
         	System.out.println("Repo______________4");
         }
        
