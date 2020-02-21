@@ -103,12 +103,12 @@
 		                			<i class="fa fa-twitter"></i>
 		                		</div>
 		                		<div class="col-sm-9">
-		                		 	<p:fileUpload value="#{paymentController.payment.file}" mode="simple" skinSimple="true"/>
-			                		<!-- <p:fileUpload listener="#{paymentController.payment.file}" mode="advanced" dragDropSupport="false"
-								                  update="messages" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" /> -->
-								 
-								    <p:growl id="messages" showDetail="true" />
-			                    
+		                		 	<h:outputText value="Platform:" /><br />
+							        <p:selectOneButton value="#{paymentController.payment.proposalPayment}">
+							            <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+							            <f:selectItem itemLabel="PS4" itemValue="PS4" />
+							            <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+							        </p:selectOneButton>
 		                		</div>
 		                	</div>
 		                </div>
