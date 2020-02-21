@@ -103,19 +103,50 @@
 		                			<i class="fa fa-twitter"></i>
 		                		</div>
 		                		<div class="col-sm-9">
-		                		 	<h:outputText value="Platform:" /><br />
-							        <p:selectOneButton value="#{paymentController.payment.proposalPayment}">
-							            <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-							            <f:selectItem itemLabel="PS4" itemValue="PS4" />
-							            <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+		                		 	<p:outputLabel for="bank">Bank</p:outputLabel><br />
+							        <p:selectOneButton id="bank" value="#{paymentController.payment.bank}" required="true" requiredMessage="Choose">
+							            <f:selectItem itemLabel="KBZ" itemValue="KBZ" />
+							            <f:selectItem itemLabel="AYA" itemValue="AYA" />
+							            <f:selectItem itemLabel="CB" itemValue="CB" />
 							        </p:selectOneButton>
+							        <br />
+			                    	<h:message for="bank" style="color: red;"/>
 		                		</div>
 		                	</div>
 		                </div>
 		            </div>
 		            
-		            
 		            <!-- 3 -->
+					<div class="row">
+		            	<div class="col-sm-12 features-box wow fadeInLeft">
+		                	<div class="row">
+		                		<div class="col-sm-2 features-box-icon">
+		                		</div>
+		                		<div class="col-sm-9">
+		                		 	<p:outputLabel for="amount">Card No</p:outputLabel><br />
+		                		 	<p:inputNumber id="amount" value="#{paymentController.payment.cardNo}"/>
+									<h:message for="amount" style="color: red;"/>
+		                		</div>
+		                	</div>
+		                </div>
+		            </div>
+		            
+		            <!-- 4 -->
+					<div class="row">
+		            	<div class="col-sm-12 features-box wow fadeInLeft">
+		                	<div class="row">
+		                		<div class="col-sm-2 features-box-icon">
+		                		</div>
+		                		<div class="col-sm-9">
+		                		 	<p:outputLabel for="expired">Card Expired Date</p:outputLabel><br />
+								<p:calendar id="expired" value="#{paymentController.payment.expiredDate}" yearRange="2020:2050" style="width:500px;" locale="en" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Choose your Card Expired Date!" autocomplete="off"/>
+								<br /><h:message for="expired" style="color: red;" />
+		                		</div>
+		                	</div>
+		                </div>
+		            </div>
+		            
+		            <!-- 5 -->
 					<div class="row">
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">
