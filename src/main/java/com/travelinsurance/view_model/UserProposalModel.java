@@ -46,6 +46,7 @@ public class UserProposalModel {
 	private String beneficialPh;
 	private Proposal proposalBenefit;
 	
+	private String message;
 	
 	public String getpId() {
 		return pId;
@@ -190,5 +191,11 @@ public class UserProposalModel {
 	}
 	public void setProposalBenefit(Proposal proposalBenefit) {
 		this.proposalBenefit = proposalBenefit;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
 	}
 }

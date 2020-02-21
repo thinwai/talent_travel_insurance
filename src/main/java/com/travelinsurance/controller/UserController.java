@@ -5,7 +5,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
-import org.ocpsoft.rewrite.annotation.Join;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.travelinsurance.dto.User;
@@ -17,7 +16,6 @@ import com.travelinsurance.view_model.UserModel;         //com.travelinsurance.v
 
 @Named
 @ViewScoped
-//@Join(path = "/", to = "/loginPage.xhtml")
 public class UserController {
 	private UserModel user=new UserModel();
 	

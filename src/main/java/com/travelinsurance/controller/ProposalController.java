@@ -50,6 +50,25 @@ public class ProposalController {
 		return "proposalPage.xhtml?faces-redirect=true";
 	}
 	
+	public String proposalNext() {
+		
+		return "beneficialPage.xhtml?faces-redirect=true";
+	}
+	
+	public String saveProposal() {
+		FacesContext facesContext=FacesContext.getCurrentInstance();
+		HttpSession session=(HttpSession) facesContext.getExternalContext().getSession(true);
+		
+		User user=new User();
+		user=(User) session.getAttribute("session");
+		
+		this.uProposal.setUser(user);
+		propoService.saveProposal(uProposal);
+		
+		return "beneficialPage.xhtml";
+	}
+	
+	/*
 	public String saveProposal() {
 		FacesContext facesContext=FacesContext.getCurrentInstance();
 		HttpSession session=(HttpSession) facesContext.getExternalContext().getSession(true);
@@ -59,23 +78,41 @@ public class ProposalController {
 		this.uProposal.setUser(user);
 		
 		propoService.saveProposal(uProposal);
-		System.out.println(">>>>>>>>>>>> ? |" +uProposal.getpId());
 		return "beneficialPage.xhtml";
 	}
 	
 	public void beneficialSave() {
-		System.out.println(">>>>>>>>>>>> ? |" +uProposal.getpId());
 		bService.beneficialSave(uProposal);
 		msg.messageInfo("Successfully Proposal Request!");
-	}
+	}*/
 	
 	public void newProposal() {
-		uProposal=new UserProposalModel();
 		
 		vehicles=vehicleService.findAllVehicle();
 		plans=planService.findAllPlan();
 		
 		uProposal.setpId(msg.proposalId());
+	}
+	
+	public String basicPlan() {
+		newProposal();
+		this.uProposal.setPlan(1);
+		return "proposalPage.xhtml?faces-redirect=true";
+	}
+	
+	public String advancePlan() {
+		newProposal();
+		this.uProposal.setPlan(2);
+		return "proposalPage.xhtml?faces-redirect=true";
+	}
+	
+	public String backToProposal() {
+		
+		return "proposalPage.xhtml?faces-redirect=true";
+	}
+	public String skipProposal() {
+		
+		return "homePage.xhtml?faces-redirect=true";
 	}
 
 	public UserProposalModel getuProposal() {

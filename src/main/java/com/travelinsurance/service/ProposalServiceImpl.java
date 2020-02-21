@@ -1,12 +1,16 @@
 package com.travelinsurance.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.travelinsurance.dto.Beneficial;
 import com.travelinsurance.dto.Plan;
 import com.travelinsurance.dto.Proposal;
 import com.travelinsurance.dto.User;
 import com.travelinsurance.dto.Vehicle;
+import com.travelinsurance.repository.BeneficialRepository;
 import com.travelinsurance.repository.ProposalRepository;
 import com.travelinsurance.view_model.ClaimModel;
 import com.travelinsurance.view_model.UserProposalModel;
@@ -17,7 +21,11 @@ public class ProposalServiceImpl implements ProposalService{
 	@Autowired
 	ProposalRepository propoRepo;
 	
+	@Autowired
+	BeneficialRepository bRepo;
+	
 	@Override
+	@Transactional
 	public void saveProposal(UserProposalModel propoModel) {
 		
 		Proposal propo=new Proposal();
@@ -48,6 +56,16 @@ public class ProposalServiceImpl implements ProposalService{
 		propo.setPlan(p);
 		
 		propoRepo.save(propo);
+		
+		Beneficial beneficialdto = new Beneficial();
+		beneficialdto.setBeneficialName(propoModel.getBeneficialName());
+		beneficialdto.setNrc(propoModel.getBenificalNrc());
+		beneficialdto.setRelationship(propoModel.getRelationship());
+		beneficialdto.setBeneficialPh(propoModel.getBeneficialPh());
+		beneficialdto.setAddress(propoModel.getAddress());
+		beneficialdto.setProposalBenefit(propo);
+		
+		bRepo.save(beneficialdto);
 		
 	}
 
