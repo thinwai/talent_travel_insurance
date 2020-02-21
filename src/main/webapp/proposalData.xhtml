@@ -102,13 +102,16 @@
 	                    <div class="divider-1"><div class="line"></div></div>
 	                </div>
 	            </div>
-	<p:carousel headerText="Responsive" itemStyle="text-align:center" responsive="true" >
-        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+	<p:carousel headerText="Plan Summary" itemStyle="text-align:center" responsive="true" >
+        <p:panelGrid columns="2" style="width:100%;">
             <f:facet name="header">
-                <h:outputText value="Travel" />
+                <h:outputText value="Your Travel Plan" />
             </f:facet>
- 
-            <h:outputText value="Plan" />
+ 			 
+		    <h:outputText value="Proposal Id :" />
+            <h:outputText value="#{userController.user.email}" />
+            
+            <h:outputText value="Your Plan" />
             <h:outputText value="" />
  
             <h:outputText value="From~To" />
@@ -120,10 +123,65 @@
             <h:outputText value="Total Price" />
             <h:outputText value="" />
         </p:panelGrid>
+        
+        <p:panelGrid columns="2" style="width:100%;">
+		    <f:facet name="header">
+                <h:outputText value="Your Proposal Details" />
+            </f:facet>
+		    
+		     
+		    <h:outputText value="Holder Name :" />
+		    <h:outputText value="Los Angeles Lakers" />
+		     
+		    <h:outputText value="NRC:" />
+		    <h:outputText value="Shooting Guard" />
+		     
+		    <h:outputText value="Date of Birth:" />
+		    <h:outputText value="24" />
+		    
+		    <h:outputText value="Phone No:" />
+		    <h:outputText value="24" />
+		    
+		    <h:outputText value="Vehicle Type:" />
+		    <h:outputText value="24" />
+		    
+		    <h:outputText value="Vehicle No:" />
+		    <h:outputText value="24" />
+		</p:panelGrid>
+        
+		 <p:panelGrid columns="2" style="width:100%;">
+            <f:facet name="header">
+                <h:outputText value="Beneficial Details" />
+            </f:facet>
+ 
+            <h:outputText value="Beneficial Name:" />
+            <h:outputText value="#{userController.user.email}" />
+ 
+            <h:outputText value="NRC:" />
+            <h:outputText value="" />
+ 
+            <h:outputText value="Relationship" />
+            <h:outputText value="" />
+ 
+            <h:outputText value="Phone No:" />
+            <h:outputText value="" />
+            
+            <h:outputText value="Address:" />
+            <h:outputText value="" />
+        </p:panelGrid>
+        
  
         <f:facet name="footer">
+        <div class="row">
+        <div class="col-md-6"> </div>
+        <div class="col-md-6"> <h:commandButton value="Save" class="btn btn-success"/>&nbsp;<h:commandButton value="Discard" class="btn btn-danger"/> </div>
+        </div>
+        
         </f:facet>
     </p:carousel>
+    
+    
+    
 	            <!-- 0 -->
 	            <div class="row">
 	                <div class="col-sm-6 features-box wow fadeInLeft">
