@@ -1,5 +1,7 @@
 package com.travelinsurance.view_model;
 
+import java.util.Date;
+
 import org.primefaces.model.UploadedFile;
 
 import lombok.Data;
@@ -9,7 +11,8 @@ public class PaymentModel {
 	
 	private int payId;
 	private String bank;
-	private Double amount;
+	private String cardNo;
+	private Date expiredDate;
 	private int payStatus;
 	private String proposalPayment;
 	
@@ -25,11 +28,17 @@ public class PaymentModel {
 	public void setBank(String bank) {
 		this.bank = bank;
 	}
-	public Double getAmount() {
-		return amount;
+	public String getCardNo() {
+		return cardNo;
 	}
-	public void setAmount(Double amount) {
-		this.amount = amount;
+	public void setCardNo(String cardNo) {
+		this.cardNo = cardNo;
+	}
+	public Date getExpiredDate() {
+		return expiredDate;
+	}
+	public void setExpiredDate(Date expiredDate) {
+		this.expiredDate = expiredDate;
 	}
 	public int getPayStatus() {
 		return payStatus;

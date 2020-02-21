@@ -37,13 +37,16 @@ public class PaymentServiceImpl implements PaymentService{
 		//	--> check with proposal Exist or Not? 	---> when Admin Accepected payment Don`t need to pay more
 		
 		Payment payment=new Payment();
+		payment.setPayId(payment.getPayId());
 		payment.setBank(payModel.getBank());
-		payment.setAmount(payModel.getAmount());
-		payment.setPayId(1);
+		payment.setCardNo(payModel.getCardNo());
+		payment.setExpiredDate(payModel.getExpiredDate());
+		payment.setPayStatus(1);
 		
 		Proposal prop=new Proposal();
 		prop.setpId(payModel.getProposalPayment());
 		
+		System.out.println("------------------"+payModel.getProposalPayment());
 		payment.setProposalPayment(prop);
 		
 		payRepo.save(payment);

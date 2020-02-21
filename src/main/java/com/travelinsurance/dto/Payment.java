@@ -1,5 +1,7 @@
 package com.travelinsurance.dto;
 
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,7 +18,8 @@ public class Payment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int payId;
 	private String bank;
-	private Double amount;
+	private String cardNo;
+	private Date expiredDate;
 	private int payStatus;
 	
 	@OneToOne
@@ -41,12 +44,20 @@ public class Payment {
 		this.bank = bank;
 	}
 
-	public Double getAmount() {
-		return amount;
+	public String getCardNo() {
+		return cardNo;
 	}
 
-	public void setAmount(Double amount) {
-		this.amount = amount;
+	public void setCardNo(String cardNo) {
+		this.cardNo = cardNo;
+	}
+
+	public Date getExpiredDate() {
+		return expiredDate;
+	}
+
+	public void setExpiredDate(Date expiredDate) {
+		this.expiredDate = expiredDate;
 	}
 
 	public int getPayStatus() {

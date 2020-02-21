@@ -22,8 +22,7 @@ public class PaymentController {
 	}
 	
 	public void paySave() {
-		System.out.println(payment.getAmount());
-		System.out.println(payment.getBank());
+		System.out.println("+++++++++++++++++++++ "+payment.getProposalPayment());
 		payService.save(payment);
 	}
 
