@@ -15,7 +15,8 @@ public class Payment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int payId;
-	private String imageFilePath;
+	private String bank;
+	private Double amount;
 	private int payStatus;
 	
 	@OneToOne
@@ -32,12 +33,20 @@ public class Payment {
 		this.payId = payId;
 	}
 
-	public String getImageFilePath() {
-		return imageFilePath;
+	public String getBank() {
+		return bank;
 	}
 
-	public void setImageFilePath(String imageFilePath) {
-		this.imageFilePath = imageFilePath;
+	public void setBank(String bank) {
+		this.bank = bank;
+	}
+
+	public Double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
 	}
 
 	public int getPayStatus() {

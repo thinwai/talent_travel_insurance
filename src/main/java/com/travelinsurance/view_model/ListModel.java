@@ -1,6 +1,9 @@
 package com.travelinsurance.view_model;
 
 import java.util.Date;
+import java.util.List;
+
+import com.travelinsurance.dto.Beneficial;
 
 import lombok.Data;
 
@@ -12,7 +15,7 @@ public class ListModel {
 	private String travelToPlace;
 	private String startDate;
 	private String endDate;
-	private String beneficialName;
+	private List<Beneficial> beneficial;
 	private int propoStatus;
 	private int payStatus;
 	private int claimStatus;
@@ -53,11 +56,11 @@ public class ListModel {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
-	public String getBeneficialName() {
-		return beneficialName;
+	public List<Beneficial> getBeneficial() {
+		return beneficial;
 	}
-	public void setBeneficialName(String beneficialName) {
-		this.beneficialName = beneficialName;
+	public void setBeneficial(List<Beneficial> beneficial) {
+		this.beneficial = beneficial;
 	}
 	public int getPropoStatus() {
 		return propoStatus;

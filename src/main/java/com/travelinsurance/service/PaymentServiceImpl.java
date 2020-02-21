@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.travelinsurance.dto.Payment;
 import com.travelinsurance.dto.Proposal;
 import com.travelinsurance.repository.PaymentRepository;
+import com.travelinsurance.view_model.PaymentModel;
 
 @Service
 public class PaymentServiceImpl implements PaymentService{
@@ -29,5 +30,25 @@ public class PaymentServiceImpl implements PaymentService{
 			return false;
 		}
 	}
+
+	@Override
+	public void save(PaymentModel payModel) {
+		
+		//	--> check with proposal Exist or Not? 	---> when Admin Accepected payment Don`t need to pay more
+		
+		Payment payment=new Payment();
+		payment.setBank(payModel.getBank());
+		payment.setAmount(payModel.getAmount());
+		payment.setPayId(1);
+		
+		Proposal prop=new Proposal();
+		prop.setpId(payModel.getProposalPayment());
+		
+		payment.setProposalPayment(prop);
+		
+		payRepo.save(payment);
+		
+	}
+
 
 }

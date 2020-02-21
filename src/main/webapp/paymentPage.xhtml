@@ -69,7 +69,7 @@
 	        <div class="container">
         		 <div class="row">
 	                <div class="col-sm-12 features section-description wow fadeIn">
-	                    <h2 style="color:green;">Benificial Form</h2>
+	                    <h2 style="color:green;">Payment Form</h2>
 	                    <div class="divider-1"><div class="line"></div></div>
 	                </div>
 	            </div>
@@ -81,7 +81,6 @@
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">
 		                		<div class="col-sm-2 features-box-icon">
-		                			<i class="fa fa-twitter"></i>
 		                		</div>
 		                		<div class="col-sm-9">
 		                			<p:outputLabel for="propoId">Proposal ID</p:outputLabel>
@@ -100,22 +99,38 @@
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">
 		                		<div class="col-sm-2 features-box-icon">
-		                			<i class="fa fa-twitter"></i>
 		                		</div>
 		                		<div class="col-sm-9">
-		                		 	<p:fileUpload value="#{paymentController.payment.file}" mode="simple" skinSimple="true"/>
-			                		<!-- <p:fileUpload listener="#{paymentController.payment.file}" mode="advanced" dragDropSupport="false"
-								                  update="messages" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" /> -->
-								 
-								    <p:growl id="messages" showDetail="true" />
-			                    
+		                		 	
+								    <p:outputLabel for="bank">Bank</p:outputLabel><br />
+							        <p:selectOneButton id="bank" value="#{paymentController.payment.bank}" required="true" requiredMessage="Choose">
+							            <f:selectItem itemLabel="KBZ" itemValue="KBZ" />
+							            <f:selectItem itemLabel="AYA" itemValue="AYA" />
+							            <f:selectItem itemLabel="ASIA" itemValue="ASIA" />
+							        </p:selectOneButton>
+							        <br />
+			                    	<h:message for="bank" style="color: red;"/>
+		                		</div>
+		                	</div>
+		                </div>
+		            </div>
+		            <!-- 3 -->
+					<div class="row">
+		            	<div class="col-sm-12 features-box wow fadeInLeft">
+		                	<div class="row">
+		                		<div class="col-sm-2 features-box-icon">
+		                		</div>
+		                		<div class="col-sm-9">
+		                		 	<p:outputLabel for="amount">Amount</p:outputLabel><br />
+		                		 	<p:inputNumber id="amount" value="#{paymentController.payment.amount}"/>
+									<h:message for="amount" style="color: red;"/>
 		                		</div>
 		                	</div>
 		                </div>
 		            </div>
 		            
 		            
-		            <!-- 3 -->
+		            <!-- 4 -->
 					<div class="row">
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">

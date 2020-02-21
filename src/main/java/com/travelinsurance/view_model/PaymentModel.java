@@ -8,7 +8,8 @@ import lombok.Data;
 public class PaymentModel {
 	
 	private int payId;
-	private UploadedFile file;
+	private String bank;
+	private Double amount;
 	private int payStatus;
 	private String proposalPayment;
 	
@@ -18,12 +19,17 @@ public class PaymentModel {
 	public void setPayId(int payId) {
 		this.payId = payId;
 	}
-	public UploadedFile getFile() {
-		System.out.println("file model |"+file);
-		return file;
+	public String getBank() {
+		return bank;
 	}
-	public void setFile(UploadedFile file) {
-		this.file = file;
+	public void setBank(String bank) {
+		this.bank = bank;
+	}
+	public Double getAmount() {
+		return amount;
+	}
+	public void setAmount(Double amount) {
+		this.amount = amount;
 	}
 	public int getPayStatus() {
 		return payStatus;

@@ -45,10 +45,20 @@ public class ListServiceImpl implements ListService{
 			listModel.setStartDate(msg.dateFormat(temp.getStartDate()));
 			listModel.setEndDate(msg.dateFormat(temp.getEndDate()));
 			
+			List<Beneficial> bList=new ArrayList<Beneficial>();
 			if(!temp.getBeneficial().isEmpty()) {
-				listModel.setBeneficialName(temp.getBeneficial().get(0).getBeneficialName());
+				
+				Beneficial bf=new Beneficial();
+				for(int i=0; i<temp.getBeneficial().size(); i++) {
+					bf.setBeneficialName(temp.getBeneficial().get(i).getBeneficialName());
+					
+					System.out.println("b1 " +temp.getBeneficial().get(i).getBeneficialName());
+					bList.add(bf);
+				}
+				System.out.println(bList);
+				listModel.setBeneficial(bList);
 			}else {
-				listModel.setBeneficialName("");
+				listModel.setBeneficial(bList);
 			}
 			
 			//listModel.setBeneficialName(temp.getBeneficial().get(0).getBeneficialName());

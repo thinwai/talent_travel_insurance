@@ -3,7 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui = "http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -127,7 +129,14 @@
 					    </p:column>
 					    
 					    <p:column headerText="Beneficial Name">
-					        <h:outputText value="#{list.beneficialName}" />
+					    	<!-- <c:forEach var = "i" value="#{list.beneficial}">
+						         <h:outputText value = "#{i.beneficialName}"/>
+						    </c:forEach>
+					        <h:outputText value="#{list.beneficial}"/> -->
+					        
+					        <ui:repeat value="#{list.beneficial}" var="value">
+					       		<h:outputText value=" #{value.beneficialName}"/><br />
+							</ui:repeat>
 					    </p:column>
 					    
 					    <p:column headerText="Proposal Status">
