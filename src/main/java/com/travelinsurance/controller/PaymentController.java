@@ -3,11 +3,17 @@ package com.travelinsurance.controller;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.travelinsurance.service.PaymentService;
 import com.travelinsurance.view_model.PaymentModel;
 
 @Named
 @ViewScoped
 public class PaymentController {
+	
+	@Autowired
+	PaymentService payService;
 	
 	private PaymentModel payment=new PaymentModel();
 	
@@ -16,8 +22,9 @@ public class PaymentController {
 	}
 	
 	public void paySave() {
-		System.out.println(payment.getProposalPayment());
-		System.out.println("File |"+payment.getFile());
+		System.out.println(payment.getAmount());
+		System.out.println(payment.getBank());
+		payService.save(payment);
 	}
 
 	public PaymentModel getPayment() {
