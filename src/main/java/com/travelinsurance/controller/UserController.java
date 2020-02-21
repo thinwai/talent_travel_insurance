@@ -101,13 +101,6 @@ public class UserController {
 		return "userRegistrationPage.xhtml?faces-redirect=true";
 	}
 	
-	public String userDelete() {
-		uService.userDelete(user);
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		msg.messageError("Delete Successfully");
-		
-		return "loginPage.xhtml?faces-redirect=true";
-	}
 	
 	public UserModel getUser() {
 		return user;

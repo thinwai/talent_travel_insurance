@@ -134,19 +134,11 @@
 										&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<h:outputLabel value="#{userController.user.totalClaim}" style="color: #4e6096;"></h:outputLabel>
 									</td>
 								</tr>
-								<tr>
-								<td align="right">
-									<p:commandButton action="#{userController.userDelete()}" value="Delete" style="background-color:#de1738; width:80px; height:35px;">
-								        <p:confirm header="Confirmation" message="DELETE My_Account?" />
-								    </p:commandButton>
-								</td>
-								<td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							</table>
+							<br />
 									<p:commandButton action="#{userController.userEdit()}" value="Edit" style="background-color:green; width:80px; height:35px;">
 								        <p:confirm header="Confirmation" message="Are you sure Update?" />
 								    </p:commandButton>
-								</td>
-								</tr>
-							</table>
 							<br /> 
 							    <p:confirmDialog global="true" showEffect="explode" hideEffect="fade">
 							        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />

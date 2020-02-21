@@ -8,10 +8,10 @@ import com.travelinsurance.view_model.UserModel;
 @Service
 public interface UserService {
 
-	void userSave(UserModel user);													//Chit Su
+	void userSave(UserModel user);													
 	boolean findByEmail(UserModel user);
 	Integer userLogin(UserModel user);
 	User session(User user);
-	void userDelete(UserModel user);
+	
 	
 }

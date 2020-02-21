@@ -91,17 +91,5 @@ public class UserServiceImpl implements UserService{
 	public User session(User user) {
 		return  uRepo.findByEmail(user);
 	}
-
-	@Override
-	public void userDelete(UserModel user) {
-		User userdto = new User();
-		userdto.setuId(user.getuId());
-		userdto.setEmail(user.getEmail());
-		userdto.setUsername(user.getUsername());
-		userdto.setPassword(user.getPassword());
-		userdto.setUserAccStatus(2);
-		uRepo.save(userdto);
-		
-	}
 	
 }

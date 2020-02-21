@@ -154,7 +154,7 @@
 		                		</div>
 		                		<div class="col-sm-9">
 		                			<p:outputLabel for="dateOfBirth">Date of Birth</p:outputLabel><br />
-									<p:calendar id="dateOfBirth" value="#{proposalController.uProposal.dob}" locale="en" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Choose your Birthday Date!"/>
+									<p:calendar id="dateOfBirth" value="#{proposalController.uProposal.dob}" locale="en" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Choose your Birthday Date!" autocomplete="off"/>
 									<br /><h:message for="dateOfBirth" style="color: red;" />
 		                		</div>
 		                	</div>
@@ -187,12 +187,12 @@
 		                		<div class="col-sm-9">
 		                			<div class="col-sm-6">
 			                			<p:outputLabel for="fromPlace">From Place</p:outputLabel>
-										<p:inputText id="fromPlace" value="#{proposalController.uProposal.fromPlace}" class="form-control" required="true" requiredMessage="From Place!" />
+										<p:inputText id="fromPlace" value="#{proposalController.uProposal.fromPlace}" class="form-control" required="true" requiredMessage="From Place!" autocomplete="off" />
 									    <h:message for="fromPlace" style="color: red;" />
 									</div>
 									<div class="col-sm-6">
 			                			<p:outputLabel for="toPlace">To Place</p:outputLabel>
-										<p:inputText id="toPlace" value="#{proposalController.uProposal.toPlace}" class="form-control" required="true" requiredMessage="To Place!" />
+										<p:inputText id="toPlace" value="#{proposalController.uProposal.toPlace}" class="form-control" required="true" requiredMessage="To Place!" autocomplete="off " />
 										<h:message for="toPlace" style="color: red;" />
 									</div>
 		                		</div>

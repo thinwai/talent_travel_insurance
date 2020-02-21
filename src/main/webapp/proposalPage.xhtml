@@ -158,7 +158,7 @@
 	                		</div>
 	                		<div class="col-sm-9">
 		                		<p:outputLabel for="dateOfBirth">Date of Birth</p:outputLabel><br />
-								<p:calendar id="dateOfBirth" value="#{proposalController.uProposal.dob}" yearRange="1910:2020" style="width:500px;" locale="en" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Choose your Birthday Date!"/>
+								<p:calendar id="dateOfBirth" value="#{proposalController.uProposal.dob}" yearRange="1910:2020" style="width:500px;" locale="en" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Choose your Birthday Date!" autocomplete="off"/>
 								<br /><h:message for="dateOfBirth" style="color: red;" />
 	                		</div>
 	                	</div>
@@ -249,7 +249,7 @@
 	                		</div>
 	                		<div class="col-sm-9">
 		                		<p:outputLabel for="startDate">Start Date</p:outputLabel><br />
-								<p:calendar id="startDate" value="#{proposalController.uProposal.startDate}" locale="en" yearRange="2020:2023" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Travel Start Date!" />
+								<p:calendar id="startDate" value="#{proposalController.uProposal.startDate}" locale="en" yearRange="2020:2023" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Travel Start Date!" autocomplete="off" />
 								<br /><h:message for="startDate" style="color: red;" />
 	                		</div>
 	                	</div>
@@ -261,7 +261,7 @@
 	                		</div>
 	                		<div class="col-sm-9">
 	                			<p:outputLabel for="endDate">End Date</p:outputLabel><br />
-								<p:calendar id="endDate" value="#{proposalController.uProposal.endDate}" locale="en" yearRange="2020:2023" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Travel End Date!"/>
+								<p:calendar id="endDate" value="#{proposalController.uProposal.endDate}" locale="en" yearRange="2020:2023" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Travel End Date!" autocomplete="off" />
 								<br /><h:message for="endDate" style="color: red;" />
 	                		</div>
 	                	</div>
