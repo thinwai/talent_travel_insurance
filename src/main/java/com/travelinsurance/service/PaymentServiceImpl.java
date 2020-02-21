@@ -41,6 +41,11 @@ public class PaymentServiceImpl implements PaymentService{
 		payment.setAmount(payModel.getAmount());
 		payment.setPayId(1);
 		
+		Proposal prop=new Proposal();
+		prop.setpId(payModel.getProposalPayment());
+		
+		payment.setProposalPayment(prop);
+		
 		payRepo.save(payment);
 		
 	}
