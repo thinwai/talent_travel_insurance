@@ -25,7 +25,7 @@ public class PaymentController {
 		System.out.println("+++++++++++++++++++++ "+payment.getProposalPayment());
 		payService.save(payment);
 	}
-
+	
 	public PaymentModel getPayment() {
 		return payment;
 	}
