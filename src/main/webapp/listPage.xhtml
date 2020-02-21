@@ -177,9 +177,6 @@
 					    
 					     <p:column headerText="Action">
 					        <div class="btn-group" role="group" aria-label="Basic example">
-						    	<p:commandLink value="Update " update="eee"  style="color:blue;">
-							        <p:confirm header="Confirmation" message="Are you sure Update?" />
-							    </p:commandLink>
 						    	<p:commandLink action="#{listController.deleteProposal(list.propoId)}" value="Delete" update="eee"  style="color:red;">
 							        <p:confirm header="Confirmation" message="Are you sure DELETE?" />
 							    </p:commandLink>
