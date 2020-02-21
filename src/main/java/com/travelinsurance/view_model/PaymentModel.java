@@ -2,6 +2,8 @@ package com.travelinsurance.view_model;
 
 import java.util.Date;
 
+import javax.validation.constraints.Future;
+
 import org.primefaces.model.UploadedFile;
 
 import lombok.Data;
@@ -12,6 +14,7 @@ public class PaymentModel {
 	private int payId;
 	private String bank;
 	private String cardNo;
+	@Future
 	private Date expiredDate;
 	private int payStatus;
 	private String proposalPayment;
