@@ -62,7 +62,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.html">Bootstrap Navbar Menu
+			<a class="navbar-brand">Bootstrap Navbar Menu
 				Template</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -105,18 +105,16 @@
 									<td align="left">
 										<h:outputLabel style="color: #4e6096;">Email</h:outputLabel>
 									</td>
-									<td><h:outputLabel style="color: #4e6096;">&emsp;:&emsp;&emsp;&emsp;</h:outputLabel></td>
 									<td align="left">
-										<h:outputLabel value="#{userController.user.email}" style="color: #4e6096;"></h:outputLabel>
+										&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<h:outputLabel value="#{userController.user.email}" style="color: #4e6096;"></h:outputLabel>
 									</td>
 								</tr>
 								<tr>
 									<td align="left">
 										<h:outputLabel style="color: #4e6096;">User Name</h:outputLabel>
-									</td>
-									<td><h:outputLabel style="color: #4e6096;">&emsp;:&emsp;&emsp;&emsp;</h:outputLabel></td>
+									</td>									
 									<td align="left">
-										<h:outputLabel value="#{userController.user.username}" style="color: #4e6096;"></h:outputLabel>
+										&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<h:outputLabel value="#{userController.user.username}" style="color: #4e6096;"></h:outputLabel>
 									</td>
 								</tr>
 								
@@ -124,39 +122,37 @@
 									<td align="left">
 										<h:outputLabel style="color: #4e6096;">Total Policy</h:outputLabel>
 									</td>
-									<td><h:outputLabel style="color: #4e6096;">&emsp;:&emsp;&emsp;&emsp;</h:outputLabel></td>
 									<td align="left">
-										<h:outputLabel value="#{userController.user.totalPolicy}" style="color: #4e6096;"></h:outputLabel>
+										&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<h:outputLabel value="#{userController.user.totalPolicy}" style="color: #4e6096;"></h:outputLabel>
 									</td>
 								</tr>
 								<tr>
 									<td align="left">
 										<h:outputLabel style="color: #4e6096;">Total Claim</h:outputLabel>
 									</td>
-									<td><h:outputLabel style="color: #4e6096;">&emsp;:&emsp;&emsp;&emsp;</h:outputLabel></td>
 									<td align="left">
-										<h:outputLabel value="#{userController.user.totalClaim}" style="color: #4e6096;"></h:outputLabel>
+										&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<h:outputLabel value="#{userController.user.totalClaim}" style="color: #4e6096;"></h:outputLabel>
 									</td>
 								</tr>
-							</table>
-							<br />
-							<div id="btnGroup">
-								
-								
-								<div class="btn-group" role="group" aria-label="Basic example">
-									<p:commandButton action="#{userController.userDelete()}" value="Delete" >
+								<tr>
+								<td align="right">
+									<p:commandButton action="#{userController.userDelete()}" value="Delete" style="background-color:#de1738; width:80px; height:35px;">
 								        <p:confirm header="Confirmation" message="DELETE My_Account?" />
 								    </p:commandButton>
-							    	<p:commandButton action="#{userController.userEdit()}" value="Edit" >
+								</td>
+								<td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<p:commandButton action="#{userController.userEdit()}" value="Edit" style="background-color:green; width:80px; height:35px;">
 								        <p:confirm header="Confirmation" message="Are you sure Update?" />
 								    </p:commandButton>
-								</div>
-							     
-							    <p:confirmDialog global="true" showEffect="explode" hideEffect="bounce">
+								</td>
+								</tr>
+							</table>
+							<br /> 
+							    <p:confirmDialog global="true" showEffect="explode" hideEffect="fade">
 							        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
 							        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
 							    </p:confirmDialog>
-							</div>
+		
 						</h:form>
 
 				</div>
