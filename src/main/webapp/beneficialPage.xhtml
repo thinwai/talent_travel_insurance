@@ -63,10 +63,12 @@
 			</div>
 		</nav>
     
-    	<h:form>
+    	<h:form id="panel" header="Form">
     	<!-- Card Section -->
         <div class="features-container section-container">
 	        <div class="container">
+	        
+	        
         		 <div class="row">
 	                <div class="col-sm-12 features section-description wow fadeIn">
 	                    <h2 style="color:green;">Benificial Form</h2>
@@ -186,12 +188,17 @@
 		                	<div class="row">
 		                		<div class="col-sm-2 features-box-icon">
 		                		</div>
-		                		<div class="col-sm-4">
+		                		<div class="col-sm-2">
 		                			<a href="#{proposalController.backToProposal()}">Back</a>
 		                		</div>
 		                		
-		                		<div class="col-sm-4">
-		                			<h:commandButton action="#{proposalController.saveProposal()}" value="Next" class="btn btn-success" style="width:60px; height:40px;" />
+		                		<div class="col-sm-3">
+		                			<p:commandButton value="Reset" update="panel" process="@this" style="width:75px; height:40px;" >
+						                <p:resetInput target="panel" />
+						            </p:commandButton>
+		                		</div>
+		                		<div class="col-sm-3">
+		                			<h:commandButton action="#{proposalController.showProposalData()}" value="Next" class="btn btn-success" style="width:75px; height:40px;" />
 		                		</div>
 		                		<div class="col-sm-2">
 		                			<a href="#{proposalController.skipProposal()}">Skip</a>

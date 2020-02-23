@@ -39,6 +39,7 @@ public class ProposalServiceImpl implements ProposalService{
 		propo.setStartDate(propoModel.getStartDate());
 		propo.setEndDate(propoModel.getEndDate());
 		propo.setVehicleNo(propoModel.getVehicleNo());
+		propo.setUnit(propoModel.getUnit());
 		propo.setSumInsurance(propoModel.getSumInsurance());
 		
 		propo.setProposalStatus(1);
@@ -57,15 +58,24 @@ public class ProposalServiceImpl implements ProposalService{
 		
 		propoRepo.save(propo);
 		
-		Beneficial beneficialdto = new Beneficial();
-		beneficialdto.setBeneficialName(propoModel.getBeneficialName());
-		beneficialdto.setNrc(propoModel.getBenificalNrc());
-		beneficialdto.setRelationship(propoModel.getRelationship());
-		beneficialdto.setBeneficialPh(propoModel.getBeneficialPh());
-		beneficialdto.setAddress(propoModel.getAddress());
-		beneficialdto.setProposalBenefit(propo);
-		
-		bRepo.save(beneficialdto);
+		System.out.println("beni");
+		try {
+			if(!propoModel.getBeneficialName().equals(null)) {
+				Beneficial beneficialdto = new Beneficial();
+				beneficialdto.setBeneficialName(propoModel.getBeneficialName());
+				beneficialdto.setNrc(propoModel.getBenificalNrc());
+				beneficialdto.setRelationship(propoModel.getRelationship());
+				beneficialdto.setBeneficialPh(propoModel.getBeneficialPh());
+				beneficialdto.setAddress(propoModel.getAddress());
+				beneficialdto.setProposalBenefit(propo);
+				
+				bRepo.save(beneficialdto);
+				
+				System.out.println("exist beni");
+			}
+		}catch (Exception e) {
+			System.out.println("null beni");
+		}
 		
 	}
 

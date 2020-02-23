@@ -26,7 +26,8 @@ public class Proposal {
 	private Date startDate;
 	private Date endDate;
 	private String vehicleNo;
-	private double sumInsurance;
+	private int unit;
+	private int sumInsurance;
 	private int proposalStatus;
 	private int status;
 	
@@ -125,11 +126,19 @@ public class Proposal {
 		this.vehicleNo = vehicleNo;
 	}
 
-	public double getSumInsurance() {
+	public int getUnit() {
+		return unit;
+	}
+
+	public void setUnit(int unit) {
+		this.unit = unit;
+	}
+
+	public int getSumInsurance() {
 		return sumInsurance;
 	}
 
-	public void setSumInsurance(double sumInsurance) {
+	public void setSumInsurance(int sumInsurance) {
 		this.sumInsurance = sumInsurance;
 	}
 

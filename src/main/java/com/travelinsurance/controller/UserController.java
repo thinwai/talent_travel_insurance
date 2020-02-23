@@ -33,24 +33,24 @@ public class UserController {
 	}
 	
 	public String myAcc() {
-		
+		System.out.println("login 1");
 		FacesContext facesContext=FacesContext.getCurrentInstance();
 		HttpSession session=(HttpSession) facesContext.getExternalContext().getSession(true);
 		
-		System.out.println("login 2");
-		User user=new User();
-		user=(User) session.getAttribute("session");
-		
-		user=uService.session(user);
-		
-		this.user.setuId(user.getuId());
-		this.user.setEmail(user.getEmail());
-		this.user.setUsername(user.getUsername());
-		this.user.setPassword(user.getPassword());
-		this.user.setConPassword(user.getPassword());
-		this.user.setTotalPolicy(accService.totalPolicy(uService.session(user)));
-		this.user.setTotalClaim(accService.totalClaimt(uService.session(user)));
-		System.out.println("login 3");
+		try {
+			User user=new User();
+			user=(User) session.getAttribute("session");
+			user=uService.session(user);
+			
+			this.user.setuId(user.getuId());
+			this.user.setEmail(user.getEmail());
+			this.user.setUsername(user.getUsername());
+			this.user.setPassword(user.getPassword());
+			this.user.setConPassword(user.getPassword());
+			this.user.setTotalPolicy(accService.totalPolicy(uService.session(user)));
+			this.user.setTotalClaim(accService.totalClaimt(uService.session(user)));
+		}catch (Exception e) {
+		}
 		return "myaccPage.xhtml?faces-redirect=true";
 	}
 	
