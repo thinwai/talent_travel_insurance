@@ -84,7 +84,7 @@
 				</div>
             </div>
         </div> -->
-        <h:form id="panel" header="Form">
+        <h:form>
         <!-- Features -->
         <div class="features-container section-container">
 	        <div class="container">
@@ -101,7 +101,7 @@
 	                <div class="col-sm-6 features-box wow fadeInLeft">
 	                	<div class="row">
 	                		<div class="col-sm-3 features-box-icon">
-	                			<i class="fa fa-list-alt"></i>
+	                			<i class="fa fa-magic"></i>
 	                		</div>
 	                		<div class="col-sm-9">
 		                		<p:outputLabel for="plan">Plan</p:outputLabel><br />
@@ -123,7 +123,6 @@
 	            	<div class="col-sm-6 features-box wow fadeInLeft">
 	                	<div class="row">
 	                		<div class="col-sm-3 features-box-icon">
-	                			<i class="fa fa-user-circle-o"></i>
 	                		</div>
 	                		<div class="col-sm-9">
 	                			<p:outputLabel for="uname">Holder Name</p:outputLabel>
@@ -138,7 +137,7 @@
 	                <div class="col-sm-6 features-box wow fadeInLeft">
 	                	<div class="row">
 	                		<div class="col-sm-3 features-box-icon">
-	                			<i class="fa fa-id-card-o"></i>
+	                			<i class="fa fa-twitter"></i>
 	                		</div>
 	                		<div class="col-sm-9">
 	                			<p:outputLabel for="nrc">NRC</p:outputLabel>
@@ -155,7 +154,7 @@
 	                <div class="col-sm-6 features-box wow fadeInLeft">
 	                	<div class="row">
 	                		<div class="col-sm-3 features-box-icon">
-	                			<i class="fa fa-calendar-check-o"></i>
+	                			<i class="fa fa-magic"></i>
 	                		</div>
 	                		<div class="col-sm-9">
 		                		<p:outputLabel for="dateOfBirth">Date of Birth</p:outputLabel><br />
@@ -167,7 +166,7 @@
 	                <div class="col-sm-6 features-box wow fadeInLeft">
 	                	<div class="row">
 	                		<div class="col-sm-3 features-box-icon">
-	                			<i class="fa fa-phone-square"></i>
+	                			<i class="fa fa-cloud"></i>
 	                		</div>
 	                		<div class="col-sm-9">
 	                			<p:outputLabel for="phone">Ph : </p:outputLabel>
@@ -183,7 +182,7 @@
 	                <div class="col-sm-6 features-box wow fadeInLeft">
 	                	<div class="row">
 	                		<div class="col-sm-3 features-box-icon">
-	                			<i class="fa fa-globe"></i>
+	                			<i class="fa fa-magic"></i>
 	                		</div>
 	                		<div class="col-sm-9">
 		                		<p:outputLabel for="fromPlace">From Place</p:outputLabel>
@@ -195,7 +194,7 @@
 	                <div class="col-sm-6 features-box wow fadeInLeft">
 	                	<div class="row">
 	                		<div class="col-sm-3 features-box-icon">
-	                			<i class="fa fa-globe"></i>
+	                			<i class="fa fa-cloud"></i>
 	                		</div>
 	                		<div class="col-sm-9">
 	                			<p:outputLabel for="toPlace">To Place</p:outputLabel>
@@ -211,7 +210,7 @@
 	                <div class="col-sm-6 features-box wow fadeInLeft">
 	                	<div class="row">
 	                		<div class="col-sm-3 features-box-icon">
-	                			<i class="fa fa-ship"></i>
+	                			<i class="fa fa-magic"></i>
 	                		</div>
 	                		<div class="col-sm-9">
 		                		<p:outputLabel for="vehicleType">Vehicle type</p:outputLabel><br />
@@ -228,7 +227,7 @@
 	                <div class="col-sm-6 features-box wow fadeInLeft">
 	                	<div class="row">
 	                		<div class="col-sm-3 features-box-icon">
-	                			<i class="fa fa-ticket"></i>
+	                			<i class="fa fa-cloud"></i>
 	                		</div>
 	                		<div class="col-sm-9">
 	                			<p:outputLabel for="vehicleNo">Vehicle No</p:outputLabel>
@@ -246,13 +245,11 @@
 	                <div class="col-sm-6 features-box wow fadeInLeft">
 	                	<div class="row">
 	                		<div class="col-sm-3 features-box-icon">
-	                			<i class="fa fa-calendar-plus-o"></i>
+	                			<i class="fa fa-magic"></i>
 	                		</div>
 	                		<div class="col-sm-9">
 		                		<p:outputLabel for="startDate">Start Date</p:outputLabel><br />
-								<p:calendar id="startDate" value="#{proposalController.uProposal.startDate}" locale="en" yearRange="2020:2023" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Travel Start Date!" autocomplete="off">
-									<p:ajax event="dateSelect" update="endDate" listener="#{proposalController.dateDiff}"/>
-								</p:calendar>
+								<p:calendar id="startDate" value="#{proposalController.uProposal.startDate}" locale="en" yearRange="2020:2023" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Travel Start Date!" autocomplete="off" />
 								<br /><h:message for="startDate" style="color: red;" />
 	                		</div>
 	                	</div>
@@ -260,13 +257,11 @@
 	                <div class="col-sm-6 features-box wow fadeInLeft">
 	                	<div class="row">
 	                		<div class="col-sm-3 features-box-icon">
-	                			<i class="fa fa-calendar-minus-o"></i>
+	                			<i class="fa fa-cloud"></i>
 	                		</div>
 	                		<div class="col-sm-9">
 	                			<p:outputLabel for="endDate">End Date</p:outputLabel><br />
-								<p:calendar id="endDate" value="#{proposalController.uProposal.endDate}" mindate="#{proposalController.uProposal.startDate}" locale="en" yearRange="2020:2023" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Travel End Date!" autocomplete="off">
-									<p:ajax event="dateSelect" listener="#{proposalController.dateDiff}" />
-								</p:calendar>
+								<p:calendar id="endDate" value="#{proposalController.uProposal.endDate}" locale="en" yearRange="2020:2023" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Travel End Date!" autocomplete="off" />
 								<br /><h:message for="endDate" style="color: red;" />
 	                		</div>
 	                	</div>
@@ -285,13 +280,11 @@
 	                </div>
 	                <div class="col-sm-6 features-box wow fadeInLeft">
 	                	<div class="row">
-	                		<div class="col-sm-3">
-	                			<p:commandButton value="Reset" update="panel" process="@this" style="width:100px; height:50px;" >
-						        	<p:resetInput target="panel" />
-						        </p:commandButton>
+	                		<div class="col-sm-3 features-box-icon">
+	                			<h:commandButton action="#{proposalController.proposalNext()}" value="NEXT" class="btn btn-success" style="width:100px; height:50px;"/>
 	                		</div>
 	                		<div class="col-sm-9">
-								<h:commandButton action="#{proposalController.proposalNext()}" value="NEXT" class="btn btn-success" style="width:100px; height:50px;"/>
+								
 	                		</div>
 	                	</div>
 	                </div>

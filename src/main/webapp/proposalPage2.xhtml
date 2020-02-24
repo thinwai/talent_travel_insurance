@@ -35,6 +35,10 @@
 				width:100%;
 				height: 40px;
 			}
+			body .ui-button {
+			    background-color: #4c6e8c;
+			    border: 1px solid #4c6e8c;
+			}
 		</style>
     </h:head>
 
@@ -67,7 +71,7 @@
 			</div>
 		</nav>
     
-        <h:form>
+        <h:form id="panel" header="Form">
     	<!-- Card Section -->
         <div class="features-container section-container">
 	        <div class="container">
@@ -78,34 +82,20 @@
 	                </div>
 	            </div>
 				<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-8">
-					<!-- message Row -->
-					<div class="row">
-		            	<div class="col-sm-12 features-box wow fadeInLeft">
-		                	<div class="row">
-		                		<div class="col-sm-2 features-box-icon">
-		                		</div>
-		                		<div class="col-sm-9">
-		                			<p:messages id="msgs" severity="info"/>
-		                			<br />
-		                			<p:outputLabel value="#{proposalController.uProposal.pId}" style="font-size:25px;"></p:outputLabel>
-		                		</div>
-		                	</div>
-		                </div>
-		            </div>
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					
 		            <!-- 0 -->
 					<div class="row">
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">
 		                		<div class="col-sm-2 features-box-icon">
-		                			<i class="fa fa-twitter"></i>
+		                			<i class="fa fa-list-alt"></i>
 		                		</div>
-		                		<div class="col-sm-9">
+		                		<div class="col-sm-10">
 		                			<p:outputLabel for="plan">Plan</p:outputLabel><br />
 									<p:selectOneMenu id="plan" value="#{proposalController.uProposal.plan}" required="true" requiredMessage="Choose Your Plan!" style="width: 100%;" >
 						                <f:selectItem itemLabel="" itemValue="" noSelectionOption="true" />
-						                
 						                <f:selectItems value="#{proposalController.plans}" itemValue="#{plans.planId}" var="plans" itemLabel="#{plans.planType}" />
 						            </p:selectOneMenu><br />
 						            <h:message for="plan" style="color: red;" />
@@ -118,9 +108,9 @@
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">
 		                		<div class="col-sm-2 features-box-icon">
-		                			<i class="fa fa-twitter"></i>
+		                			<i class="fa fa-user-circle-o"></i>
 		                		</div>
-		                		<div class="col-sm-9">
+		                		<div class="col-sm-10">
 		                			<p:outputLabel for="uname">Holder Name</p:outputLabel>
 			                    	<p:inputText id="uname" value="#{proposalController.uProposal.holderName}" class="form-control" required="true"
 											requiredMessage="Name is Required!" validatorMessage="Name without space between 3 to 20 charater !">
@@ -137,13 +127,12 @@
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">
 		                		<div class="col-sm-2 features-box-icon">
-		                			<i class="fa fa-twitter"></i>
+		                			<i class="fa fa-id-card-o"></i>
 		                		</div>
-		                		<div class="col-sm-9">
+		                		<div class="col-sm-10">
 		                			<p:outputLabel for="nrc">NRC</p:outputLabel>
-			                    	<p:inputText id="nrc" value="#{proposalController.uProposal.holderNrc}" required="true" requiredMessage="NRC is Required!" validatorMessage="NRC length must be 8~20!" class="form-control">
-									      	<f:validateLength minimum="3" maximum="20" /> 
-									</p:inputText>
+			                    	<p:inputMask id="nrc" value="#{proposalController.uProposal.holderNrc}" class="form-control" mask="99/ a***** (a) 999999" required="true" requiredMessage="Please fill of your No.!"></p:inputMask>
+									  
 									<h:message for="nrc" style="color: red;" />
 		                		</div>
 		                	</div>
@@ -155,11 +144,11 @@
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">
 		                		<div class="col-sm-2 features-box-icon">
-		                			<i class="fa fa-twitter"></i>
+		                			<i class="fa fa-calendar-check-o"></i>
 		                		</div>
-		                		<div class="col-sm-9">
+		                		<div class="col-sm-10">
 		                			<p:outputLabel for="dateOfBirth">Date of Birth</p:outputLabel><br />
-									<p:calendar id="dateOfBirth" value="#{proposalController.uProposal.dob}" locale="en" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Choose your Birthday Date!" autocomplete="off"/>
+									<p:calendar id="dateOfBirth" value="#{proposalController.uProposal.dob}" yearRange="1910:2020" style="width:500px;" locale="en" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Choose your Birthday Date!" autocomplete="off"/>
 									<br /><h:message for="dateOfBirth" style="color: red;" />
 		                		</div>
 		                	</div>
@@ -171,9 +160,9 @@
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">
 		                		<div class="col-sm-2 features-box-icon">
-		                			<i class="fa fa-twitter"></i>
+		                			<i class="fa fa-phone-square"></i>
 		                		</div>
-		                		<div class="col-sm-9">
+		                		<div class="col-sm-10">
 		                			<p:outputLabel for="phone">Ph : </p:outputLabel>
 									<p:inputMask id="phone" value="#{proposalController.uProposal.holderPhone}" class="form-control" mask="(99) 999-999-999" required="true" requiredMessage="Please fill of your No.!"></p:inputMask>
 									<h:message for="phone" style="color: red;" />
@@ -187,19 +176,22 @@
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">
 		                		<div class="col-sm-2 features-box-icon">
-		                			<i class="fa fa-twitter"></i>
+		                			<i class="fa fa-globe"></i>
 		                		</div>
-		                		<div class="col-sm-9">
+		                		<div class="col-sm-10">
+		                		<div class="row">
 		                			<div class="col-sm-6">
 			                			<p:outputLabel for="fromPlace">From Place</p:outputLabel>
-										<p:inputText id="fromPlace" value="#{proposalController.uProposal.fromPlace}" class="form-control" required="true" requiredMessage="From Place!" autocomplete="off" />
+										<p:inputText id="fromPlace" value="#{proposalController.uProposal.fromPlace}" class="form-control" required="true" requiredMessage="From Place!" />
 									    <h:message for="fromPlace" style="color: red;" />
 									</div>
 									<div class="col-sm-6">
 			                			<p:outputLabel for="toPlace">To Place</p:outputLabel>
-										<p:inputText id="toPlace" value="#{proposalController.uProposal.toPlace}" class="form-control" required="true" requiredMessage="To Place!" autocomplete="off " />
+										<p:inputText id="toPlace" value="#{proposalController.uProposal.toPlace}" class="form-control" required="true" requiredMessage="To Place!" />
 										<h:message for="toPlace" style="color: red;" />
 									</div>
+		                		</div>
+		                			
 		                		</div>
 		                	</div>
 		                </div>
@@ -210,11 +202,11 @@
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">
 		                		<div class="col-sm-2 features-box-icon">
-		                			<i class="fa fa-twitter"></i>
+		                			<i class="fa fa-ship"></i>
 		                		</div>
-		                		<div class="col-sm-9">
+		                		<div class="col-sm-10">
 		                			<p:outputLabel for="vehicleType">Vehicle type</p:outputLabel><br />
-									<p:selectOneMenu id="vehicleType" value="#{proposalController.uProposal.vehicle}" style="width: 100%;" required="true" requiredMessage="Choose Your Vehicle Type!" >
+									<p:selectOneMenu id="vehicleType" value="#{proposalController.uProposal.vehicle}" required="true" requiredMessage="Choose Your Vehicle Type!" style="width: 100%;" >
 						                <f:selectItem itemLabel="" itemValue="" noSelectionOption="true" />
 						                
 						                <f:selectItems value="#{proposalController.vehicles}" itemValue="#{vehicles.vehicleId}" var="vehicles" itemLabel="#{vehicles.vehicleType}" />
@@ -231,9 +223,9 @@
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">
 		                		<div class="col-sm-2 features-box-icon">
-		                			<i class="fa fa-twitter"></i>
+		                			<i class="fa fa-ticket"></i>
 		                		</div>
-		                		<div class="col-sm-9">
+		                		<div class="col-sm-10">
 		                			<p:outputLabel for="vehicleNo">Vehicle No</p:outputLabel>
 									<p:inputText id="vehicleNo" value="#{proposalController.uProposal.vehicleNo}" required="true" requiredMessage="Travel Vehicle No!" validatorMessage="Name length must be 3~20!" class="form-control">
 								      	<f:validateLength minimum="3" maximum="20" /> 
@@ -249,19 +241,25 @@
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">
 		                		<div class="col-sm-2 features-box-icon">
-		                			<i class="fa fa-twitter"></i>
+		                			<i class="fa fa-calendar-plus-o"></i>
 		                		</div>
-		                		<div class="col-sm-9">
+		                		<div class="col-sm-10">
+		                		<div class="row">
 		                			<div class="col-sm-6">
 			                			<p:outputLabel for="startDate">Start Date</p:outputLabel><br />
-										<p:calendar id="startDate" value="#{proposalController.uProposal.startDate}" locale="en" yearRange="2020:2023" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Travel Start Date!" />
+										<p:calendar id="startDate" value="#{proposalController.uProposal.startDate}" locale="en" yearRange="2020:2023" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Travel Start Date!" autocomplete="off">
+											<p:ajax event="dateSelect" update="endDate" listener="#{proposalController.dateDiff}"/>
+										</p:calendar>
 										<br /><h:message for="startDate" style="color: red;" />
 									</div>
 									<div class="col-sm-6">
 			                			<p:outputLabel for="endDate">End Date</p:outputLabel><br />
-										<p:calendar id="endDate" value="#{proposalController.uProposal.endDate}" locale="en" yearRange="2020:2023" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Travel End Date!"/>
+										<p:calendar id="endDate" value="#{proposalController.uProposal.endDate}" mindate="#{proposalController.uProposal.startDate}" locale="en" yearRange="2020:2023" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Travel End Date!" autocomplete="off">
+											<p:ajax event="dateSelect" listener="#{proposalController.dateDiff}" />
+										</p:calendar>
 										<br /><h:message for="endDate" style="color: red;" />
 									</div>
+		                		</div>		                			
 		                		</div>
 		                	</div>
 		                </div>
@@ -271,16 +269,28 @@
 					<div class="row">
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">
-		                		<div class="col-sm-5 features-box-icon">
+		                		<div class="col-sm-2 features-box-icon">
 		                		</div>
-		                		<div class="col-sm-6">
-		                			<h:commandButton action="#{proposalController.saveProposal()}" value="Save" class="btn btn-success" style="width:100px; height:50px;"/>
+		                		<div class="col-sm-10">	
+		                		<div class="row">
+		                			<div class="col-sm-2"></div>
+		                			<div class="col-sm-4">
+		                				<p:commandButton value="Reset" update="panel" process="@this" style="width:95px; height:40px;" >
+								        	<p:resetInput target="panel" />
+								        </p:commandButton>										
+		                			</div>
+		                			<div class="col-sm-2"></div>
+		                			<div class="col-sm-4">
+		                				<h:commandButton action="#{proposalController.proposalNext()}" value="NEXT" class="btn btn-success" style="width:95px; height:40px;"/>									
+		                			</div>
+		                		</div>	                			
+	                				                		
 		                		</div>
 		                	</div>
 		                </div>
 		            </div>
 				</div>
-				<div class="col-md-2"></div>	
+				<div class="col-md-3"></div>	
 				</div>
 			</div>
         </div> 

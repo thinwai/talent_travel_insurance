@@ -74,20 +74,22 @@
 	                </div>
 	            </div>
 				<div class="row">
-				<div class="col-md-3">
-				</div>
+				<div class="col-md-3"></div>
 				<div class="col-md-6">
-					<p:messages id="msgs" severity="info"/>
 					<!-- 1 -->
 					<div class="row">
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">
 		                		<div class="col-sm-2 features-box-icon">
-		                			<i class="fa fa-twitter"></i>
+		                			<i class="fa fa-file-text-o"></i>
 		                		</div>
 		                		<div class="col-sm-9">
-		                			<p:outputLabel>Total Amount</p:outputLabel><br />
-		                			<p:outputLabel value="#{paymentController.propoModel.sumInsurance}" style="color:red;font-size:large;"/>
+		                			<p:outputLabel for="propoId">Proposal ID</p:outputLabel>
+		                			<p:inputText id="propoId" value="#{paymentController.payment.proposalPayment}" class="form-control" required="true"
+											requiredMessage="Name is Required!" validatorMessage="Name without space between 3 to 20 charater !">
+											<f:validateRegex pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" />
+									</p:inputText>
+									<h:message for="propoId" style="color: red;"/>
 		                		</div>
 		                	</div>
 		                </div>
@@ -98,7 +100,7 @@
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">
 		                		<div class="col-sm-2 features-box-icon">
-		                			<i class="fa fa-twitter"></i>
+		                			<i class="fa fa-university"></i>
 		                		</div>
 		                		<div class="col-sm-9">
 		                		 	<p:outputLabel for="bank">Bank</p:outputLabel><br />
@@ -119,6 +121,7 @@
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">
 		                		<div class="col-sm-2 features-box-icon">
+		                			<i class="fa fa-credit-card-alt"></i>
 		                		</div>
 		                		<div class="col-sm-9">
 		                		 	<p:outputLabel for="amount">Card No</p:outputLabel><br />
@@ -134,6 +137,7 @@
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">
 		                		<div class="col-sm-2 features-box-icon">
+		                			<i class="fa fa-calendar-minus-o"></i>
 		                		</div>
 		                		<div class="col-sm-9">
 		                		 	<p:outputLabel for="expired">Card Expired Date</p:outputLabel><br />
