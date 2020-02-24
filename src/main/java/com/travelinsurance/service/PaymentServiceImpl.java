@@ -32,26 +32,48 @@ public class PaymentServiceImpl implements PaymentService{
 	}
 
 	@Override
-	public void save(PaymentModel payModel) {
-		
-		//	--> check with proposal Exist or Not? 	---> when Admin Accepected payment Don`t need to pay more
-		
+	public Integer save(PaymentModel payModel) {
 		Payment payment=new Payment();
-		payment.setPayId(payment.getPayId());
-		payment.setBank(payModel.getBank());
-		payment.setCardNo(payModel.getCardNo());
-		payment.setExpiredDate(payModel.getExpiredDate());
-		payment.setPayStatus(1);
+		int result = 0;
 		
-		Proposal prop=new Proposal();
-		prop.setpId(payModel.getProposalPayment());
+		try {
+			payment=payRepo.searchByProposalId(payModel.getProposalPayment());
+			
+			if(payment.getPayStatus()==1) {										//You have already waiting for this Payment
+				result=1;								
+			}else if(payment.getPayStatus()==2) {								//Cancle payment Repay
+			
+				payment.setPayId(payment.getPayId());
+				payment.setBank(payModel.getBank());
+				payment.setCardNo(payModel.getCardNo());
+				payment.setExpiredDate(payModel.getExpiredDate());
+				payment.setPayStatus(1);
+				
+				Proposal prop=new Proposal();
+				prop.setpId(payModel.getProposalPayment());
+			
+				System.out.println("------------------"+payModel.getProposalPayment());
+				payment.setProposalPayment(prop);
+			
+				payRepo.save(payment);
+				result=2;														//success
+			}
+		}catch (Exception e) {													// new payment
+			payment.setPayId(payment.getPayId());
+			payment.setBank(payModel.getBank());
+			payment.setCardNo(payModel.getCardNo());
+			payment.setExpiredDate(payModel.getExpiredDate());
+			payment.setPayStatus(1);
+			
+			Proposal prop=new Proposal();
+			prop.setpId(payModel.getProposalPayment());
 		
-		System.out.println("------------------"+payModel.getProposalPayment());
-		payment.setProposalPayment(prop);
+			System.out.println("------------------"+payModel.getProposalPayment());
+			payment.setProposalPayment(prop);
 		
-		payRepo.save(payment);
-		
+			payRepo.save(payment);
+			result=3;															//success
+		}
+		return result;
 	}
-
-
 }

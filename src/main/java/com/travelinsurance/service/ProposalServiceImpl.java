@@ -88,6 +88,7 @@ public class ProposalServiceImpl implements ProposalService{
 		proposal.setpId(result.getpId());
 		proposal.setProposalStatus(result.getProposalStatus());
 		proposal.setPlan(result.getPlan().getPlanId());
+		proposal.setSumInsurance(result.getSumInsurance());
 		
 		return proposal;
 	}

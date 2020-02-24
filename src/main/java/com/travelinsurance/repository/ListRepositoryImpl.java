@@ -67,6 +67,8 @@ public class ListRepositoryImpl implements ListRepositoryCustom {
         	cq.where(cb.and(propoUserIdPreidcate, deleteStatus, propoIdPreidcate)).distinct(true);
         	System.out.println("Repo______________4");
         }
+        
+        cq.orderBy(cb.desc(propo.get("pId")));
        
         TypedQuery<Proposal> query = em.createQuery(cq);
         List<Proposal> list=query.getResultList();
