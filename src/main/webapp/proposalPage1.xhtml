@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Travel Insuance</title>
+
+        <!-- CSS -->        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400|Roboto:300,400,500" />
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="assets/css/animate.css"/>
+        <link rel="stylesheet" href="assets/css/style.css"/>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favtalenticon.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+
+		<style>
+			body .ui-inputfield {
+				width:100%;
+				height: 40px;
+			}
+		</style>
+    </h:head>
+
+    <h:body>
+    
+    	<!-- Top menu -->
+		<nav class="navbar navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand">Bootstrap Navbar Menu Template</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="top-navbar-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#{userController.home()}">Home</a></li>
+						<li><a href="#{proposalController.proposal()}">Proposal</a></li>
+						<li><a href="#{paymentController.payment()}">Payment</a></li>
+						<li><a href="#{claimController.claim()}">Claim</a></li>
+						<li><a href="#{listController.list()}">Detail List</a></li>
+						<li><a href="#{userController.myAcc()}">My Account</a></li>
+						<li><a class="btn btn-link-3" href="#">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+    
+    	<!-- Top content -->
+     <!--    <div class="top-content">
+        	<div class="container">
+				<div class="row">
+					<div class="col-sm-12 text wow fadeInLeft">
+						<h1>Bootstrap Navbar Menu Template</h1>
+						<div class="description">
+							<p class="medium-paragraph">
+								This is a free "Navbar Menu" made with the Bootstrap framework. 
+								Download it on <a href="http://azmind.com">AZMIND</a> and enjoy!
+							</p>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div> -->
+        <h:form id="panel" header="Form">
+        <!-- Features -->
+        <div class="features-container section-container">
+	        <div class="container">
+	        	
+	             <div class="row">
+	                <div class="col-sm-12 features section-description wow fadeIn">
+	                 	<h2 style="color:green;">Proposal Form</h2>
+	                    <div class="divider-1"><div class="line"></div></div>
+	                </div>
+	            </div>
+	            
+	            <!-- 0 -->
+	            <div class="row">
+	                <div class="col-sm-6 features-box wow fadeInLeft">
+	                	<div class="row">
+	                		<div class="col-sm-3 features-box-icon">
+	                			<i class="fa fa-list-alt"></i>
+	                		</div>
+	                		<div class="col-sm-9">
+		                		<p:outputLabel for="plan">Plan</p:outputLabel><br />
+								<p:selectOneMenu id="plan" value="#{proposalController.uProposal.plan}" required="true" requiredMessage="Choose Your Plan!" style="width: 300px;" >
+					                <f:selectItem itemLabel="" itemValue="" noSelectionOption="true" />
+					                <f:selectItems value="#{proposalController.plans}" itemValue="#{plans.planId}" var="plans" itemLabel="#{plans.planType}" />
+					            </p:selectOneMenu><br />
+					            <h:message for="plan" style="color: red;" />
+	                		</div>
+	                	</div>
+	                </div>
+	                <div class="col-sm-6 features-box wow fadeInLeft">
+	                	<div class="row">
+	                	</div>
+	                </div>
+	            </div>
+	            <!-- 1 -->
+	            <div class="row">
+	            	<div class="col-sm-6 features-box wow fadeInLeft">
+	                	<div class="row">
+	                		<div class="col-sm-3 features-box-icon">
+	                			<i class="fa fa-user-circle-o"></i>
+	                		</div>
+	                		<div class="col-sm-9">
+	                			<p:outputLabel for="uname">Holder Name</p:outputLabel>
+		                    	<p:inputText id="uname" value="#{proposalController.uProposal.holderName}" class="form-control" required="true"
+										requiredMessage="Name is Required!" validatorMessage="Name without space between 3 to 20 charater !">
+										<f:validateRegex pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" />
+								</p:inputText>
+								<h:message for="uname" style="color: red;"/>
+	                		</div>
+	                	</div>
+	                </div>
+	                <div class="col-sm-6 features-box wow fadeInLeft">
+	                	<div class="row">
+	                		<div class="col-sm-3 features-box-icon">
+	                			<i class="fa fa-id-card-o"></i>
+	                		</div>
+	                		<div class="col-sm-9">
+	                			<p:outputLabel for="nrc">NRC</p:outputLabel>
+		                    	<p:inputMask id="nrc" value="#{proposalController.uProposal.holderNrc}" class="form-control" mask="99/ a***** (a) 999999" required="true" requiredMessage="Please fill of your No.!"></p:inputMask>
+								  
+								<h:message for="nrc" style="color: red;" />
+	                		</div>
+	                	</div>
+	                </div>
+	            </div>
+	            
+	            <!-- 2 -->
+	            <div class="row">
+	                <div class="col-sm-6 features-box wow fadeInLeft">
+	                	<div class="row">
+	                		<div class="col-sm-3 features-box-icon">
+	                			<i class="fa fa-calendar-check-o"></i>
+	                		</div>
+	                		<div class="col-sm-9">
+		                		<p:outputLabel for="dateOfBirth">Date of Birth</p:outputLabel><br />
+								<p:calendar id="dateOfBirth" value="#{proposalController.uProposal.dob}" yearRange="1910:2020" style="width:500px;" locale="en" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Choose your Birthday Date!" autocomplete="off"/>
+								<br /><h:message for="dateOfBirth" style="color: red;" />
+	                		</div>
+	                	</div>
+	                </div>
+	                <div class="col-sm-6 features-box wow fadeInLeft">
+	                	<div class="row">
+	                		<div class="col-sm-3 features-box-icon">
+	                			<i class="fa fa-phone-square"></i>
+	                		</div>
+	                		<div class="col-sm-9">
+	                			<p:outputLabel for="phone">Ph : </p:outputLabel>
+								<p:inputMask id="phone" value="#{proposalController.uProposal.holderPhone}" class="form-control" mask="(99) 999-999-999" required="true" requiredMessage="Please fill of your No.!"></p:inputMask>
+								<h:message for="phone" style="color: red;" />
+	                		</div>
+	                	</div>
+	                </div>
+	            </div>
+	            
+	            <!-- 3 -->
+	            <div class="row">
+	                <div class="col-sm-6 features-box wow fadeInLeft">
+	                	<div class="row">
+	                		<div class="col-sm-3 features-box-icon">
+	                			<i class="fa fa-globe"></i>
+	                		</div>
+	                		<div class="col-sm-9">
+		                		<p:outputLabel for="fromPlace">From Place</p:outputLabel>
+								<p:inputText id="fromPlace" value="#{proposalController.uProposal.fromPlace}" class="form-control" required="true" requiredMessage="From Place!" />
+							    <h:message for="fromPlace" style="color: red;" />
+	                		</div>
+	                	</div>
+	                </div>
+	                <div class="col-sm-6 features-box wow fadeInLeft">
+	                	<div class="row">
+	                		<div class="col-sm-3 features-box-icon">
+	                			<i class="fa fa-globe"></i>
+	                		</div>
+	                		<div class="col-sm-9">
+	                			<p:outputLabel for="toPlace">To Place</p:outputLabel>
+								<p:inputText id="toPlace" value="#{proposalController.uProposal.toPlace}" class="form-control" required="true" requiredMessage="To Place!" />
+								<h:message for="toPlace" style="color: red;" />
+	                		</div>
+	                	</div>
+	                </div>
+	            </div>
+	            
+	             <!-- 4 -->
+	            <div class="row">
+	                <div class="col-sm-6 features-box wow fadeInLeft">
+	                	<div class="row">
+	                		<div class="col-sm-3 features-box-icon">
+	                			<i class="fa fa-ship"></i>
+	                		</div>
+	                		<div class="col-sm-9">
+		                		<p:outputLabel for="vehicleType">Vehicle type</p:outputLabel><br />
+								<p:selectOneMenu id="vehicleType" value="#{proposalController.uProposal.vehicle}" required="true" requiredMessage="Choose Your Vehicle Type!" style="width: 300px;" >
+					                <f:selectItem itemLabel="" itemValue="" noSelectionOption="true" />
+					                
+					                <f:selectItems value="#{proposalController.vehicles}" itemValue="#{vehicles.vehicleId}" var="vehicles" itemLabel="#{vehicles.vehicleType}" />
+					            </p:selectOneMenu>
+					            <br />
+					            <h:message for="vehicleType" style="color: red;" />
+	                		</div>
+	                	</div>
+	                </div>
+	                <div class="col-sm-6 features-box wow fadeInLeft">
+	                	<div class="row">
+	                		<div class="col-sm-3 features-box-icon">
+	                			<i class="fa fa-ticket"></i>
+	                		</div>
+	                		<div class="col-sm-9">
+	                			<p:outputLabel for="vehicleNo">Vehicle No</p:outputLabel>
+								<p:inputText id="vehicleNo" value="#{proposalController.uProposal.vehicleNo}" required="true" requiredMessage="Travel Vehicle No!" validatorMessage="Name length must be 3~20!" class="form-control">
+							      	<f:validateLength minimum="3" maximum="20" /> 
+							    </p:inputText>
+							    <h:message for="vehicleNo" style="color: red;" />
+	                		</div>
+	                	</div>
+	                </div>
+	            </div>
+	            
+	            <!-- 5 -->
+	            <div class="row">
+	                <div class="col-sm-6 features-box wow fadeInLeft">
+	                	<div class="row">
+	                		<div class="col-sm-3 features-box-icon">
+	                			<i class="fa fa-calendar-plus-o"></i>
+	                		</div>
+	                		<div class="col-sm-9">
+		                		<p:outputLabel for="startDate">Start Date</p:outputLabel><br />
+								<p:calendar id="startDate" value="#{proposalController.uProposal.startDate}" locale="en" yearRange="2020:2023" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Travel Start Date!" autocomplete="off">
+									<p:ajax event="dateSelect" update="endDate" listener="#{proposalController.dateDiff}"/>
+								</p:calendar>
+								<br /><h:message for="startDate" style="color: red;" />
+	                		</div>
+	                	</div>
+	                </div>
+	                <div class="col-sm-6 features-box wow fadeInLeft">
+	                	<div class="row">
+	                		<div class="col-sm-3 features-box-icon">
+	                			<i class="fa fa-calendar-minus-o"></i>
+	                		</div>
+	                		<div class="col-sm-9">
+	                			<p:outputLabel for="endDate">End Date</p:outputLabel><br />
+								<p:calendar id="endDate" value="#{proposalController.uProposal.endDate}" mindate="#{proposalController.uProposal.startDate}" locale="en" yearRange="2020:2023" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Travel End Date!" autocomplete="off">
+									<p:ajax event="dateSelect" listener="#{proposalController.dateDiff}" />
+								</p:calendar>
+								<br /><h:message for="endDate" style="color: red;" />
+	                		</div>
+	                	</div>
+	                </div>
+	            </div>
+	            
+	             <!-- 6 -->
+	            <div class="row">
+	                <div class="col-sm-5 features-box wow fadeInLeft">
+	                	<div class="row">
+	                		<div class="col-sm-3 features-box-icon">
+	                		</div>
+	                		<div class="col-sm-9">
+	                		</div>
+	                	</div>
+	                </div>
+	                <div class="col-sm-6 features-box wow fadeInLeft">
+	                	<div class="row">
+	                		<div class="col-sm-3">
+	                			<p:commandButton value="Reset" update="panel" process="@this" style="width:100px; height:50px;" >
+						        	<p:resetInput target="panel" />
+						        </p:commandButton>
+	                		</div>
+	                		<div class="col-sm-9">
+								<h:commandButton action="#{proposalController.proposalNext()}" value="NEXT" class="btn btn-success" style="width:100px; height:50px;"/>
+	                		</div>
+	                	</div>
+	                </div>
+	            </div>
+	        </div>
+        </div>
+        </h:form>
+
+        <!-- Footer -->
+        <footer>
+	        <div class="container">
+	        	<div class="row">
+	        		<div class="col-sm-12 footer-copyright">
+                    	&copy; Bootstrap Navbar Template by <a href="http://azmind.com">AZMIND</a>
+                    </div>
+                </div>
+	        </div>
+        </footer>
+
+
+        <!-- Javascript -->
+        <!-- <script src="assets/js/jquery-1.11.1.min.js"></script> -->
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/wow.min.js"></script>
+        <script src="assets/js/retina-1.1.0.min.js"></script>
+        <script src="assets/js/waypoints.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </h:body>
+
+</html>

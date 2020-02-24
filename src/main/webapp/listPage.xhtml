@@ -96,11 +96,11 @@
         
         <!-- Features -->
         <div class="features-container section-container">
-	        <div class="container">
+	        <div class="container-fluid">
 	        	
 	            <div class="row">
 	                <div class="col-sm-12 features section-description wow fadeIn">
-	                    <h2><b><i>Detail List</i></b></h2>
+	                    <h2>Detail List</h2>
 	                    <div class="divider-1"><div class="line"></div></div>
 	                </div>
 	            </div>
@@ -190,7 +190,7 @@
 					    
 					     <p:column headerText="Action">
 					        <div class="btn-group" role="group" aria-label="Basic example">
-						    	<p:commandLink action="#{listController.deleteProposal(list.propoId)}" value="Delete" update="eee"  style="color:red;">
+						    	<p:commandLink action="#{listController.deleteProposal(list.propoId)}" update="eee"><span class="glyphicon glyphicon-trash" style="color:black;"></span>
 							        <p:confirm header="Confirmation" message="Are you sure DELETE?" />
 							    </p:commandLink>
 							</div>

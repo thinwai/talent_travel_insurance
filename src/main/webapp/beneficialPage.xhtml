@@ -31,6 +31,13 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+        
+        <style>
+        body .ui-button {
+			    background-color: #4c6e8c;
+			    border: 1px solid #4c6e8c;
+			}
+        </style>
 
     </h:head>
 
@@ -153,8 +160,8 @@
 		                		</div>
 		                		<div class="col-sm-9">
 		                			<p:outputLabel for="phone">Phone No</p:outputLabel>
-			                    	<p:inputMask id="phone" value="#{proposalController.uProposal.beneficialPh}" class="form-control" mask="(99) 999-999-999" required="true" requiredMessage="Please fill of your No.!">
-			                    	</p:inputMask>
+			                    	<p:inputText id="phone" value="#{proposalController.uProposal.beneficialPh}" class="form-control" required="true" requiredMessage="Please fill of your No.!">
+			                    	</p:inputText>
 									<h:message for="phone" style="color: red;"></h:message>
 		                		</div>
 		                	</div>
