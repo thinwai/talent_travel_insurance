@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Travel Insuance</title>
+
+        <!-- CSS -->        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400|Roboto:300,400,500" />
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="assets/css/animate.css"/>
+        <link rel="stylesheet" href="assets/css/style.css"/>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favtalenticon.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+
+		<style>
+			body .ui-inputfield {
+				width:100%;
+				height: 40px;
+			}
+		     .value {
+		        font-weight: bold;
+		    }
+		     
+		    .ui-carousel {
+		        margin-bottom: 20px;
+		    }
+		</style>
+    </h:head>
+
+    <h:body>
+    
+    	<!-- Top menu -->
+		<nav class="navbar navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand">Bootstrap Navbar Menu Template</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="top-navbar-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#{userController.home()}">Home</a></li>
+						<li><a href="#{proposalController.proposal()}">Proposal</a></li>
+						<li><a href="#{paymentController.payment()}">Payment</a></li>
+						<li><a href="#{claimController.claim()}">Claim</a></li>
+						<li><a href="#{listController.list()}">Detail List</a></li>
+						<li><a href="#{userController.myAcc()}">My Account</a></li>
+						<li><a class="btn btn-link-3" href="#">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+    
+    	<!-- Top content -->
+     <!--    <div class="top-content">
+        	<div class="container">
+				<div class="row">
+					<div class="col-sm-12 text wow fadeInLeft">
+						<h1>Bootstrap Navbar Menu Template</h1>
+						<div class="description">
+							<p class="medium-paragraph">
+								This is a free "Navbar Menu" made with the Bootstrap framework. 
+								Download it on <a href="http://azmind.com">AZMIND</a> and enjoy!
+							</p>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div> -->
+        <h:form>
+        <!-- Features -->
+        <div class="features-container section-container">
+	        <div class="container">
+	        	
+	             <div class="row">
+	                <div class="col-sm-12 features section-description wow fadeIn">
+	                 	<h2 style="color:green;">Proposal Data</h2>
+	                    <div class="divider-1"><div class="line"></div></div>
+	                </div>
+	            </div>
+	            
+	            
+				<p:carousel headerText="Proposal Summary" itemStyle="text-align:center" responsive="true" id="total">
+			        <p:panelGrid columns="2" style="width:100%;">
+			            <f:facet name="header">
+			                <h:outputText value="Travel Plan" />
+			            </f:facet>
+			            
+			            <h:outputText value="Your Plan :" />
+			            <h:outputText value="#{proposalController.uProposal.planType}" style="color:green;font-weight: bold;" />
+			 
+			            <h:outputText value="From - To :" />
+			            <h:outputText value="#{proposalController.uProposal.fromPlace} - #{proposalController.uProposal.toPlace}" />
+			 
+			            <h:outputText value="Start - End (Date) :" />
+			            <h:outputText value="#{proposalController.uProposal.startDateFormat} - #{proposalController.uProposal.endDateFormat}"/>
+			            
+			            <h:outputText value="Vehicle Type :" />
+			            <h:outputText value="#{proposalController.uProposal.vehicleType}" />
+					    
+					    <h:outputText value="Vehicle No :" />
+					    <h:panelGroup rendered="#{null != proposalController.uProposal.vehicleNo}">
+					    	<h:outputText value="#{proposalController.uProposal.vehicleNo}" />
+					   	</h:panelGroup>
+					   	<h:panelGroup rendered="#{null == proposalController.uProposal.vehicleNo}">
+					    	<h:outputText value="---" />
+					   	</h:panelGroup>
+			 
+			            <h:outputText value="Total Price :" />
+			            <h:outputText value="#{proposalController.uProposal.sumInsurance}" style="color:red;font-weight: bold;"/>
+			        </p:panelGrid>
+			        
+			        <p:panelGrid columns="2" style="width:100%;">
+					    <f:facet name="header">
+			                <h:outputText value="Personal Information" />
+			            </f:facet>
+					    
+					     
+					    <h:outputText value="Holder Name :" />
+					    <h:outputText value="#{proposalController.uProposal.holderName}" />
+					     
+					    <h:outputText value="NRC :" />
+					    <h:outputText value="#{proposalController.uProposal.holderNrc}" />
+					     
+					    <h:outputText value="Date of Birth :" />
+					    <h:outputText value="#{proposalController.uProposal.dobFormat}" />
+					    
+					    <h:outputText value="Phone No :" />
+					    <h:outputText value="#{proposalController.uProposal.holderPhone}" />
+					    
+					    <h:outputText/><br />
+					    <h:outputText/>
+					    <br />
+					</p:panelGrid>
+			        
+			        
+			        <h:panelGroup rendered="#{null != proposalController.uProposal.beneficialName}">
+										
+					 <p:panelGrid columns="2" style="width:100%;">
+					 
+			            <f:facet name="header">
+			                <h:outputText value="Beneficial Information" />
+			            </f:facet>
+			 
+			            <h:outputText value="Beneficial Name :" />
+			            <h:outputText value="#{proposalController.uProposal.beneficialName}" />
+			 
+			            <h:outputText value="NRC :" />
+			            <h:outputText value="#{proposalController.uProposal.benificalNrc}" />
+			 
+			            <h:outputText value="Relationship:" />
+			            <h:outputText value="#{proposalController.uProposal.relationship}" />
+			 
+			            <h:outputText value="Phone No :" />
+			            <h:outputText value="#{proposalController.uProposal.beneficialPh}" />
+			            
+			            <h:outputText value="Address :" />
+			            <h:outputText value="#{proposalController.uProposal.address}" />
+			            
+			        </p:panelGrid>
+			        </h:panelGroup>
+			 
+			        <f:facet name="footer">
+			        
+			         <h:panelGrid columns="1" style="margin-bottom: 10px">
+				        
+				        
+				        
+				    </h:panelGrid>
+			        <div class="row">
+			        
+				        <div class="col-md-3"> 
+				        	<div class="col-md-3"> 
+						    	<h:outputText value="unit*" style="color:red;font-weight: 600;"/>
+						    </div>
+							<div class="col-md-9"> 
+								<p:inputText id="unit" value="#{proposalController.uProposal.unit}" />
+						        <p:slider for="unit">
+						            <p:ajax event="slideEnd" listener="#{proposalController.onSlideEnd}" update="total" />
+						        </p:slider>
+							</div>
+				        </div>
+			        
+				        <div class="col-md-3">
+				        </div>
+			        
+			        	<div class="col-md-6"> 
+			        		<a href="beneficialPage.xhtml">Back</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			        		
+			        		 <div class="btn-group" role="group" aria-label="Basic example">
+						    	<p:commandButton action="#{proposalController.cancleProposal()}" value="Cancle" style="width:80px;background-color: #f44336;border: none;color: white;">
+							        <p:confirm header="Confirmation" message="Cancle of your Proposal?" />
+							    </p:commandButton>
+							</div>
+						     
+						    <p:confirmDialog global="true" showEffect="explode" hideEffect="bounce">
+						        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+						        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+						    </p:confirmDialog>&nbsp;
+			        		
+			        		
+			        		<!-- <h:commandButton value="Cancle" class="btn btn-danger" style="width:80px;"/>&nbsp; -->
+			        		<h:commandButton action="#{proposalController.saveProposal()}" value="Save" class="btn btn-success" style="width:80px;"/>&nbsp;
+			        	</div>
+			        	
+			        </div>
+			        
+			        </f:facet>
+			    </p:carousel>
+			    
+			    <div align="left">
+				   	
+				   	<h:outputText value="* Each of 1 Unit Cost = #{proposalController.uProposal.planPrice} * #{proposalController.uProposal.dateRange} (Plan * Travelling Duration)" style="color:red;"/>
+				   	<br />
+				   	<h:outputText value="* Total Price =(plan) * (Duration) * (Unit)" style="color:red;"/>
+   				</div>
+    
+	        </div>
+        </div>
+        </h:form>
+
+        <!-- Footer -->
+        <footer>
+	        <div class="container">
+	        	<div class="row">
+	        		<div class="col-sm-12 footer-copyright">
+                    	&copy; Bootstrap Navbar Template by <a href="http://azmind.com">AZMIND</a>
+                    </div>
+                </div>
+	        </div>
+        </footer>
+
+
+        <!-- Javascript -->
+        <!-- <script src="assets/js/jquery-1.11.1.min.js"></script> -->
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/wow.min.js"></script>
+        <script src="assets/js/retina-1.1.0.min.js"></script>
+        <script src="assets/js/waypoints.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </h:body>
+
+</html>

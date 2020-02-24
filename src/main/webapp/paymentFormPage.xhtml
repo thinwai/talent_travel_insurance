@@ -31,6 +31,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+
     </h:head>
 
     <h:body>
@@ -75,11 +76,6 @@
 				<div class="row">
 				<div class="col-md-3"></div>
 				<div class="col-md-6">
-				
-				
-					<p:messages id="msgs" severity="info"/>
-					
-					
 					<!-- 1 -->
 					<div class="row">
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
@@ -90,8 +86,8 @@
 		                		<div class="col-sm-9">
 		                			<p:outputLabel for="propoId">Proposal ID</p:outputLabel>
 		                			<p:inputText id="propoId" value="#{paymentController.payment.proposalPayment}" class="form-control" required="true"
-											requiredMessage="Type Your Proposal.No!" validatorMessage="Proposal No must Be 17 character without space !">
-											<f:validateRegex pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{16,17}$" />
+											requiredMessage="Name is Required!" validatorMessage="Name without space between 3 to 20 charater !">
+											<f:validateRegex pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{2,20}$" />
 									</p:inputText>
 									<h:message for="propoId" style="color: red;"/>
 		                		</div>
@@ -103,10 +99,61 @@
 					<div class="row">
 		            	<div class="col-sm-12 features-box wow fadeInLeft">
 		                	<div class="row">
+		                		<div class="col-sm-2 features-box-icon">
+		                			<i class="fa fa-twitter"></i>
+		                		</div>
+		                		<div class="col-sm-9">
+		                		 	<p:outputLabel for="bank">Bank</p:outputLabel><br />
+							        <p:selectOneButton id="bank" value="#{paymentController.payment.bank}" required="true" requiredMessage="Choose">
+							            <f:selectItem itemLabel="KBZ" itemValue="KBZ" />
+							            <f:selectItem itemLabel="AYA" itemValue="AYA" />
+							            <f:selectItem itemLabel="CB" itemValue="CB" />
+							        </p:selectOneButton>
+							        <br />
+			                    	<h:message for="bank" style="color: red;"/>
+		                		</div>
+		                	</div>
+		                </div>
+		            </div>
+		            
+		            <!-- 3 -->
+					<div class="row">
+		            	<div class="col-sm-12 features-box wow fadeInLeft">
+		                	<div class="row">
+		                		<div class="col-sm-2 features-box-icon">
+		                		</div>
+		                		<div class="col-sm-9">
+		                		 	<p:outputLabel for="amount">Card No</p:outputLabel><br />
+		                		 	<p:inputNumber id="amount" value="#{paymentController.payment.cardNo}"/>
+									<h:message for="amount" style="color: red;"/>
+		                		</div>
+		                	</div>
+		                </div>
+		            </div>
+		            
+		            <!-- 4 -->
+					<div class="row">
+		            	<div class="col-sm-12 features-box wow fadeInLeft">
+		                	<div class="row">
+		                		<div class="col-sm-2 features-box-icon">
+		                		</div>
+		                		<div class="col-sm-9">
+		                		 	<p:outputLabel for="expired">Card Expired Date</p:outputLabel><br />
+								<p:calendar id="expired" value="#{paymentController.payment.expiredDate}" yearRange="2020:2050" style="width:500px;" locale="en" navigator="true" pattern="dd-MMM-yyyy" required="true" requiredMessage="Choose your Card Expired Date!" autocomplete="off"/>
+								<br /><h:message for="expired" style="color: red;" />
+		                		</div>
+		                	</div>
+		                </div>
+		            </div>
+		            
+		            <!-- 5 -->
+					<div class="row">
+		            	<div class="col-sm-12 features-box wow fadeInLeft">
+		                	<div class="row">
 		                		<div class="col-sm-5 features-box-icon">
 		                		</div>
 		                		<div class="col-sm-6">
-		                			<h:commandButton action="#{paymentController.payIdSave()}" value="Claim" class="btn btn-success" style="width:80px; height:40px;" />
+		                			<h:commandButton action="#{paymentController.paySave()}" value="Save" class="btn btn-success" style="width:100px; height:50px;" />
 		                		</div>
 		                	</div>
 		                </div>

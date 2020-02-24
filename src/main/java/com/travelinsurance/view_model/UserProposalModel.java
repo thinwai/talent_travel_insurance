@@ -8,10 +8,8 @@ import javax.validation.constraints.Past;
 
 import com.travelinsurance.dto.Beneficial;
 import com.travelinsurance.dto.Payment;
-import com.travelinsurance.dto.Plan;
 import com.travelinsurance.dto.Proposal;
 import com.travelinsurance.dto.User;
-import com.travelinsurance.dto.Vehicle;
 
 import lombok.Data;
 
@@ -30,7 +28,8 @@ public class UserProposalModel {
 	private Date startDate;
 	private Date endDate;
 	private String vehicleNo;
-	private double sumInsurance;
+	private int unit;
+	private int sumInsurance;
 	private int proposalStatus;
 	private User user;
 	private List<Beneficial> beneficial;
@@ -46,6 +45,14 @@ public class UserProposalModel {
 	private String beneficialPh;
 	private Proposal proposalBenefit;
 	
+	private String planType;
+	private int planPrice;
+	private String vehicleType;
+	private String dobFormat;
+	private String startDateFormat;
+	private String endDateFormat;
+	private int dateRange;
+	private String message;
 	
 	public String getpId() {
 		return pId;
@@ -107,10 +114,16 @@ public class UserProposalModel {
 	public void setVehicleNo(String vehicleNo) {
 		this.vehicleNo = vehicleNo;
 	}
-	public double getSumInsurance() {
+	public int getUnit() {
+		return unit;
+	}
+	public void setUnit(int unit) {
+		this.unit = unit;
+	}
+	public int getSumInsurance() {
 		return sumInsurance;
 	}
-	public void setSumInsurance(double sumInsurance) {
+	public void setSumInsurance(int sumInsurance) {
 		this.sumInsurance = sumInsurance;
 	}
 	public int getProposalStatus() {
@@ -190,5 +203,53 @@ public class UserProposalModel {
 	}
 	public void setProposalBenefit(Proposal proposalBenefit) {
 		this.proposalBenefit = proposalBenefit;
+	}
+	public String getPlanType() {
+		return planType;
+	}
+	public void setPlanType(String planType) {
+		this.planType = planType;
+	}
+	public int getPlanPrice() {
+		return planPrice;
+	}
+	public void setPlanPrice(int planPrice) {
+		this.planPrice = planPrice;
+	}
+	public String getVehicleType() {
+		return vehicleType;
+	}
+	public void setVehicleType(String vehicleType) {
+		this.vehicleType = vehicleType;
+	}
+	public String getDobFormat() {
+		return dobFormat;
+	}
+	public void setDobFormat(String dobFormat) {
+		this.dobFormat = dobFormat;
+	}
+	public String getStartDateFormat() {
+		return startDateFormat;
+	}
+	public void setStartDateFormat(String startDateFormat) {
+		this.startDateFormat = startDateFormat;
+	}
+	public String getEndDateFormat() {
+		return endDateFormat;
+	}
+	public void setEndDateFormat(String endDateFormat) {
+		this.endDateFormat = endDateFormat;
+	}
+	public int getDateRange() {
+		return dateRange;
+	}
+	public void setDateRange(int dateRange) {
+		this.dateRange = dateRange;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
 	}
 }
