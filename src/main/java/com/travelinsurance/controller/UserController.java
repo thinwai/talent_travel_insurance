@@ -28,7 +28,7 @@ public class UserController {
 	private MyAccountService accService;
 	
 	@Autowired
-	MessagesUtil msg;
+	MessagesUtil msg;				
 	
 	public String home() {
 		return "homePage.xhtml?faces-redirect=true";
