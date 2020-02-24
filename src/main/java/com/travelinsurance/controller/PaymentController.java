@@ -70,8 +70,17 @@ public class PaymentController {
 	}
 	
 	public void paySave() {
-		payService.save(payment);
+		int result=payService.save(payment);
 		
+		if(result==1) {
+			msg.messageInfo("You have already waiting for this Payment!");
+			
+		}else if(result==2) {
+			msg.messageInfo("Successfully Re.payment Request!");
+		}else if(result==3) {
+			msg.messageInfo("Successfully Payment Request!");
+		}
+		payment=new PaymentModel();
 	}
 	
 	public PaymentModel getPayment() {

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MessagesUtil {
-	
+	int i=0;
 	public void messageWarn(String sms) {
 		FacesContext.getCurrentInstance().addMessage(null, 
 				new FacesMessage(FacesMessage.SEVERITY_WARN, sms ,"WARN Messages"));
@@ -27,7 +27,7 @@ public class MessagesUtil {
 				new FacesMessage(FacesMessage.SEVERITY_INFO, sms,"INFO Messages"));
 	}
 	public String proposalId() {
-		int i=0;
+		
 		LocalDateTime myDateObj = LocalDateTime.now();
 	    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 	    String date = myDateObj.format(myFormatObj);

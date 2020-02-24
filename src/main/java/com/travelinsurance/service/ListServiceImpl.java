@@ -48,11 +48,19 @@ public class ListServiceImpl implements ListService{
 			List<Beneficial> bList=new ArrayList<Beneficial>();
 			if(!temp.getBeneficial().isEmpty()) {
 				
-				Beneficial bf=new Beneficial();
+				
 				for(int i=0; i<temp.getBeneficial().size(); i++) {
-					bf.setBeneficialName(temp.getBeneficial().get(i).getBeneficialName());
 					
-					System.out.println("b1 " +temp.getBeneficial().get(i).getBeneficialName());
+					Beneficial bf=new Beneficial();
+					
+					bf.setbId(temp.getBeneficial().get(i).getbId());
+					bf.setBeneficialName(temp.getBeneficial().get(i).getBeneficialName());
+					bf.setBeneficialPh(temp.getBeneficial().get(i).getBeneficialPh());
+					bf.setAddress(temp.getBeneficial().get(i).getAddress());
+					bf.setNrc(temp.getBeneficial().get(i).getNrc());
+					bf.setRelationship(temp.getBeneficial().get(i).getRelationship());
+					
+					System.out.println("b1 "+ i +temp.getBeneficial().get(i).getBeneficialName());
 					bList.add(bf);
 				}
 				System.out.println(bList);

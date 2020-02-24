@@ -47,14 +47,16 @@ public class ListController {
 	public void deleteProposal(String Id) {
 		
 		Boolean result=listService.deleteProposal(Id);
-		
+		System.out.println("delete message test 1 ");
 		if(result) {
 			list();
+			System.out.println("delete message test 2 ");
 			msg.messageInfo("Successfully DELETE!");
 		}else {
+			System.out.println("delete message test 3 ");
 			msg.messageInfo("Your Proposal are not allowed to DELETE!");
 		}
-		
+		System.out.println("delete message test 4 ");
 	}
 
 	public List<ListModel> getListModels() {

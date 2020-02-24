@@ -56,6 +56,24 @@ public class PaymentRepositoryImpl implements PaymentRepositoryCustom{
 		}
 		return pay;
 	}
+
+	@Override
+	public Payment searchByProposalId(String propoId) {
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Payment> cq = cb.createQuery(Payment.class);
+ 
+        Root<Payment> payment = cq.from(Payment.class);
+        
+        Proposal pro=new Proposal();
+        pro.setpId(propoId);
+        
+        Predicate payPredicate = cb.equal(payment.get("proposalPayment"), pro);
+        cq.where(payPredicate).distinct(true);
+        
+        TypedQuery<Payment> query = em.createQuery(cq);
+        
+		return query.getSingleResult();
+	}
 	
 	
 }
