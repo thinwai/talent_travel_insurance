@@ -50,9 +50,8 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="top-navbar-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Sign up</a></li>
-						<li><a class="btn btn-link-3" href="#">Login</a></li>
+						<li><a href="#{userController.register()}">Sign up</a></li>
+						<li><a class="btn btn-link-3" href="#{userController.login()}">Login</a></li>
 					</ul>
 				</div>
 			</div>
@@ -68,7 +67,7 @@
 							<!-- <p class="medium-paragraph">
 								Get Insured and Feel Secured!								
 							</p> -->
-							<a class="btn btn-success" href="#">Get Started</a>
+							<a class="btn btn-success" href="#{userController.login()}">Get Started</a>
 						</div>
 					</div>
 					<div class="col-sm-4"></div>
@@ -84,7 +83,8 @@
 	        	
 	            <div class="row">
 	                <div class="col-sm-12 features section-description wow fadeIn">
-	                    <h2>Bootstrap Navbar Menu</h2>
+	                    <h4>
+To promote welfare and peace of mind to our customers by implementing a nationwide travel insurance system with a high standard of service and  provide a financial safety net to protect you and your love ones against economic loss arising from unfortunate incidents and accidents while on the go. Travel Insurance provides coverage for you and your love ones from the uncertainties of tomorrow.</h4>
 	                    <div class="divider-1"><div class="line"></div></div>
 	                </div>
 	            </div>
@@ -97,9 +97,9 @@
 	            <div class="col-md-6">
 	            <h3>Basic</h3>
                   	<p>
-                  		This affordable plan includes trip cancellation and interruption benefits plus limited post-departure benefits, such as emergency medical coverage and lost/damaged baggage benefits.
+                  		This affordable plan includes trip delay benefits plus limited post-departure benefits, such as emergency medical coverage and lost/damaged baggage benefits.
                   	</p>
-                  	<h:commandButton value="Buy Now" class="btn btn-success"  />
+                  	<!-- <h:commandButton value="Buy Now" class="btn btn-success"  /> -->
      			
 	            </div>	
 	            <div class="col-md-2"></div>  	                     
@@ -113,42 +113,48 @@
 	            <div class="col-md-6">
 	            <h3>Advanced</h3>
 		        <p>
-               		This plan provides benefits for emergency medical expenses and travel mishaps, such as trip delays and lost luggage, without trip cancellation/interruption benefits.
+               		This affordable plan includes trip delay benefits and trip cancellaing/interruption benefits plus limited post-departure benefits, such as emergency medical coverage and lost/damaged baggage benefits.
                	</p>
-               	<h:commandButton value="Buy Now" class="btn btn-success"  />
+               <!-- 	<h:commandButton value="Buy Now" class="btn btn-success"  /> -->
 	            </div>
 	            <div class="col-md-2"></div>	            
 	            </div>
 			</div>
 		</div>
 	            
-	    <!-- Product Information -->
+	    <!-- Exclusion -->
 	    <div class="features-container section-container">
 	        <div class="container">
 	        	
-	            <div class="row">
+	            <!-- <div class="row">
 	                <div class="col-sm-12 features section-description wow fadeIn">
 	                    <h2>Bootstrap Navbar Menu</h2>
 	                    <div class="divider-1"><div class="line"></div></div>
 	                </div>
-	            </div> 
+	            </div>  -->
 	            
 	            <div class="row">
 	                <div class="col-sm-12 features-box wow fadeInLeft">
 	                	<div class="row">
-	                		<div class="col-sm-3 features-box-icon">
-	                			<i class="fa fa-instagram"></i>
-	                		</div>
-	                		<div class="col-sm-9">
-	                			<h3>Basic</h3>
-		                    	<p>
-		                    		This affordable plan includes trip cancellation and interruption benefits plus limited post-departure benefits, such as emergency medical coverage and lost/damaged baggage benefits.
-		                    	</p>
+	                		<!-- <div class="col-sm-3 features-box-icon">
+	                			<i class="fa fa-ban"></i>
+	                		</div> -->
+	                		<div class="col-sm-12">
+	                			<h3>Exclusion</h3>
+		                    
+		                    		<i class="fa fa-minus"></i>&emsp; Existing disablements or diseases <br/>
+		                    		<i class="fa fa-minus"></i>&emsp;  Suicide <br/>
+		                    		<i class="fa fa-minus"></i>&emsp;  Intentionally self-inflicted <br/>
+		                    		<i class="fa fa-minus"></i>&emsp;  Deliver and abortion not related to the vehicle accident during the trip <br/>
+		                    		<i class="fa fa-minus"></i>&emsp;  Committing criminal offenses <br/>
+		                    		<i class="fa fa-minus"></i>&emsp;  Using narcotic drugs <br/>
+		                    		<i class="fa fa-minus"></i>&emsp;  Wars, strikes, civil war, civil commotion, terrorism and warlike operations <br/>
+		                    		<i class="fa fa-minus"></i>&emsp;  Death, permanent disability and injury that the consequential effects of the above (e) , (f) and (g) contents<br />
 	                		</div>
 	                	</div>
 	                </div>
 	            </div>
-	            <div class="row">
+	            <!-- <div class="row">
 	                <div class="col-sm-12 features-box wow fadeInLeft">
 	                	<div class="row">
 	                		<div class="col-sm-3 features-box-icon">
@@ -162,7 +168,7 @@
 	                		</div>
 	                	</div>
 	                </div>
-	            </div>
+	            </div> -->
 	            
 	            
 			</div>

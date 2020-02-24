@@ -32,6 +32,14 @@ public class UserController {
 		return "homePage.xhtml?faces-redirect=true";
 	}
 	
+	public String login() {
+		return "loginPage.xhtml?faces-redirect=true";
+	}
+	
+	public String register() {
+		return "userRegistrationPage.xhtml?faces-redirect=true";
+	}
+	
 	public String myAcc() {
 		System.out.println("login 1");
 		FacesContext facesContext=FacesContext.getCurrentInstance();
