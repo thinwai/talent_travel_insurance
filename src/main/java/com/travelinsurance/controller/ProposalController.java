@@ -71,7 +71,7 @@ public class ProposalController {
 		System.out.println(" Save ! " +uProposal.getpId());
 		propoService.saveProposal(uProposal);
 
-		uProposal = new UserProposalModel();
+		this.getuProposal().setMessage(1);
 
 		return "proposalData.xhtml";
 	}
@@ -85,8 +85,14 @@ public class ProposalController {
 
 		vehicles = vehicleService.findAllVehicle();
 		plans = planService.findAllPlan();
-
-		uProposal.setpId(msg.proposalId());
+		
+		try {
+			if(this.uProposal.getpId().equals(null) || this.uProposal.getpId().equals("")) {
+				uProposal.setpId(msg.proposalId());
+			}
+		}catch (Exception e) {
+			uProposal.setpId(msg.proposalId());
+		}
 	}
 
 	public String proposalNext() {

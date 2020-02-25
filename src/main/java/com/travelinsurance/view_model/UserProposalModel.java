@@ -53,7 +53,7 @@ public class UserProposalModel {
 	private String startDateFormat;
 	private String endDateFormat;
 	private int dateRange;
-	private String message;
+	private int message;
 	
 	//for detail List
 	private int payId;
@@ -267,10 +267,10 @@ public class UserProposalModel {
 	public void setDateRange(int dateRange) {
 		this.dateRange = dateRange;
 	}
-	public String getMessage() {
+	public int getMessage() {
 		return message;
 	}
-	public void setMessage(String message) {
+	public void setMessage(int message) {
 		this.message = message;
 	}
 	public int getPayId() {
