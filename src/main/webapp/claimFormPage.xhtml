@@ -86,7 +86,8 @@
 	            
 	            <h:panelGroup rendered="#{claimController.claimModel.claimMessage == 1}">
 		            <div class="row">
-		                <div class="col-sm-12 features section-description wow fadeIn">
+		            <div class="col-sm-2"></div>
+		                <div class="col-sm-8 features section-description wow fadeIn">
 				            <p class="inset">
 				           		Proposal ID - <h:outputText value=" #{claimController.claimModel.propoId}"/><br />
 				            	Successful your Claim Request!<br/>
@@ -94,6 +95,7 @@
 				            	<h:commandButton action="#{claimController.claimToListPage()}" value="OK" class="btn btn-success" style="width:80px;"/>&nbsp;
 				            </p>
 		            	</div>
+		            <div class="col-sm-2"></div>
 		            </div>
 				</h:panelGroup>
 	            

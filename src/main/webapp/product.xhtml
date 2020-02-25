@@ -51,7 +51,7 @@
 				<div class="collapse navbar-collapse" id="top-navbar-1">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#{userController.register()}">Sign up</a></li>
-						<li><a class="btn btn-link-3" data-toggle="modal" data-target="#modalLoginForm">Login</a></li>
+						<li><a class="btn btn-link-3" href="#{userController.login()}">Login</a></li>
 					</ul>
 				</div>
 			</div>
@@ -75,39 +75,7 @@
             </div>
         </div>
         
-        
-        <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header text-center">
-		        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		      </div>
-		      <div class="modal-body mx-3">
-		        <div class="md-form mb-5">
-		          <i class="fas fa-envelope prefix grey-text"></i>
-		          <input type="email" id="defaultForm-email" class="form-control validate"/>
-		          <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
-		        </div>
-		
-		        <div class="md-form mb-4">
-		          <i class="fas fa-lock prefix grey-text"></i>
-		          <input type="password" id="defaultForm-pass" class="form-control validate"/>
-		          <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
-		        </div>
-		
-		      </div>
-		      <div class="modal-footer d-flex justify-content-center">
-		        <button class="btn btn-default">Login</button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-        
-        
-        
+                       
         <!-- Features -->
         <div class="features-container section-container">
 	        <div class="container-fluid">
@@ -125,29 +93,29 @@
 	            	<div class="col-sm-6 features-box wow fadeInLeft">
 	                	<div class="row">
 	                		<div class="col-sm-3 features-box-icon">
-	                			<i class="fa fa-user-circle-o"></i>
+	                			<i class="fa fa-shopping-bag" aria-hidden="true" style="font-size:80px;"></i>
 	                		</div>
 	                		<div class="col-sm-9" id="accordion">
 	                		<h3>Basic</h3>
 	                		<p>This affordable plan includes trip delay benefits plus limited post-departure benefits, such as emergency medical coverage and lost/damaged baggage benefits.
 	                		</p>
-	                		<p class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="color:#24a0ed;">View More>></p>	                		
-					        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">      
+	                		<p class="collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseTwo" style="color:#24a0ed;">View More>></p>	                		
+					        <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">      
 						        <div class="priceBox">
-		                <span class="emphasis">5,000 MMK</span>
-		                <hr style="width:320px;"/>
-						<span><i class="fa fa-book"></i> Beneficial for Death <br/> 5,000,000 MMK</span>
-		                <hr style="width:320px;"/>
-						<span><i class="fa fa-ambulance"></i> Beneficial for Hospitalization <br/> 2,080,000 MMK</span>
-		                <hr style="width:320px;"/>
-						<span><i class="fa fa-suitcase"></i> Baggage Loss/Damage<br /> 100,000 MMK</span>	                
-		                <hr style="width:320px;"/>
-		                <span><i class="fa fa-clock-o"></i> Travel Delay <br /> 2hr or more </span>
-		                <hr style="width:320px;"/>
-		                <span class="emphasis-2">
-		                	<h:commandButton action="#{proposalController.basicPlan()}" value="Start" class="btn btn-success" />
-		                </span>
-		              </div>
+					                <h4 style="color:green;">Plans and Prices</h4>
+					                <hr/>
+					                <span class="emphasis">Total Cost : 5,000 MMK</span>
+					                <hr/>
+									<span><i class="fa fa-book"></i> Accident(death) <br/> 5,000,000 MMK</span>
+					                <hr/>
+									<span><i class="fa fa-ambulance"></i> Accident(hospitalization) <br/> 2,080,000 MMK</span>
+					                <hr/>
+									<span><i class="fa fa-clock-o"></i> Travel Delay <br /> 2hr or more (depand on your ticket)</span>	                
+					                <hr/>
+					                <span class="emphasis-2">
+					                	<h:commandButton action="#{proposalController.basicPlan()}" value="Start" class="btn btn-success" />
+					                </span>
+					              </div>
 						    </div>
 	                		</div>
 	                	</div>
@@ -155,42 +123,49 @@
 	                <div class="col-sm-6 features-box wow fadeInLeft">
 	                	<div class="row">
 	                		<div class="col-sm-3 features-box-icon">
-	                			<i class="fa fa-id-card-o"></i>
+	                			<i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:80px;"></i>
 	                		</div>
-	                		<div class="col-sm-9">
+	                		<div class="col-sm-9" id="advance">
 	                			<h3>Advanced</h3>
 	                			<p>This affordable plan includes trip delay benefits and trip cancellaing/interruption benefits plus limited post-departure benefits, such as emergency medical coverage and lost/damaged baggage benefits.
 	                			</p>
+	                			<p class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="color:#24a0ed;">View More>></p>	                		
+					        	<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#advance">   
+	                			<div class="priceBox">
+					                <h4 style="color:green;">Plans and Prices</h4>
+					                <hr/>
+					                <span class="emphasis">Total Cost : 10,000 MMK</span>
+					                <hr/>
+					                <span><i class="fa fa-ambulance"></i> Accident(death) <br/> 10,000,000 MMK</span>
+					                <hr/>
+					               	<span><i class="fa fa-ambulance"></i> Accident(hospitalization) <br/> 4,160,000 MMK</span>
+					                <hr/>
+					                <span><i class="fa fa-suitcase"></i> Baggage Loss/Damage<br /> 200,000 MMK</span>
+					                <hr/>
+					                <span><i class="fa fa-clock-o"></i> Travel Delay <br /> 1hr or more (depand on your ticket)</span>
+					                <hr/>
+					                <span><i class="fa fa-plane"></i> Trip Cancellation/ Interruption <br /> (depand on your ticket)</span>
+					                <hr/>
+					                <span class="emphasis-2">
+					                <h:commandButton action="#{proposalController.advancePlan()}" value="Start" class="btn btn-success" /></span>
+					              </div>
 	                		</div>
 	                	</div>
 	                </div>
 	            </div>
 	            </div>
-	            
-			</div>
-		</div>
-
-  	            
-	    <!-- Exclusion -->
-	    <div class="features-container section-container">
-	        <div class="container">
-	        	
-	            <div class="row">
-	                <div class="col-sm-12 features section-description wow fadeIn">
-	                    <h3>Exclusion</h3>
-	                </div>
 	            </div>
 	            
-	            <div class="row">
-	                <div class="col-sm-12 features-box wow fadeInLeft">
-	                	<div class="row">
-	                		<!-- <div class="col-sm-3 features-box-icon">
-	                			<i class="fa fa-ban"></i>
-	                		</div> -->
-	                		<div class="col-sm-12">
-	                			<h3>Exclusion</h3>
-		                    
-		                    		<i class="fa fa-minus"></i>&emsp; Existing disablements or diseases <br/>
+	            <div class="container-fluid">
+	            	<div class="row">
+		                <div class="col-sm-12 features section-description wow fadeIn">
+		                    <h3>Exclusion</h3>
+		                </div>
+	            	</div>
+	            	<div class="row">
+	            		<div class="col-sm-2"></div>
+	            		<div class="col-sm-8" style="text-align:left;">
+	            			<i class="fa fa-minus"></i>&emsp; Existing disablements or diseases <br/>
 		                    		<i class="fa fa-minus"></i>&emsp;  Suicide <br/>
 		                    		<i class="fa fa-minus"></i>&emsp;  Intentionally self-inflicted <br/>
 		                    		<i class="fa fa-minus"></i>&emsp;  Deliver and abortion not related to the vehicle accident during the trip <br/>
@@ -198,38 +173,37 @@
 		                    		<i class="fa fa-minus"></i>&emsp;  Using narcotic drugs <br/>
 		                    		<i class="fa fa-minus"></i>&emsp;  Wars, strikes, civil war, civil commotion, terrorism and warlike operations <br/>
 		                    		<i class="fa fa-minus"></i>&emsp;  Death, permanent disability and injury that the consequential effects of the above (e) , (f) and (g) contents<br />
-	                		</div>
-	                	</div>
-	                </div>
+	            		</div>
+	            		<div class="col-sm-2"></div>
+	            	</div>
 	            </div>
-	            <!-- <div class="row">
-	                <div class="col-sm-12 features-box wow fadeInLeft">
-	                	<div class="row">
-	                		<div class="col-sm-3 features-box-icon">
-	                			<i class="fa fa-instagram"></i>
-	                		</div>
-	                		<div class="col-sm-9">
-	                			<h3>Advanced</h3>
-		                    	<p>
-		                    		This plan provides benefits for emergency medical expenses and travel mishaps, such as trip delays and lost luggage, without trip cancellation/interruption benefits.
-		                    	</p>
-	                		</div>
-	                	</div>
-	                </div>
-	            </div> -->
-	            
 	            
 			</div>
 		</div>
-
-	        
-        
+	              
         <!-- Footer -->
-        <footer>
-	        <div class="container">
+        <footer class="bg-success">
+	        <div class="container bg-success">
 	        	<div class="row">
+	        		<div class="col-sm-4">
+	        			<i class="fa fa-phone-square text-info" style="font-size:30px;"></i>
+	        			<h4>+959790869503</h4>	        			
+	        		</div>
+	        		<div class="col-sm-4">
+	        			<i class="fa fa-envelope-o text-info" style="font-size:30px;"></i>
+	        			<h4>travelinsurance.talent@gmail.com</h4>
+	        			</div>
+	        		<div class="col-sm-4">
+	        			<i class="fa fa-map-marker text-info" style="font-size:30px;"></i>
+	        			<h4>Building (5), 3th floor, MICT Park, Hlaing Township, Yangon </h4>
+                    </div>
+                </div>
+                <div class="row">
 	        		<div class="col-sm-12 footer-copyright">
                     	&copy; Bootstrap Navbar Template by <a href="http://azmind.com">AZMIND</a>
+	        			<i class="fa fa-facebook-official"></i>
+	        			<i class="fa fa-instagram"></i>
+	        			<i class="fa fa-twitter"></i>
                     </div>
                 </div>
 	        </div>
