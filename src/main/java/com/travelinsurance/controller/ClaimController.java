@@ -12,11 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.travelinsurance.dto.User;
 import com.travelinsurance.service.ClaimService;
+import com.travelinsurance.service.ListService;
 import com.travelinsurance.service.PaymentService;
 import com.travelinsurance.service.ProposalService;
 import com.travelinsurance.util.MessagesUtil;
 import com.travelinsurance.view_model.ClaimModel;
 import com.travelinsurance.view_model.ClaimTypeModel;
+import com.travelinsurance.view_model.ListModel;
+import com.travelinsurance.view_model.SearchModel;
 import com.travelinsurance.view_model.UserProposalModel;
 
 @Named
@@ -97,8 +100,10 @@ public class ClaimController {
 		}
 		System.out.println("Amount of claim | "+claimModel.getClaimTypeAmount());
 		if(result==0) {
-			ctService.saveClaim(claimModel);
-			claimModel=new ClaimModel();
+			claimModel=ctService.saveClaim(claimModel);
+			
+			claimModel.setClaimMessage(1);
+			//claimModel=new ClaimModel();
 			msg.messageInfo("SUCCESS");
 		}else if (result==1) {
 			msg.messageInfo("Name must be policy holder Name or Beneficial Name!");
@@ -109,6 +114,13 @@ public class ClaimController {
 		}else if(result==4) {
 			msg.messageInfo("Lost_Date Must Be Your Duration of Your Travelling Date");
 		}
+	}
+	
+	public String claimToListPage() {
+		
+		claimModel=new ClaimModel();
+		
+		return "listPage.xhtml";
 	}
 	
 	/*

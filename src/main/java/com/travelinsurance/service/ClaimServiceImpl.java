@@ -120,9 +120,15 @@ public class ClaimServiceImpl implements ClaimService{
 		return result;
 	}
 
+
 	@Override
-	public void saveClaim(ClaimModel cModel) {
-		
+	public Integer findClaimByPropoId(String propoId) {
+		// TODO Auto-generated method stub
+		return claim.findClaimByProposalId(propoId);
+	}
+
+	@Override
+	public ClaimModel saveClaim(ClaimModel cModel) {
 		Payment result=payRepo.searchPayment(cModel.getPropoId(), true);
 		Proposal proposal=propo.searchProId(cModel.getPropoId());
 		
@@ -147,12 +153,12 @@ public class ClaimServiceImpl implements ClaimService{
 		cl.setClaimAmount((double)(proposal.getUnit() * cModel.getClaimTypeAmount() * proposal.getPlan().getPlanId()));
 		
 		claim.save(cl);
-	}
-
-	@Override
-	public Integer findClaimByPropoId(String propoId) {
-		// TODO Auto-generated method stub
-		return claim.findClaimByProposalId(propoId);
+		
+		
+		//for UI
+		cModel.setClaimAmount((double)(proposal.getUnit() * cModel.getClaimTypeAmount() * proposal.getPlan().getPlanId()));
+		System.out.println("Total Amount | "+cModel.getClaimAmount());
+		return cModel;
 	}
 
 

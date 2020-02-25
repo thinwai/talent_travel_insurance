@@ -12,7 +12,7 @@ public interface ClaimService {
 	
 	Integer findToClaim(ClaimModel cModel);
 	
-	void saveClaim(ClaimModel cModel);
+	ClaimModel saveClaim(ClaimModel cModel);
 	
 	Integer findClaimByPropoId(String propoId);
 }

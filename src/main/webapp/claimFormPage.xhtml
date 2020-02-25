@@ -31,6 +31,15 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+        
+        <style>
+        	p.inset {
+		    	border-style: inset;
+		    	font-weight: bold;
+		    	height: 180px;
+		    	font-size: 25px;
+		    }
+        </style>
     </h:head>
 
     <h:body>
@@ -72,6 +81,24 @@
 	                    <div class="divider-1"><div class="line"></div></div>
 	                </div>
 	            </div>
+	            
+	            
+	            
+	            <h:panelGroup rendered="#{claimController.claimModel.claimMessage == 1}">
+		            <div class="row">
+		                <div class="col-sm-12 features section-description wow fadeIn">
+				            <p class="inset">
+				           		Proposal ID - <h:outputText value=" #{claimController.claimModel.propoId}"/><br />
+				            	Successful your Claim Request!<br/>
+				            	You will get <h:outputText value=" #{claimController.claimModel.claimAmount}" style="color:red;"/> as a Claim amount after accept your Claim Request! <br /><br /> 
+				            	<h:commandButton action="#{claimController.claimToListPage()}" value="OK" class="btn btn-success" style="width:80px;"/>&nbsp;
+				            </p>
+		            	</div>
+		            </div>
+				</h:panelGroup>
+	            
+	            
+	            <h:panelGroup rendered="#{claimController.claimModel.claimMessage == 0}">
 				<div class="row">
 				<div class="col-md-3"></div>
 				<div class="col-md-6">
@@ -198,6 +225,8 @@
 				</div>
 				<div class="col-md-3"></div>	
 				</div>
+				
+				</h:panelGroup>
 			</div>
         </div> 
         </h:form>
