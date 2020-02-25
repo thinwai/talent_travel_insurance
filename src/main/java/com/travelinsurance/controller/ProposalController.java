@@ -71,7 +71,8 @@ public class ProposalController {
 		System.out.println(" Save ! " +uProposal.getpId());
 		propoService.saveProposal(uProposal);
 
-		this.getuProposal().setMessage(1);
+		uProposal.setMessage(1);
+		System.out.println("message | "+uProposal.getMessage());
 
 		return "proposalData.xhtml";
 	}

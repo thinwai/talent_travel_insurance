@@ -109,20 +109,21 @@
 	                </div>
 	            </div>
 	            
-	            <h:outputText rendered="#{proposalController.uProposal.message == 1}">
+	            <h:panelGroup rendered="#{proposalController.uProposal.message == 1}">
 		            <div class="row">
 		                <div class="col-sm-12 features section-description wow fadeIn">
 				            <p class="inset">
-				           		Proposal ID - <br />
+				           		Proposal ID - <h:outputText value=" #{proposalController.uProposal.pId}"/><br />
 				            	Successful your Proposal Request!<br/><br />
 				            	<h:commandButton action="#{proposalController.proposalDataToList()}" value="OK" class="btn btn-success" style="width:80px;"/>&nbsp;
 				            </p>
 		            	</div>
 		            </div>
-	            </h:outputText>
+				</h:panelGroup>
 	            
 	            
-				<p:carousel headerText="Proposal Summary" itemStyle="text-align:center" responsive="true" id="total" rendered="#{proposalController.uProposal.message == 0}">
+	            <h:panelGroup rendered="#{proposalController.uProposal.message == 0}">
+				<p:carousel headerText="Proposal Summary" itemStyle="text-align:center" responsive="true" id="total">
 			        <p:panelGrid columns="2" style="width:100%;">
 			            <f:facet name="header">
 			                <h:outputText value="Travel Plan" />
@@ -256,6 +257,8 @@
 				   	<br />
 				   	<h:outputText value="* Total Price =(plan) * (Duration) * (Unit)" style="color:red;"/>
    				</div>
+   				
+   				</h:panelGroup>
     
 	        </div>
         </div>
