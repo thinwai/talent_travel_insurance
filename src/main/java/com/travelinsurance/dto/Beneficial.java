@@ -1,5 +1,7 @@
 package com.travelinsurance.dto;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +18,7 @@ public class Beneficial {
 	private String relationship;
 	private String address;
 	private String nrc;
-	private String beneficialPh;
+	private BigDecimal beneficialPh;
 	
 	@ManyToOne
 	private Proposal proposalBenefit;
@@ -61,11 +63,11 @@ public class Beneficial {
 		this.nrc = nrc;
 	}
 
-	public String getBeneficialPh() {
+	public BigDecimal getBeneficialPh() {
 		return beneficialPh;
 	}
 
-	public void setBeneficialPh(String beneficialPh) {
+	public void setBeneficialPh(BigDecimal beneficialPh) {
 		this.beneficialPh = beneficialPh;
 	}
 

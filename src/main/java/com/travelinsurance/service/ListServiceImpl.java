@@ -14,6 +14,7 @@ import com.travelinsurance.repository.ProposalRepository;
 import com.travelinsurance.util.MessagesUtil;
 import com.travelinsurance.view_model.ListModel;
 import com.travelinsurance.view_model.SearchModel;
+import com.travelinsurance.view_model.UserProposalModel;
 
 @Service
 public class ListServiceImpl implements ListService{
@@ -44,6 +45,7 @@ public class ListServiceImpl implements ListService{
 			listModel.setTravelToPlace(temp.getToPlace());
 			listModel.setStartDate(msg.dateFormat(temp.getStartDate()));
 			listModel.setEndDate(msg.dateFormat(temp.getEndDate()));
+			listModel.setPropoStatus(temp.getProposalStatus());
 			
 			List<Beneficial> bList=new ArrayList<Beneficial>();
 			if(!temp.getBeneficial().isEmpty()) {
@@ -68,15 +70,6 @@ public class ListServiceImpl implements ListService{
 			}else {
 				listModel.setBeneficial(bList);
 			}
-			
-			//listModel.setBeneficialName(temp.getBeneficial().get(0).getBeneficialName());
-			/*
-			List<Beneficial>beni=temp.getBeneficial();
-			for (Beneficial benetemp:beni) {
-				listModel.setBeneficialName(benetemp.getBeneficialName());
-			}
-			*/
-			listModel.setPropoStatus(temp.getProposalStatus());
 			
 			try {
 				listModel.setPayStatus(temp.getPayment().getPayStatus());
@@ -115,5 +108,91 @@ public class ListServiceImpl implements ListService{
 		}
 		
 		return result;
+	}
+
+	@Override
+	public UserProposalModel getAllData(String propoId) {
+		
+		Proposal result=listRepo.searchAllDetail(propoId);
+		
+		UserProposalModel proModel=new UserProposalModel();
+		
+		//start proposal
+		proModel.setpId(result.getpId());
+		proModel.setHolderName(result.getHolderName());
+		proModel.setDob(result.getDob());						//dob
+		proModel.setDobFormat(msg.dateFormat(result.getDob()));	//format
+		proModel.setHolderNrc(result.getNrc());
+		proModel.setHolderPhone(result.getHolderPhone());
+		proModel.setFromPlace(result.getFromPlace());
+		proModel.setToPlace(result.getToPlace());
+		
+		proModel.setStartDate(result.getStartDate());						//start date
+		proModel.setStartDateFormat(msg.dateFormat(result.getStartDate())); //format
+		proModel.setEndDate(result.getEndDate());							//end date
+		proModel.setEndDateFormat(msg.dateFormat(result.getEndDate()));		//format
+		
+		proModel.setVehicleNo(result.getVehicleNo());
+		proModel.setUnit(result.getUnit());
+		proModel.setSumInsurance(result.getSumInsurance());
+		proModel.setProposalStatus(result.getStatus());
+		proModel.setPlan(result.getPlan().getPlanId());
+		proModel.setPlanType(result.getPlan().getPlanType());
+		proModel.setPlanPrice(result.getPlan().getPlanPrice());
+		proModel.setVehicle(result.getVehicle().getVehicleId());
+		proModel.setVehicleType(result.getVehicle().getVehicleType());
+		//end proposal
+		System.out.println("1");
+		//start beneficial
+		
+		try {
+			if(!result.getBeneficial().isEmpty()) {
+				System.out.println("1.1");
+				proModel.setbId(result.getBeneficial().get(0).getbId());
+				proModel.setBeneficialName(result.getBeneficial().get(0).getBeneficialName());
+				proModel.setBeneficialPh(result.getBeneficial().get(0).getBeneficialPh());
+				proModel.setAddress(result.getBeneficial().get(0).getAddress());
+				proModel.setBenificalNrc(result.getBeneficial().get(0).getNrc());
+				proModel.setRelationship(result.getBeneficial().get(0).getRelationship());
+				
+			}else {
+				proModel.setbId(0);
+			}
+		}catch (Exception e) {
+			System.out.println("1.1 | " +e);
+		}
+		//end beneficial
+		System.out.println("2");
+		//start payment
+		try {
+			proModel.setPayId(result.getPayment().getPayId());
+			proModel.setBank(result.getPayment().getBank());
+			proModel.setCardNo(result.getPayment().getCardNo());
+			proModel.setExpiredDate(result.getPayment().getExpiredDate());								//date
+			proModel.setExpiredDateFormat(msg.dateFormat(result.getPayment().getExpiredDate()));		//format
+			proModel.setPayStatus(result.getPayment().getPayStatus());
+			
+		}catch (Exception e) {
+			proModel.setPayStatus(0);
+		}
+		System.out.println("3");
+		//start claim
+		try {
+			proModel.setClaimId(result.getPayment().getClaim().getClaimId());
+			proModel.setClaimName(result.getPayment().getClaim().getClaimName());
+			proModel.setClaimNrc(result.getPayment().getClaim().getClaimNrc());
+			proModel.setClaimPhone(result.getPayment().getClaim().getClaimPhone());
+			proModel.setLostDate(result.getPayment().getClaim().getLostDate());				//date
+			proModel.setLostDateFormat(msg.dateFormat(result.getPayment().getClaim().getLostDate())); //format
+			proModel.setClaimAmount(result.getPayment().getClaim().getClaimAmount());
+			proModel.setReason(result.getPayment().getClaim().getReason());
+			proModel.setClaimStatus(result.getPayment().getClaim().getClaimStatus());
+			
+			//proModel.setClaimType(result.getPayment().getClaim().getClaimType().getClaimType());
+		}catch (Exception e) {
+			proModel.setClaimStatus(0);
+		}
+		System.out.println("4");
+		return proModel;
 	}
 }

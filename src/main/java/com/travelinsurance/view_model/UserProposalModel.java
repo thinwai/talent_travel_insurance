@@ -1,5 +1,6 @@
 package com.travelinsurance.view_model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class UserProposalModel {
 	@Past
 	private Date dob;
 	private String holderNrc;
-	private String holderPhone;
+	private BigDecimal holderPhone;
 	private String fromPlace;
 	private String toPlace;
 	@Future
@@ -42,7 +43,7 @@ public class UserProposalModel {
 	private String relationship;
 	private String address;
 	private String benificalNrc;
-	private String beneficialPh;
+	private BigDecimal beneficialPh;
 	private Proposal proposalBenefit;
 	
 	private String planType;
@@ -53,6 +54,26 @@ public class UserProposalModel {
 	private String endDateFormat;
 	private int dateRange;
 	private String message;
+	
+	//for detail List
+	private int payId;
+	private String bank;
+	private String cardNo;
+	private Date expiredDate;
+	private String expiredDateFormat;
+	private int payStatus;
+
+	private int claimId;
+	private String claimName;
+	private String claimNrc;
+	private BigDecimal claimPhone;
+	private Date lostDate;
+	private String lostDateFormat;
+	private Double claimAmount;
+	private String reason;
+	private int claimStatus;
+	
+	private String claimType;
 	
 	public String getpId() {
 		return pId;
@@ -78,10 +99,10 @@ public class UserProposalModel {
 	public void setHolderNrc(String holderNrc) {
 		this.holderNrc = holderNrc;
 	}
-	public String getHolderPhone() {
+	public BigDecimal getHolderPhone() {
 		return holderPhone;
 	}
-	public void setHolderPhone(String holderPhone) {
+	public void setHolderPhone(BigDecimal holderPhone) {
 		this.holderPhone = holderPhone;
 	}
 	public String getFromPlace() {
@@ -192,10 +213,10 @@ public class UserProposalModel {
 	public void setBenificalNrc(String benificalNrc) {
 		this.benificalNrc = benificalNrc;
 	}
-	public String getBeneficialPh() {
+	public BigDecimal getBeneficialPh() {
 		return beneficialPh;
 	}
-	public void setBeneficialPh(String beneficialPh) {
+	public void setBeneficialPh(BigDecimal beneficialPh) {
 		this.beneficialPh = beneficialPh;
 	}
 	public Proposal getProposalBenefit() {
@@ -251,5 +272,101 @@ public class UserProposalModel {
 	}
 	public void setMessage(String message) {
 		this.message = message;
+	}
+	public int getPayId() {
+		return payId;
+	}
+	public void setPayId(int payId) {
+		this.payId = payId;
+	}
+	public String getBank() {
+		return bank;
+	}
+	public void setBank(String bank) {
+		this.bank = bank;
+	}
+	public String getCardNo() {
+		return cardNo;
+	}
+	public void setCardNo(String cardNo) {
+		this.cardNo = cardNo;
+	}
+	public Date getExpiredDate() {
+		return expiredDate;
+	}
+	public void setExpiredDate(Date expiredDate) {
+		this.expiredDate = expiredDate;
+	}
+	public String getExpiredDateFormat() {
+		return expiredDateFormat;
+	}
+	public void setExpiredDateFormat(String expiredDateFormat) {
+		this.expiredDateFormat = expiredDateFormat;
+	}
+	public int getClaimId() {
+		return claimId;
+	}
+	public void setClaimId(int claimId) {
+		this.claimId = claimId;
+	}
+	public String getClaimName() {
+		return claimName;
+	}
+	public void setClaimName(String claimName) {
+		this.claimName = claimName;
+	}
+	public String getClaimNrc() {
+		return claimNrc;
+	}
+	public void setClaimNrc(String claimNrc) {
+		this.claimNrc = claimNrc;
+	}
+	public BigDecimal getClaimPhone() {
+		return claimPhone;
+	}
+	public void setClaimPhone(BigDecimal claimPhone) {
+		this.claimPhone = claimPhone;
+	}
+	public Date getLostDate() {
+		return lostDate;
+	}
+	public void setLostDate(Date lostDate) {
+		this.lostDate = lostDate;
+	}
+	public String getLostDateFormat() {
+		return lostDateFormat;
+	}
+	public void setLostDateFormat(String lostDateFormat) {
+		this.lostDateFormat = lostDateFormat;
+	}
+	public Double getClaimAmount() {
+		return claimAmount;
+	}
+	public void setClaimAmount(Double claimAmount) {
+		this.claimAmount = claimAmount;
+	}
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+	public String getClaimType() {
+		return claimType;
+	}
+	public void setClaimType(String claimType) {
+		this.claimType = claimType;
+	}
+	public int getPayStatus() {
+		return payStatus;
+	}
+	public void setPayStatus(int payStatus) {
+		this.payStatus = payStatus;
+	}
+	public int getClaimStatus() {
+		return claimStatus;
+	}
+	public void setClaimStatus(int claimStatus) {
+		this.claimStatus = claimStatus;
 	}
 }

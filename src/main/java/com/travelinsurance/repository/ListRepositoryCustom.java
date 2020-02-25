@@ -9,5 +9,5 @@ import com.travelinsurance.view_model.SearchModel;
 public interface ListRepositoryCustom {
 	
 	List<Proposal> viewList(User user,SearchModel search);
-
+	Proposal searchAllDetail(String propoId);
 }

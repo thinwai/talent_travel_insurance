@@ -20,6 +20,7 @@ public class ClaimType {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int ctId;
 	private String claimType;
+	private int amount;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="claimId")
@@ -45,6 +46,14 @@ public class ClaimType {
 
 	public void setClaimType(String claimType) {
 		this.claimType = claimType;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
 
 	public List<Claim> getClaims() {

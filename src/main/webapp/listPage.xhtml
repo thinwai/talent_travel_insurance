@@ -124,7 +124,7 @@
 					<p:dataTable var="list" value="#{listController.listModels}" id="eee" resizableColumns="true">
 					
 					    <p:column headerText="Proposal Id">
-					        <h:outputText value="#{list.propoId}" />
+					    	<u><p:commandLink action="#{proposalController.showAllData(list.propoId)}" value="#{list.propoId}"/></u>
 					    </p:column>
 					 
 					    <p:column headerText="Holder Name">

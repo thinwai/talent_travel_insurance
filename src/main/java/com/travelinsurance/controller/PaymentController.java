@@ -32,7 +32,7 @@ public class PaymentController {
 	private UserProposalModel propoModel=new UserProposalModel();
 	
 	public String payment() {
-		return "paymentPage.xhtml?faces-redirect=true";
+		return "paymentPage.xhtml";
 	}
 	
 	public String payIdSave() {
@@ -52,7 +52,7 @@ public class PaymentController {
 					if(propoModel.getProposalStatus()==3) {
 						
 						msg.messageInfo("Success");
-						return "paymentFormPage.xhtml?faces-redirect=true";
+						return "paymentFormPage.xhtml";
 					}else {
 						msg.messageInfo("Your Proposal was not Accepted Our Company!");
 					}

@@ -40,7 +40,7 @@ public class ClaimController {
 	private List<ClaimTypeModel> ctModel=new ArrayList<ClaimTypeModel>();
 	
 	public String claim() {
-		return "claimPage.xhtml?faces-redirect=true";
+		return "claimPage.xhtml";
 	}
 	
 	public String claimIdSave(){
@@ -90,6 +90,12 @@ public class ClaimController {
 		
 		int result=ctService.findToClaim(claimModel);
 		
+		for(ClaimTypeModel temp:ctModel) {
+			if(temp.getCtId() == claimModel.getClaimType()){
+				this.claimModel.setClaimTypeAmount(temp.getAmount());
+			}
+		}
+		System.out.println("Amount of claim | "+claimModel.getClaimTypeAmount());
 		if(result==0) {
 			ctService.saveClaim(claimModel);
 			claimModel=new ClaimModel();

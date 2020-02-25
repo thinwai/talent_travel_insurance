@@ -6,6 +6,7 @@ public class ClaimTypeModel {
 	
 	private int ctId;
 	private String claimType;
+	private int amount;
 	public int getCtId() {
 		return ctId;
 	}
@@ -17,6 +18,12 @@ public class ClaimTypeModel {
 	}
 	public void setClaimType(String claimType) {
 		this.claimType = claimType;
+	}
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
 	
 	

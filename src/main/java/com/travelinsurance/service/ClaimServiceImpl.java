@@ -15,6 +15,7 @@ import com.travelinsurance.dto.Proposal;
 import com.travelinsurance.repository.ClaimRepository;
 import com.travelinsurance.repository.ClaimTypeRepository;
 import com.travelinsurance.repository.PaymentRepository;
+import com.travelinsurance.repository.ProposalRepository;
 import com.travelinsurance.util.MessagesUtil;
 import com.travelinsurance.view_model.ClaimModel;
 import com.travelinsurance.view_model.ClaimTypeModel;
@@ -35,6 +36,9 @@ public class ClaimServiceImpl implements ClaimService{
 	@Autowired
 	PaymentRepository payRepo;
 	
+	@Autowired
+	ProposalRepository propo;
+	
 	@Override
 	public List<ClaimTypeModel> searchClaimType(int planId) {
 		System.out.println("____Service____1");
@@ -47,6 +51,7 @@ public class ClaimServiceImpl implements ClaimService{
 			ClaimTypeModel ctModel=new ClaimTypeModel();
 			ctModel.setCtId(temp.getCtId());
 			ctModel.setClaimType(temp.getClaimType());
+			ctModel.setAmount(temp.getAmount());
 			
 			list.add(ctModel);
 		}
@@ -99,7 +104,7 @@ public class ClaimServiceImpl implements ClaimService{
 			System.out.println("s7");
 			if(holderName.equals(name)) {
 				if(propo.getNrc().equals(cModel.getClaimNrc())) {
-					if(startDate<lostDate && lostDate<endDate) {
+					if(startDate<=lostDate && lostDate<=endDate) {
 						result=0;
 					}else {
 						result=4;												//Lost_Date Must Be Your Duration of Your Travelling
@@ -119,6 +124,7 @@ public class ClaimServiceImpl implements ClaimService{
 	public void saveClaim(ClaimModel cModel) {
 		
 		Payment result=payRepo.searchPayment(cModel.getPropoId(), true);
+		Proposal proposal=propo.searchProId(cModel.getPropoId());
 		
 		Claim cl=new Claim();
 		cl.setClaimName(cModel.getClaimName());
@@ -137,6 +143,8 @@ public class ClaimServiceImpl implements ClaimService{
 		ClaimType ct=new ClaimType();
 		ct.setCtId(cModel.getClaimType());
 		cl.setClaimType(ct);
+		
+		cl.setClaimAmount((double)(proposal.getUnit() * cModel.getClaimTypeAmount() * proposal.getPlan().getPlanId()));
 		
 		claim.save(cl);
 	}

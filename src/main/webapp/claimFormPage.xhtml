@@ -122,7 +122,7 @@
 		                		</div>
 		                		<div class="col-sm-9">
 		                			<p:outputLabel for="phone">Ph : </p:outputLabel>
-									<p:inputMask id="phone" value="#{claimController.claimModel.claimPhone}" class="form-control" mask="(99) 999-999-999" required="true" requiredMessage="Please fill of your No.!"></p:inputMask>
+		                			<p:inputText id="phone" value="#{claimController.claimModel.claimPhone}" class="form-control" required="true" requiredMessage="Please fill of your No.!" converterMessage="Please enter digits only!"/>
 									<h:message for="phone" style="color: red;" />
 		                		</div>
 		                	</div>

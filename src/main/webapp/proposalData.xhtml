@@ -43,6 +43,12 @@
 		    .ui-carousel {
 		        margin-bottom: 20px;
 		    }
+		    p.inset {
+		    	border-style: inset;
+		    	font-weight: bold;
+		    	height: 150px;
+		    	font-size: 25px;
+		    }
 		</style>
     </h:head>
 
@@ -103,6 +109,15 @@
 	                </div>
 	            </div>
 	            
+	            <div class="row">
+	                <div class="col-sm-12 features section-description wow fadeIn">
+			            <p class="inset">
+			           		Proposal ID - <br />
+			            	Successful your Proposal Request!<br/><br />
+			            	<h:commandButton action="#{proposalController.proposalDataToList()}" value="OK" class="btn btn-success" style="width:80px;"/>&nbsp;
+			            </p>
+	            	</div>
+	            </div>
 	            
 				<p:carousel headerText="Proposal Summary" itemStyle="text-align:center" responsive="true" id="total">
 			        <p:panelGrid columns="2" style="width:100%;">

@@ -41,7 +41,7 @@ public class ListController {
 		
 		listModels=listService.detailList(user,searchModel);
 		
-		return "listPage.xhtml?faces-redirect=true";
+		return "listPage.xhtml";
 	}
 	
 	public void deleteProposal(String Id) {

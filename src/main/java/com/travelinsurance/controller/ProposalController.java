@@ -20,6 +20,7 @@ import com.travelinsurance.dto.Proposal;
 import com.travelinsurance.dto.User;
 import com.travelinsurance.dto.Vehicle;
 import com.travelinsurance.service.BeneficialService;
+import com.travelinsurance.service.ListService;
 import com.travelinsurance.service.PlanService;
 import com.travelinsurance.service.ProposalService;
 import com.travelinsurance.service.VehicleService;
@@ -44,6 +45,9 @@ public class ProposalController {
 
 	@Autowired
 	private BeneficialService bService;
+	
+	@Autowired
+	private ListService listService;
 
 	private UserProposalModel uProposal = new UserProposalModel();
 	private List<Vehicle> vehicles = new ArrayList<>();
@@ -53,7 +57,7 @@ public class ProposalController {
 
 		newProposal();
 
-		return "proposalPage.xhtml?faces-redirect=true";
+		return "proposalPage.xhtml";
 	}
 
 	public String saveProposal() {
@@ -64,6 +68,7 @@ public class ProposalController {
 		user = (User) session.getAttribute("session");
 
 		this.uProposal.setUser(user);
+		System.out.println(" Save ! " +uProposal.getpId());
 		propoService.saveProposal(uProposal);
 
 		uProposal = new UserProposalModel();
@@ -107,7 +112,7 @@ public class ProposalController {
 			}
 		}
 
-		return "beneficialPage.xhtml?faces-redirect=true";
+		return "beneficialPage.xhtml";
 	}
 
 	public void dateDiff(SelectEvent event) {
@@ -149,38 +154,51 @@ public class ProposalController {
             this.uProposal.setDateRange((int)dateDiffValue+1);
 	     }
 	}
+	
+	public String showAllData(String propoId) {
+		System.out.println(propoId);
+		uProposal=listService.getAllData(propoId);
+		return "proposalData.xhtml";
+	}
+	
+	public String proposalDataToList() {
+		
+		uProposal = new UserProposalModel();
+		
+		return "listPage.xhtml";
+	}
 
 	public String basicPlan() {
 		newProposal();
 		this.uProposal.setPlan(1);
-		return "proposalPage.xhtml?faces-redirect=true";
+		return "proposalPage.xhtml";
 	}
 
 	public String advancePlan() {
 		newProposal();
 		this.uProposal.setPlan(2);
-		return "proposalPage.xhtml?faces-redirect=true";
+		return "proposalPage.xhtml";
 	}
 
 	public String backToProposal() {
 
-		return "proposalPage.xhtml?faces-redirect=true";
+		return "proposalPage.xhtml";
 	}
 
 	public String skipProposal() {
 
-		return "proposalData.xhtml?faces-redirect=true";
+		return "proposalData.xhtml";
 	}
 
 	public String showProposalData() {
 
-		return "proposalData.xhtml?faces-redirect=true";
+		return "proposalData.xhtml";
 	}
 
 	public String cancleProposal() {
 		uProposal = new UserProposalModel();
 
-		return "homePage.xhtml?faces-redirect=true";
+		return "homePage.xhtml";
 	}
 
 	public void onSlideEnd(SlideEndEvent event) {

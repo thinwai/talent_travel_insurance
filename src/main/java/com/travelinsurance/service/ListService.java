@@ -5,6 +5,7 @@ import java.util.List;
 import com.travelinsurance.dto.User;
 import com.travelinsurance.view_model.ListModel;
 import com.travelinsurance.view_model.SearchModel;
+import com.travelinsurance.view_model.UserProposalModel;
 
 public interface ListService {
 	
@@ -12,6 +13,6 @@ public interface ListService {
 
 	Boolean deleteProposal(String id);
 	
-
+	UserProposalModel getAllData(String propoId);
 
 }

@@ -1,5 +1,6 @@
 package com.travelinsurance.dto;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class Proposal {
 	private String holderName;
 	private Date dob;
 	private String nrc;
-	private String holderPhone;
+	private BigDecimal holderPhone;
 	private String fromPlace;
 	private String toPlace;
 	private Date startDate;
@@ -77,12 +78,12 @@ public class Proposal {
 	public void setNrc(String nrc) {
 		this.nrc = nrc;
 	}
-	
-	public String getHolderPhone() {
+
+	public BigDecimal getHolderPhone() {
 		return holderPhone;
 	}
 
-	public void setHolderPhone(String holderPhone) {
+	public void setHolderPhone(BigDecimal holderPhone) {
 		this.holderPhone = holderPhone;
 	}
 

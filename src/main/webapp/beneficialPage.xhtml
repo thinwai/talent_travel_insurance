@@ -160,8 +160,8 @@
 		                		</div>
 		                		<div class="col-sm-9">
 		                			<p:outputLabel for="phone">Phone No</p:outputLabel>
-			                    	<p:inputText id="phone" value="#{proposalController.uProposal.beneficialPh}" class="form-control" required="true" requiredMessage="Please fill of your No.!">
-			                    	</p:inputText>
+		                			<p:inputText id="phone" value="#{proposalController.uProposal.beneficialPh}" class="form-control" required="true" requiredMessage="Please fill of your No.!" converterMessage="Please enter digits only!"/>
+			                    	
 									<h:message for="phone" style="color: red;"></h:message>
 		                		</div>
 		                	</div>

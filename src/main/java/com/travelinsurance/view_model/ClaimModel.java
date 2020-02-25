@@ -1,6 +1,9 @@
 package com.travelinsurance.view_model;
 
+import java.math.BigDecimal;
 import java.util.Date;
+
+import com.travelinsurance.dto.Plan;
 
 import lombok.Data;
 
@@ -10,7 +13,7 @@ public class ClaimModel {
 	private int claimId;
 	private String claimName;
 	private String claimNrc;
-	private String claimPhone;
+	private BigDecimal claimPhone;
 	private Date lostDate;
 	private Double claimAmount;
 	private String reason;
@@ -19,6 +22,9 @@ public class ClaimModel {
 	private int claimType;
 	private String propoId;
 	private int payStatus;
+	
+	private int claimTypeAmount;
+	
 	public int getClaimId() {
 		return claimId;
 	}
@@ -37,10 +43,10 @@ public class ClaimModel {
 	public void setClaimNrc(String claimNrc) {
 		this.claimNrc = claimNrc;
 	}
-	public String getClaimPhone() {
+	public BigDecimal getClaimPhone() {
 		return claimPhone;
 	}
-	public void setClaimPhone(String claimPhone) {
+	public void setClaimPhone(BigDecimal claimPhone) {
 		this.claimPhone = claimPhone;
 	}
 	public Date getLostDate() {
@@ -90,5 +96,11 @@ public class ClaimModel {
 	}
 	public void setPayStatus(int payStatus) {
 		this.payStatus = payStatus;
+	}
+	public int getClaimTypeAmount() {
+		return claimTypeAmount;
+	}
+	public void setClaimTypeAmount(int claimTypeAmount) {
+		this.claimTypeAmount = claimTypeAmount;
 	}
 }

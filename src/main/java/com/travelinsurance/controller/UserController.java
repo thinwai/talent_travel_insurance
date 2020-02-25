@@ -29,15 +29,15 @@ public class UserController {
 	MessagesUtil msg;				
 	
 	public String home() {
-		return "homePage.xhtml?faces-redirect=true";
+		return "homePage.xhtml";
 	}
 	
 	public String login() {
-		return "loginPage.xhtml?faces-redirect=true";
+		return "loginPage.xhtml";
 	}
 	
 	public String register() {
-		return "userRegistrationPage.xhtml?faces-redirect=true";
+		return "userRegistrationPage.xhtml";
 	}
 	
 	public String myAcc() {
@@ -59,7 +59,7 @@ public class UserController {
 			this.user.setTotalClaim(accService.totalClaimt(uService.session(user)));
 		}catch (Exception e) {System.out.println("login 5"+e);
 		}
-		return "myaccPage.xhtml?faces-redirect=true";
+		return "myaccPage.xhtml";
 	}
 	
 	public String userSave() {																						// Chit Su
@@ -70,7 +70,7 @@ public class UserController {
 			user=new UserModel();
 			myAcc();
 			msg.messageInfo("Update Successfully");
-			return "myaccPage.xhtml?faces-redirect=true";
+			return "myaccPage.xhtml";
 		}else {
 			System.out.println("controller 1 "+user.getEmail());
 			boolean status=uService.findByEmail(user);
@@ -98,15 +98,15 @@ public class UserController {
 		}else {
 			
 			msg.messageInfo("Success!");
-			return "homePage.xhtml?faces-redirect=true";
+			return "homePage.xhtml";
 		}
-		//return "homePage.xhtml?faces-redirect=true";
+		//return "homePage.xhtml";
 		return null;
 	}
 	
 	public String userEdit() {
 		
-		return "userRegistrationPage.xhtml?faces-redirect=true";
+		return "userRegistrationPage.xhtml";
 	}
 	
 	

@@ -1,5 +1,6 @@
 package com.travelinsurance.dto;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -17,7 +18,7 @@ public class Claim {
 	private int claimId;
 	private String claimName;
 	private String claimNrc;
-	private String claimPhone;
+	private BigDecimal claimPhone;
 	private Date lostDate;
 	private Double claimAmount;
 	private String reason;
@@ -52,12 +53,12 @@ public class Claim {
 	public void setClaimNrc(String claimNrc) {
 		this.claimNrc = claimNrc;
 	}
-
-	public String getClaimPhone() {
+	
+	public BigDecimal getClaimPhone() {
 		return claimPhone;
 	}
 
-	public void setClaimPhone(String claimPhone) {
+	public void setClaimPhone(BigDecimal claimPhone) {
 		this.claimPhone = claimPhone;
 	}
 
