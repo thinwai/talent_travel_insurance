@@ -207,6 +207,11 @@ public class ProposalController {
 
 		return "homePage.xhtml";
 	}
+	
+	public String proposalEdit() {
+		System.out.println("Edit");
+		return "proposalPage.xhtml";
+	}
 
 	public void onSlideEnd(SlideEndEvent event) {
 

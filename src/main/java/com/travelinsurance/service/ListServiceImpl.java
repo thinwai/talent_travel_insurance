@@ -131,6 +131,7 @@ public class ListServiceImpl implements ListService{
 		proModel.setStartDateFormat(msg.dateFormat(result.getStartDate())); //format
 		proModel.setEndDate(result.getEndDate());							//end date
 		proModel.setEndDateFormat(msg.dateFormat(result.getEndDate()));		//format
+		proModel.setDateRange(result.getDuration());
 		
 		proModel.setVehicleNo(result.getVehicleNo());
 		proModel.setUnit(result.getUnit());

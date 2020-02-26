@@ -26,6 +26,7 @@ public class Proposal {
 	private String toPlace;
 	private Date startDate;
 	private Date endDate;
+	private int duration;
 	private String vehicleNo;
 	private int unit;
 	private int sumInsurance;
@@ -117,6 +118,14 @@ public class Proposal {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public int getDuration() {
+		return duration;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
 	}
 
 	public String getVehicleNo() {

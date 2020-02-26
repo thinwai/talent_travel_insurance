@@ -51,7 +51,7 @@ public class PaymentController {
 				}else {
 					if(propoModel.getProposalStatus()==3) {
 						
-						msg.messageInfo("Success");
+						//msg.messageInfo("Success");
 						return "paymentFormPage.xhtml";
 					}else {
 						msg.messageInfo("Your Proposal was not Accepted Our Company!");

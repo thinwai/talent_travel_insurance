@@ -38,6 +38,7 @@ public class ProposalServiceImpl implements ProposalService{
 		propo.setToPlace(propoModel.getToPlace());
 		propo.setStartDate(propoModel.getStartDate());
 		propo.setEndDate(propoModel.getEndDate());
+		propo.setDuration(propoModel.getDateRange());
 		propo.setVehicleNo(propoModel.getVehicleNo());
 		propo.setUnit(propoModel.getUnit());
 		propo.setSumInsurance(propoModel.getSumInsurance());
