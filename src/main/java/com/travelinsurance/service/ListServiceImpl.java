@@ -136,7 +136,7 @@ public class ListServiceImpl implements ListService{
 		proModel.setVehicleNo(result.getVehicleNo());
 		proModel.setUnit(result.getUnit());
 		proModel.setSumInsurance(result.getSumInsurance());
-		proModel.setProposalStatus(result.getStatus());
+		proModel.setProposalStatus(result.getProposalStatus());
 		proModel.setPlan(result.getPlan().getPlanId());
 		proModel.setPlanType(result.getPlan().getPlanType());
 		proModel.setPlanPrice(result.getPlan().getPlanPrice());

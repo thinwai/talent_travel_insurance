@@ -72,8 +72,9 @@ public class UserProposalModel {
 	private Double claimAmount;
 	private String reason;
 	private int claimStatus;
-	
 	private String claimType;
+	
+	private int viewStatus;
 	
 	public String getpId() {
 		return pId;
@@ -368,5 +369,11 @@ public class UserProposalModel {
 	}
 	public void setClaimStatus(int claimStatus) {
 		this.claimStatus = claimStatus;
+	}
+	public int getViewStatus() {
+		return viewStatus;
+	}
+	public void setViewStatus(int viewStatus) {
+		this.viewStatus = viewStatus;
 	}
 }

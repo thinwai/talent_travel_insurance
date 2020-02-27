@@ -237,7 +237,7 @@
 			        
 			        	<div class="col-md-6"> 
 			        		<!-- Save -->
-			        		<h:panelGroup rendered="#{proposalController.uProposal.proposalStatus == 0}">
+			        		<h:panelGroup rendered="#{proposalController.uProposal.viewStatus == 0}">
 				        		<a href="beneficialPage.xhtml">Back</a>&nbsp;&nbsp;&nbsp;&nbsp;
 				        		
 				        		 <div class="btn-group" role="group" aria-label="Basic example">
@@ -254,7 +254,7 @@
 				        		<h:commandButton action="#{proposalController.saveProposal()}" value="Save" class="btn btn-success" style="width:80px;"/>&nbsp;
 				        	</h:panelGroup>
 				        	
-				        	<h:panelGroup rendered="#{proposalController.uProposal.proposalStatus != 0}">
+				        	<h:panelGroup rendered="#{proposalController.uProposal.viewStatus != 0}">
 				        		<h:commandButton action="#{proposalController.proposalDataToList()}" value="Back" class="btn btn-primary" style="width:80px;"/>&nbsp;
 				        	</h:panelGroup>
 			        	</div>
@@ -263,7 +263,7 @@
 			        
 			        </f:facet>
 			    </p:carousel>
-			    <h:panelGroup rendered="#{proposalController.uProposal.proposalStatus == 0}">
+			    <h:panelGroup rendered="#{proposalController.uProposal.viewStatus == 0}">
 				    <div align="left">
 					   	
 					   	<h:outputText value="* Each of 1 Unit Cost = #{proposalController.uProposal.planPrice} * #{proposalController.uProposal.dateRange} (Plan * Travelling Duration)" style="color:red;"/>

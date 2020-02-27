@@ -11,7 +11,6 @@ import com.travelinsurance.dto.User;
 import com.travelinsurance.service.PaymentService;
 import com.travelinsurance.service.ProposalService;
 import com.travelinsurance.util.MessagesUtil;
-import com.travelinsurance.view_model.ClaimModel;
 import com.travelinsurance.view_model.PaymentModel;
 import com.travelinsurance.view_model.UserProposalModel;
 

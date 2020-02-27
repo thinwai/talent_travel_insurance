@@ -59,10 +59,10 @@ public class UserController {
 			this.user.setTotalClaim(accService.totalClaimt(uService.session(user)));
 		}catch (Exception e) {System.out.println("login 5"+e);
 		}
-		return "myaccPage.xhtml";
+		return "myaccPage.xhtml?faces-redirect=true";
 	}
 	
-	public String userSave() {																						// Chit Su
+	public String userSave() {
 		
 		System.out.println("1");
 		if(this.user.getuId()!=0) {
@@ -70,7 +70,8 @@ public class UserController {
 			user=new UserModel();
 			myAcc();
 			msg.messageInfo("Update Successfully");
-			return "myaccPage.xhtml";
+			this.user.setMessage(1);
+			return "myaccPage.xhtml?faces-redirect=true";
 		}else {
 			System.out.println("controller 1 "+user.getEmail());
 			boolean status=uService.findByEmail(user);
@@ -106,7 +107,7 @@ public class UserController {
 	
 	public String userEdit() {
 		
-		return "userRegistrationPage.xhtml";
+		return "userRegistrationPage.xhtml?faces-redirect=true";
 	}
 	
 	

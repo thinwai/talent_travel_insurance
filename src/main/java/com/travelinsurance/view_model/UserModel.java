@@ -17,7 +17,7 @@ public class UserModel {
 	private List<Proposal> proposals;
 	private int totalPolicy;
 	private int totalClaim;
-	
+	private int message;
 	
 	public int getuId() {
 		return uId;
@@ -73,6 +73,11 @@ public class UserModel {
 	public void setTotalClaim(int totalClaim) {
 		this.totalClaim = totalClaim;
 	}
-	
+	public int getMessage() {
+		return message;
+	}
+	public void setMessage(int message) {
+		this.message = message;
+	}
 
 }

@@ -109,7 +109,7 @@
 	                </div>
 	            </div>
 	            
-	            <h:form>
+	            <h:form id="eee" name="listForm" >
 	            <h:panelGrid columns="5" cellpadding="5">
 	            <p:selectOneMenu value="#{listController.searchModel.searchNo}" style="width:250px;">
 	                <f:selectItem itemLabel="Find All" itemValue="1" />
@@ -122,10 +122,15 @@
 	            &nbsp;&nbsp; 
 	             <h:commandButton action="#{listController.list()}" value="Search" class="btn btn-success fa fa-search" style="width:80px; height:40px;"></h:commandButton>
 	            </h:panelGrid>
-	            </h:form>
 	            
-	            <h:form name="listForm" >
-					<p:dataTable var="list" value="#{listController.listModels}" id="eee" resizableColumns="true">
+	            <h:panelGroup rendered="#{listController.listModel.message == 1}">
+	            	<p style="color:red;">Successfully Delete !</p>
+	            </h:panelGroup>
+	            <h:panelGroup rendered="#{listController.listModel.message == 2}">
+	            	<p style="color:red;">Your Proposal are not allowed to Edit or Delete !</p>
+	            </h:panelGroup>
+	            
+					<p:dataTable var="list" value="#{listController.listModels}" resizableColumns="true">
 					
 					    <p:column headerText="Proposal Id">
 					    	<u><p:commandLink action="#{proposalController.showAllData(list.propoId)}" value="#{list.propoId}"/></u>
@@ -194,6 +199,10 @@
 					    
 					     <p:column headerText="Action">
 					        <div class="btn-group" role="group" aria-label="Basic example">
+					        	<p:commandLink action="#{proposalController.editProposal(list.propoId)}" update="eee"><span class="glyphicon glyphicon-pencil" style="color:black;"></span>
+							        <p:confirm header="Confirmation" message="Are you sure Edit" />
+							    </p:commandLink>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							    
 						    	<p:commandLink action="#{listController.deleteProposal(list.propoId)}" update="eee"><span class="glyphicon glyphicon-trash" style="color:black;"></span>
 							        <p:confirm header="Confirmation" message="Are you sure DELETE?" />
 							    </p:commandLink>

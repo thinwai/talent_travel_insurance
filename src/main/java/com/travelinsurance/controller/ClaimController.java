@@ -12,14 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.travelinsurance.dto.User;
 import com.travelinsurance.service.ClaimService;
-import com.travelinsurance.service.ListService;
 import com.travelinsurance.service.PaymentService;
 import com.travelinsurance.service.ProposalService;
 import com.travelinsurance.util.MessagesUtil;
 import com.travelinsurance.view_model.ClaimModel;
 import com.travelinsurance.view_model.ClaimTypeModel;
-import com.travelinsurance.view_model.ListModel;
-import com.travelinsurance.view_model.SearchModel;
 import com.travelinsurance.view_model.UserProposalModel;
 
 @Named

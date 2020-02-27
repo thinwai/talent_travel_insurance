@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService{
 	UserRepository uRepo;
 	
 	@Override
-	public void userSave(UserModel user) {															//Chit Su
+	public void userSave(UserModel user) {
 
 		User userdto = new User();
 		userdto.setuId(user.getuId());
@@ -70,6 +70,7 @@ public class UserServiceImpl implements UserService{
 					FacesContext facesContext=FacesContext.getCurrentInstance();
 					HttpSession session=(HttpSession) facesContext.getExternalContext().getSession(true);
 					session.setAttribute("session", result);
+					session.setAttribute("email", result.getEmail());
 					
 				}else {
 					loginResult=3;

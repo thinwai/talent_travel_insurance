@@ -15,7 +15,6 @@ import com.travelinsurance.service.ListService;
 import com.travelinsurance.util.MessagesUtil;
 import com.travelinsurance.view_model.ListModel;
 import com.travelinsurance.view_model.SearchModel;
-import com.travelinsurance.view_model.UserProposalModel;
 
 @Named
 @ViewScoped
@@ -23,7 +22,7 @@ public class ListController {
 	
 	private SearchModel searchModel =new SearchModel();
 	private List<ListModel> listModels=new ArrayList<ListModel>();
-	
+	private ListModel listModel=new ListModel();
 	
 	@Autowired
 	ListService listService;
@@ -32,6 +31,8 @@ public class ListController {
 	MessagesUtil msg;
 	
 	public String list() {
+		
+		this.listModel.setMessage(0);
 		
 		FacesContext facesContext=FacesContext.getCurrentInstance();
 		HttpSession session=(HttpSession) facesContext.getExternalContext().getSession(true);
@@ -52,9 +53,11 @@ public class ListController {
 			list();
 			System.out.println("delete message test 2 ");
 			msg.messageInfo("Successfully DELETE!");
+			this.listModel.setMessage(1);
 		}else {
 			System.out.println("delete message test 3 ");
 			msg.messageInfo("Your Proposal are not allowed to DELETE!");
+			this.listModel.setMessage(2);
 		}
 		System.out.println("delete message test 4 ");
 	}
@@ -73,6 +76,14 @@ public class ListController {
 
 	public void setListModels(List<ListModel> listModels) {
 		this.listModels = listModels;
+	}
+
+	public ListModel getListModel() {
+		return listModel;
+	}
+
+	public void setListModel(ListModel listModel) {
+		this.listModel = listModel;
 	}
 	
 

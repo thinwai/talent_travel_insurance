@@ -1,6 +1,5 @@
 package com.travelinsurance.view_model;
 
-import java.util.Date;
 import java.util.List;
 
 import com.travelinsurance.dto.Beneficial;
@@ -19,6 +18,8 @@ public class ListModel {
 	private int propoStatus;
 	private int payStatus;
 	private int claimStatus;
+	
+	private int message;
 	
 	public String getPropoId() {
 		return propoId;
@@ -80,7 +81,10 @@ public class ListModel {
 	public void setClaimStatus(int claimStatus) {
 		this.claimStatus = claimStatus;
 	}
-	
-	
-
+	public int getMessage() {
+		return message;
+	}
+	public void setMessage(int message) {
+		this.message = message;
+	}
 }

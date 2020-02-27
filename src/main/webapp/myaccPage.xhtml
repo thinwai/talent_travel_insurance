@@ -99,8 +99,12 @@
 						style="width: 150px" /> 
 						<br /><br /><br />
 						<h:form>
-						<p:messages id="msgs" severity="error"/>
+							<h:panelGroup rendered="#{userController.user.message == 1}">
+				            	<p style="color:red;">Successfully Update !</p>
+				            </h:panelGroup>
 							<table align="center">
+								
+								
 								<tr>
 									<td align="left">
 										<h:outputLabel style="color: #4e6096;">Email</h:outputLabel>

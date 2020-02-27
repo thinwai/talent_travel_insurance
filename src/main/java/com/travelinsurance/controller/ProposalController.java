@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -16,15 +15,14 @@ import org.primefaces.event.SlideEndEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.travelinsurance.dto.Plan;
-import com.travelinsurance.dto.Proposal;
 import com.travelinsurance.dto.User;
 import com.travelinsurance.dto.Vehicle;
-import com.travelinsurance.service.BeneficialService;
 import com.travelinsurance.service.ListService;
 import com.travelinsurance.service.PlanService;
 import com.travelinsurance.service.ProposalService;
 import com.travelinsurance.service.VehicleService;
 import com.travelinsurance.util.MessagesUtil;
+import com.travelinsurance.view_model.ListModel;
 import com.travelinsurance.view_model.UserProposalModel;
 
 @Named
@@ -42,12 +40,12 @@ public class ProposalController {
 
 	@Autowired
 	ProposalService propoService;
-
-	@Autowired
-	private BeneficialService bService;
 	
 	@Autowired
 	private ListService listService;
+	
+	@Autowired
+	ListController listController;
 
 	private UserProposalModel uProposal = new UserProposalModel();
 	private List<Vehicle> vehicles = new ArrayList<>();
@@ -165,6 +163,8 @@ public class ProposalController {
 	public String showAllData(String propoId) {
 		System.out.println(propoId);
 		uProposal=listService.getAllData(propoId);
+		uProposal.setViewStatus(1);
+		
 		return "proposalData.xhtml";
 	}
 	
@@ -208,16 +208,31 @@ public class ProposalController {
 		return "homePage.xhtml";
 	}
 	
-	public String proposalEdit() {
-		System.out.println("Edit");
-		return "proposalPage.xhtml";
+	public String editProposal(String propoId) {
+		
+		uProposal=listService.getAllData(propoId);
+		System.out.println("pro status : "+uProposal.getProposalStatus() + " | "+propoId);
+		if(uProposal.getProposalStatus() == 1) {
+			System.out.println("Edit Pass");
+			
+			return "proposalPage.xhtml?faces-redirect=true";
+		}else if(uProposal.getProposalStatus() != 1){
+			msg.messageError("You are not allowed to Edit!");
+			
+			ListModel listModel=new ListModel();
+			listModel.setMessage(2);
+			
+			listController.setListModel(listModel);
+			
+			return null;
+		}
+		return null;
 	}
 
 	public void onSlideEnd(SlideEndEvent event) {
 
 		System.out.println("ajax Test");
 		this.uProposal.setSumInsurance(((int) event.getValue()) * uProposal.getPlanPrice() * uProposal.getDateRange());
-		
 		this.uProposal.setUnit((int) event.getValue());
 		System.out.println(uProposal.getSumInsurance());
 	}

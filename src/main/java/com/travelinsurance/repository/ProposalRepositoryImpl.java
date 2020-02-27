@@ -60,7 +60,7 @@ public class ProposalRepositoryImpl implements ProposalRepositoryCustom{
 	    cq.where(proposalPredicate).distinct(true);
         
         TypedQuery<Proposal> query = em.createQuery(cq);
-        Proposal propo=new Proposal();
+        
 		return query.getSingleResult();
 	}
 }
