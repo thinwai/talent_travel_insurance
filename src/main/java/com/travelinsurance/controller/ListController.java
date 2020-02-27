@@ -45,6 +45,15 @@ public class ListController {
 		return "listPage.xhtml";
 	}
 	
+	public void listReset() {
+		
+		searchModel=new SearchModel();
+		
+		searchModel.setSearchNo(1);
+		list();
+		
+	}
+	
 	public void deleteProposal(String Id) {
 		
 		Boolean result=listService.deleteProposal(Id);

@@ -75,7 +75,7 @@
 						<li><a href="#{claimController.claim()}">Claim</a></li>
 						<li><a href="#{listController.list()}">Detail List</a></li>
 						<li><a href="#{userController.myAcc()}">My Account</a></li>
-						<li><a class="btn btn-link-3" href="#">Logout</a></li>
+						<li><a class="btn btn-link-3" href="#{userController.userLogout()}">Logout</a></li>
 					</ul>
 				</div>
 			</div>
@@ -97,7 +97,7 @@
 				</div>
             </div>
         </div> -->
-        
+   <c:if test="#{email != null}">     
         <!-- Features -->
         <div class="features-container section-container">
 	        <div class="container-fluid">
@@ -110,17 +110,19 @@
 	            </div>
 	            
 	            <h:form id="eee" name="listForm" >
-	            <h:panelGrid columns="5" cellpadding="5">
+	            <h:panelGrid columns="8" cellpadding="5">
 	            <p:selectOneMenu value="#{listController.searchModel.searchNo}" style="width:250px;">
 	                <f:selectItem itemLabel="Find All" itemValue="1" />
 	                <f:selectItem itemLabel="Search By Proposal ID" itemValue="2" />
 	                <f:selectItem itemLabel="Search By HolderName" itemValue="3" />
 	                <f:selectItem itemLabel="Search By BeneficialName" itemValue="4" />
 	            </p:selectOneMenu>
-	            &nbsp;&nbsp;
+	            &nbsp;
 	             <p:inputText value="#{listController.searchModel.searchData}" />
-	            &nbsp;&nbsp; 
+	            &nbsp;
 	             <h:commandButton action="#{listController.list()}" value="Search" class="btn btn-success fa fa-search" style="width:80px; height:40px;"></h:commandButton>
+	             &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp; 
+	             <h:commandLink action="#{listController.listReset()}"><u>Reset</u></h:commandLink>
 	            </h:panelGrid>
 	            
 	            <h:panelGroup rendered="#{listController.listModel.message == 1}">
@@ -230,7 +232,7 @@
                 </div>
 	        </div>
         </footer>
-
+</c:if>
 
         <!-- Javascript -->
         <!-- <script src="assets/js/jquery-1.11.1.min.js"></script> -->

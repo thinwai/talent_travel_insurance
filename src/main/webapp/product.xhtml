@@ -51,7 +51,7 @@
 				<div class="collapse navbar-collapse" id="top-navbar-1">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#{userController.userEdit()}">Sign up</a></li>
-						<li><a class="btn btn-link-3" href="#{userController.login()}">Login</a></li>
+						<li><a class="btn btn-link-3" href="#{userController.userLoginPage()}">Login</a></li>
 					</ul>
 				</div>
 			</div>
@@ -67,7 +67,7 @@
 							<!-- <p class="medium-paragraph">
 								Get Insured and Feel Secured!								
 							</p> -->
-							<a class="btn btn-success" href="#{userController.login()}">Get Started</a>
+							<a class="btn btn-success" href="#{userController.userLoginPage()}">Get Started</a>
 						</div>
 					</div>
 					<div class="col-sm-4"></div>
@@ -112,9 +112,6 @@
 					                <hr/>
 									<span><i class="fa fa-clock-o"></i> Travel Delay <br /> 2hr or more (depand on your ticket)</span>	                
 					                <hr/>
-					                <span class="emphasis-2">
-					                	<h:commandButton action="#{proposalController.basicPlan()}" value="Start" class="btn btn-success" />
-					                </span>
 					              </div>
 						    </div>
 	                		</div>
@@ -146,8 +143,6 @@
 					                <hr/>
 					                <span><i class="fa fa-plane"></i> Trip Cancellation/ Interruption <br /> (depand on your ticket)</span>
 					                <hr/>
-					                <span class="emphasis-2">
-					                <h:commandButton action="#{proposalController.advancePlan()}" value="Start" class="btn btn-success" /></span>
 					              </div>
 	                		</div>
 	                	</div>

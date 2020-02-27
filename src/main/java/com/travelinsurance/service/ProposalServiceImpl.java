@@ -63,6 +63,7 @@ public class ProposalServiceImpl implements ProposalService{
 		try {
 			if(!propoModel.getBeneficialName().equals(null)) {
 				Beneficial beneficialdto = new Beneficial();
+				beneficialdto.setbId(propoModel.getbId());
 				beneficialdto.setBeneficialName(propoModel.getBeneficialName());
 				beneficialdto.setNrc(propoModel.getBenificalNrc());
 				beneficialdto.setRelationship(propoModel.getRelationship());

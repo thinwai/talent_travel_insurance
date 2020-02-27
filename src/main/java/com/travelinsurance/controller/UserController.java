@@ -32,11 +32,13 @@ public class UserController {
 		return "homePage.xhtml";
 	}
 	
-	public String login() {
+	public String userLoginPage() {
+		user=new UserModel();
 		return "loginPage.xhtml";
 	}
 	
-	public String register() {
+	public String userRegisterPage() {
+		user=new UserModel();
 		return "userRegistrationPage.xhtml";
 	}
 	
@@ -108,6 +110,11 @@ public class UserController {
 	public String userEdit() {
 		
 		return "userRegistrationPage.xhtml?faces-redirect=true";
+	}
+	
+	public String userLogout() {
+		
+		return "product.xhtml?faces-redirect=true";
 	}
 	
 	

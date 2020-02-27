@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -65,12 +66,13 @@
 						<li><a href="#{claimController.claim()}">Claim</a></li>
 						<li><a href="#{listController.list()}">Detail List</a></li>
 						<li><a href="#{userController.myAcc()}">My Account</a></li>
-						<li><a class="btn btn-link-3" href="#">Logout</a></li>
+						<li><a class="btn btn-link-3" href="#{userController.userLogout()}">Logout</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
-    
+		
+    <c:if test="#{email != null}">
         <h:form id="panel" header="Form">
     	<!-- Card Section -->
         <div class="features-container section-container">
@@ -311,7 +313,7 @@
                 </div>
 	        </div>
         </footer>
-
+</c:if>
 
         <!-- Javascript -->
         <!-- <script src="assets/js/jquery-1.11.1.min.js"></script> -->

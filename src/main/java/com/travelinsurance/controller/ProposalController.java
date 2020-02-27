@@ -23,6 +23,7 @@ import com.travelinsurance.service.ProposalService;
 import com.travelinsurance.service.VehicleService;
 import com.travelinsurance.util.MessagesUtil;
 import com.travelinsurance.view_model.ListModel;
+import com.travelinsurance.view_model.SearchModel;
 import com.travelinsurance.view_model.UserProposalModel;
 
 @Named
@@ -169,7 +170,11 @@ public class ProposalController {
 	}
 	
 	public String proposalDataToList() {
-		
+		SearchModel searchModel=new SearchModel();
+		searchModel.setSearchNo(2);
+		searchModel.setSearchData(uProposal.getpId());
+		listController.setSearchModel(searchModel); 												//Auto Only one list for this Proposal
+		listController.list();
 		uProposal = new UserProposalModel();
 		
 		return "listPage.xhtml";

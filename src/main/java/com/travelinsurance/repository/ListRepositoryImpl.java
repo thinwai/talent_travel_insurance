@@ -42,28 +42,27 @@ public class ListRepositoryImpl implements ListRepositoryCustom {
         Fetch<Proposal, Beneficial> beneficial=propo.fetch("beneficial", JoinType.LEFT);
         Fetch<Proposal, Payment> payment=propo.fetch("payment", JoinType.LEFT);
         Fetch<Payment, Claim> claim=payment.fetch("claim", JoinType.LEFT);
-
-        //Predicate propoIdPreidcate = cb.equal(propo.get("user"), user);
-    	//cq.where(propoIdPreidcate).distinct(true);
     	
-        if(search.getSearchNo()==0 || search.getSearchNo()==1) {
+        int searchNo=search.getSearchNo();
+        
+        if(searchNo==0 || searchNo==1) {
         	Predicate propoIdPreidcate = cb.equal(propo.get("user"), user);
         	Predicate deleteStatus = cb.equal(propo.get("status"), 1);
         	cq.where(cb.and(propoIdPreidcate, deleteStatus)).distinct(true);
         	System.out.println("Repo______________1");
-        }else if(search.getSearchNo()==2) {
+        }else if(searchNo==2) {
         	Predicate propoUserIdPreidcate = cb.equal(propo.get("user"), user);
         	Predicate deleteStatus = cb.equal(propo.get("status"), 1);
         	Predicate propoIdPreidcate = cb.equal(propo.get("pId"), search.getSearchData());
         	cq.where(cb.and(propoUserIdPreidcate, deleteStatus, propoIdPreidcate)).distinct(true);
         	System.out.println("Repo______________2");
-        }else if(search.getSearchNo()==3) {
+        }else if(searchNo==3) {
         	Predicate propoUserIdPreidcate = cb.equal(propo.get("user"), user);
         	Predicate deleteStatus = cb.equal(propo.get("status"), 1);
         	Predicate propoIdPreidcate = cb.like(propo.get("holderName"), search.getSearchData()+"%");
         	cq.where(cb.and(propoUserIdPreidcate, deleteStatus, propoIdPreidcate)).distinct(true);
         	System.out.println("Repo______________3");
-        }else if(search.getSearchNo()==4) {
+        }else if(searchNo==4) {
         	Predicate propoUserIdPreidcate = cb.equal(propo.get("user"), user);
         	Predicate deleteStatus = cb.equal(propo.get("status"), 1);
         	Predicate propoIdPreidcate = cb.like(((Path<Object>) beneficial).get("beneficialName"), search.getSearchData()+"%");
