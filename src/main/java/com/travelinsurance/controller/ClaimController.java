@@ -17,6 +17,7 @@ import com.travelinsurance.service.ProposalService;
 import com.travelinsurance.util.MessagesUtil;
 import com.travelinsurance.view_model.ClaimModel;
 import com.travelinsurance.view_model.ClaimTypeModel;
+import com.travelinsurance.view_model.SearchModel;
 import com.travelinsurance.view_model.UserProposalModel;
 
 @Named
@@ -119,9 +120,13 @@ public class ClaimController {
 	
 	public String claimToListPage() {
 		
-		claimModel=new ClaimModel();
-		
+		SearchModel searchModel=new SearchModel();
+		searchModel.setSearchNo(2);
+		searchModel.setSearchData(claimModel.getPropoId());
+		listController.setSearchModel(searchModel); 												//Auto Only one list for this Proposal
 		listController.list();
+		
+		claimModel=new ClaimModel();
 		
 		return "listPage.xhtml?faces-redirect=true";
 	}

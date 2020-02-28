@@ -66,6 +66,9 @@
 			    color: #fff;
 			    border: 1px solid #63a736;
 			}
+			.ui-panelmenu .ui-menuitem-link {
+				line-height: 35px;
+			}
 		</style>
     </h:head>
 
@@ -289,13 +292,10 @@
    				</h:panelGroup>
    				
    				
-   				<p:panelMenu itemStyle="text-align:center" responsive="true">
+   				<p:panelMenu itemStyle="text-align:center" responsive="true" style="width:500px;">
 			        <p:submenu label="Your Payment" rendered="#{proposalController.uProposal.payStatus != 0}">
 			        	<p:menuitem>
 			        		<p:panelGrid columns="2" style="width:100%;">
-				        		<f:facet name="header">
-					                <h:outputText value="Your Payment" />
-					            </f:facet>
 					            
 					            <h:outputText value="Bank : " />
 					            <h:outputText value="#{proposalController.uProposal.bank}" />
@@ -328,10 +328,7 @@
 			        <p:submenu label="Your Claim" rendered="#{proposalController.uProposal.claimStatus != 0}">
 			            <p:menuitem>
 			        		<p:panelGrid columns="2" style="width:100%;">
-				        		<f:facet name="header">
-					                <h:outputText value="Your Claim" />
-					            </f:facet>
-					            
+			        		
 					            <h:outputText value="Claim Person : " />
 					            <h:outputText value="#{proposalController.uProposal.claimName}" />
 					 
@@ -401,7 +398,34 @@
 	        </div>
         </footer>
 </c:if>
+<c:if test="#{email == null}"> 
+		<div class="features-container section-container">
+	        <div class="container">
+	        
+	        
+        		 <div class="row">
+	                <div class="col-sm-12 features section-description wow fadeIn">
+	                    <h2 style="color:green;">Proposal Data</h2>
+	                    <div class="divider-1"><div class="line"></div></div>
+	                </div>
+	            </div>
+				<div class="row">
+			            <div class="row">
+			            <div class="col-sm-2"></div>
+			                <div class="col-sm-8 features section-description wow fadeIn">
+					            <p class="inset">
+					           		Sorry ......<br />
+					            	You are not permision for this Page!<br/><br />
+					            	<a href="product.xhtml"><u>Login</u></a>
+					            </p>
+			            	</div>
+			            <div class="col-sm-2"></div>
+			            </div>
+				</div>
+			</div>
+        </div> 
 
+</c:if>
         <!-- Javascript -->
         <!-- <script src="assets/js/jquery-1.11.1.min.js"></script> -->
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
