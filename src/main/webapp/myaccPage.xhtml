@@ -52,7 +52,7 @@
 </h:head>
 
 <h:body>
-
+<h:form>
 	<!-- Top menu -->
 	<nav class="navbar navbar-fixed-top" role="navigation">
 	<div class="container">
@@ -69,18 +69,18 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="top-navbar-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#{userController.home()}">Home</a></li>
-				<li><a href="#{proposalController.proposal()}">Proposal</a></li>
-				<li><a href="#{paymentController.payment()}">Payment</a></li>
-				<li><a href="#{claimController.claim()}">Claim</a></li>
-				<li><a href="#{listController.list()}">Detail List</a></li>
-				<li><a href="#{userController.myAcc()}">My Account</a></li>
-				<li><a class="btn btn-link-3" href="#{userController.userLogout()}">Logout</a></li>
+				<li><p:commandLink value="Home" action="#{userController.home()}" /></li>
+				<li><p:commandLink value="Proposal" action="#{proposalController.proposal()}" /></li>
+				<li><p:commandLink value="Payment" action="#{paymentController.payment()}" /></li>
+				<li><p:commandLink value="Claim" action="#{claimController.claim()}" /></li>
+				<li><p:commandLink value="Detail List" action="#{listController.list()}" /></li>
+				<li><p:commandLink value="My Account" action="#{userController.myAcc()}" /></li>
+				<li><p:commandButton class="btn btn-link-3" value="Logout" action="#{userController.userLogout()}" /></li>
 			</ul>
 		</div>
 	</div>
 	</nav>
-
+</h:form>
 <c:if test="#{email != null}">
 	<!-- Card Section -->
 	<div class="features-container section-container">
@@ -101,6 +101,7 @@
 						style="width: 150px" /> 
 						<br /><br /><br />
 						<h:form>
+						 
 							<h:panelGroup rendered="#{userController.user.message == 1}">
 				            	<p style="color:red;">Successfully Update !</p>
 				            </h:panelGroup>

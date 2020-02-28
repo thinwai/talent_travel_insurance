@@ -33,6 +33,9 @@ public class ClaimController {
 	ClaimService ctService;
 	
 	@Autowired
+	ListController listController;
+	
+	@Autowired
 	MessagesUtil msg;
 
 	private ClaimModel claimModel=new ClaimModel();
@@ -40,7 +43,8 @@ public class ClaimController {
 	private List<ClaimTypeModel> ctModel=new ArrayList<ClaimTypeModel>();
 	
 	public String claim() {
-		return "claimPage.xhtml";
+		claimModel=new ClaimModel();
+		return "claimPage.xhtml?faces-redirect=true";
 	}
 	
 	public String claimIdSave(){
@@ -117,7 +121,9 @@ public class ClaimController {
 		
 		claimModel=new ClaimModel();
 		
-		return "listPage.xhtml";
+		listController.list();
+		
+		return "listPage.xhtml?faces-redirect=true";
 	}
 	
 	/*

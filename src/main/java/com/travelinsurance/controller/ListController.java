@@ -42,7 +42,7 @@ public class ListController {
 		
 		listModels=listService.detailList(user,searchModel);
 		
-		return "listPage.xhtml";
+		return "listPage.xhtml?faces-redirect=true";
 	}
 	
 	public void listReset() {

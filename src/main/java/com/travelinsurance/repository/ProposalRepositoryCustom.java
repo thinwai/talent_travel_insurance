@@ -10,4 +10,5 @@ public interface ProposalRepositoryCustom {
 	Proposal searchProposalId(String propoId, User user);
 	Proposal searchProId(String propoId);
 
+	List<Proposal> proposalRequest();											// for Admin
 }

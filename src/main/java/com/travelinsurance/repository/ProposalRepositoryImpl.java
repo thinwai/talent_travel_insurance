@@ -63,4 +63,20 @@ public class ProposalRepositoryImpl implements ProposalRepositoryCustom{
         
 		return query.getSingleResult();
 	}
+
+	@Override
+	public List<Proposal> proposalRequest() {
+		
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Proposal> cq = cb.createQuery(Proposal.class);
+ 
+        Root<Proposal> proposal = cq.from(Proposal.class);
+        
+	    Predicate proposalRequestPredicate = cb.equal(proposal.get("proposalStatus"), 1);
+	    Predicate proposalActivePredicate = cb.equal(proposal.get("status"), 1);
+	    cq.where(cb.and(proposalRequestPredicate, proposalActivePredicate)).distinct(true);
+        
+        TypedQuery<Proposal> query = em.createQuery(cq);
+		return query.getResultList();
+	}
 }

@@ -53,10 +53,10 @@ public class ProposalController {
 	private List<Plan> plans = new ArrayList<>();
 
 	public String proposal() {
-
+		
 		newProposal();
 
-		return "proposalPage.xhtml";
+		return "proposalPage.xhtml?faces-redirect=true";
 	}
 
 	public String saveProposal() {
@@ -73,7 +73,7 @@ public class ProposalController {
 		uProposal.setMessage(1);
 		System.out.println("message | "+uProposal.getMessage());
 
-		return "proposalData.xhtml";
+		return "proposalData.xhtml?faces-redirect=true";
 	}
 
 	/*
@@ -82,7 +82,7 @@ public class ProposalController {
 	 */
 
 	public void newProposal() {
-
+		uProposal=new UserProposalModel();
 		vehicles = vehicleService.findAllVehicle();
 		plans = planService.findAllPlan();
 		
@@ -100,14 +100,19 @@ public class ProposalController {
 		uProposal.setDobFormat(msg.dateFormat(uProposal.getDob()));
 		uProposal.setStartDateFormat(msg.dateFormat(uProposal.getStartDate()));
 		uProposal.setEndDateFormat(msg.dateFormat(uProposal.getEndDate()));
-		uProposal.setUnit(1);
+		
+		if(uProposal.getUnit() == 0 ) {
+			uProposal.setUnit(1);
+		}
 
 		for (Plan temp : plans) {
 			if (temp.getPlanId() == uProposal.getPlan()) {
-				this.uProposal.setSumInsurance(temp.getPlanPrice());
 				this.uProposal.setPlanType(temp.getPlanType());
 				this.uProposal.setPlanPrice(temp.getPlanPrice());
-				this.uProposal.setSumInsurance( uProposal.getDateRange() * uProposal.getPlanPrice());
+				
+				if(uProposal.getSumInsurance()==0) {
+					this.uProposal.setSumInsurance( uProposal.getDateRange() * temp.getPlanPrice());
+				}
 			}
 		}
 
@@ -118,7 +123,7 @@ public class ProposalController {
 			}
 		}
 
-		return "beneficialPage.xhtml";
+		return "beneficialPage.xhtml?faces-redirect=true";
 	}
 
 	public void dateDiff(SelectEvent event) {
@@ -166,7 +171,7 @@ public class ProposalController {
 		uProposal=listService.getAllData(propoId);
 		uProposal.setViewStatus(1);
 		
-		return "proposalData.xhtml";
+		return "proposalData.xhtml?faces-redirect=true";
 	}
 	
 	public String proposalDataToList() {
@@ -177,46 +182,48 @@ public class ProposalController {
 		listController.list();
 		uProposal = new UserProposalModel();
 		
-		return "listPage.xhtml";
+		return "listPage.xhtml?faces-redirect=true";
 	}
 
 	public String basicPlan() {
 		newProposal();
 		this.uProposal.setPlan(1);
-		return "proposalPage.xhtml";
+		return "proposalPage.xhtml?faces-redirect=true";
 	}
 
 	public String advancePlan() {
 		newProposal();
 		this.uProposal.setPlan(2);
-		return "proposalPage.xhtml";
+		return "proposalPage.xhtml?faces-redirect=true";
 	}
 
 	public String backToProposal() {
 
-		return "proposalPage.xhtml";
+		return "proposalPage.xhtml?faces-redirect=true";
 	}
 
 	public String skipProposal() {
 
-		return "proposalData.xhtml";
+		return "proposalData.xhtml?faces-redirect=true";
 	}
 
 	public String showProposalData() {
 
-		return "proposalData.xhtml";
+		return "proposalData.xhtml?faces-redirect=true";
 	}
 
 	public String cancleProposal() {
 		uProposal = new UserProposalModel();
 
-		return "homePage.xhtml";
+		return "homePage.xhtml?faces-redirect=true";
 	}
 	
 	public String editProposal(String propoId) {
 		
+		newProposal();
+		
 		uProposal=listService.getAllData(propoId);
-		System.out.println("pro status : "+uProposal.getProposalStatus() + " | "+propoId);
+		System.out.println("pro status : "+uProposal.getProposalStatus() + " | "+propoId +" | "+uProposal.getUnit() +" | "+uProposal.getSumInsurance());
 		if(uProposal.getProposalStatus() == 1) {
 			System.out.println("Edit Pass");
 			

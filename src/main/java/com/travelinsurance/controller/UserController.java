@@ -29,12 +29,12 @@ public class UserController {
 	MessagesUtil msg;				
 	
 	public String home() {
-		return "homePage.xhtml";
+		return "homePage.xhtml?faces-redirect=true";
 	}
 	
 	public String userLoginPage() {
 		user=new UserModel();
-		return "loginPage.xhtml";
+		return "loginPage.xhtml?faces-redirect=true";
 	}
 	
 	public String userRegisterPage() {
@@ -49,7 +49,7 @@ public class UserController {
 		
 		try {
 			User user=new User();System.out.println("login 2");
-			user=(User) session.getAttribute("session");System.out.println("login 3 -> " + user+ "- > ");
+			user=(User) session.getAttribute("session");
 			user=uService.session(user);
 			System.out.println("login 4");
 			this.user.setuId(user.getuId());
@@ -57,8 +57,8 @@ public class UserController {
 			this.user.setUsername(user.getUsername());
 			this.user.setPassword(user.getPassword());
 			this.user.setConPassword(user.getPassword());
-			this.user.setTotalPolicy(accService.totalPolicy(uService.session(user)));
-			this.user.setTotalClaim(accService.totalClaimt(uService.session(user)));
+			this.user.setTotalPolicy(accService.totalPolicy(user));
+			this.user.setTotalClaim(accService.totalClaimt(user));
 		}catch (Exception e) {System.out.println("login 5"+e);
 		}
 		return "myaccPage.xhtml?faces-redirect=true";
@@ -113,7 +113,8 @@ public class UserController {
 	}
 	
 	public String userLogout() {
-		
+		System.out.println("logout Method _______________________ | ");
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "product.xhtml?faces-redirect=true";
 	}
 	

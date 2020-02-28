@@ -12,7 +12,6 @@ import com.travelinsurance.dto.User;
 import com.travelinsurance.dto.Vehicle;
 import com.travelinsurance.repository.BeneficialRepository;
 import com.travelinsurance.repository.ProposalRepository;
-import com.travelinsurance.view_model.ClaimModel;
 import com.travelinsurance.view_model.UserProposalModel;
 
 @Service

@@ -134,7 +134,7 @@ public class ListServiceImpl implements ListService{
 		proModel.setDateRange(result.getDuration());
 		
 		proModel.setVehicleNo(result.getVehicleNo());
-		proModel.setUnit(result.getUnit());
+		proModel.setUnit(result.getUnit());System.out.println(result.getUnit() + " | "+proModel.getUnit());
 		proModel.setSumInsurance(result.getSumInsurance());
 		proModel.setProposalStatus(result.getProposalStatus());
 		proModel.setPlan(result.getPlan().getPlanId());
