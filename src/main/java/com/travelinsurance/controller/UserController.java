@@ -43,7 +43,7 @@ public class UserController {
 	}
 	
 	public String myAcc() {
-		System.out.println("login 1");
+		user= new UserModel();
 		FacesContext facesContext=FacesContext.getCurrentInstance();
 		HttpSession session=(HttpSession) facesContext.getExternalContext().getSession(true);
 		
