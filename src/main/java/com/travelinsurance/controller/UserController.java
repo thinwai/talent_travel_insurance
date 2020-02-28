@@ -101,7 +101,7 @@ public class UserController {
 		}else {
 			
 			msg.messageInfo("Success!");
-			return "homePage.xhtml";
+			return "homePage.xhtml?faces-redirect=true";
 		}
 		//return "homePage.xhtml";
 		return null;
