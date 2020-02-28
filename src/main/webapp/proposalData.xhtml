@@ -56,6 +56,16 @@
 		    .section-container {
 			    padding-bottom: 250px;
 			}
+			body .ui-button2  {
+			    background-color: #63a736;
+			    border: 1px solid #63a736;
+			    margin-top:8px;
+			}
+			body .ui-button2.ui-state-hover{
+				background-color: #63a736;
+			    color: #fff;
+			    border: 1px solid #63a736;
+			}
 		</style>
     </h:head>
 
@@ -82,7 +92,7 @@
 						<li><p:commandLink value="Claim" action="#{claimController.claim()}" /></li>
 						<li><p:commandLink value="Detail List" action="#{listController.list()}" /></li>
 						<li><p:commandLink value="My Account" action="#{userController.myAcc()}" /></li>
-						<li><p:commandButton class="btn btn-link-3" value="Logout" action="#{userController.userLogout()}" /></li>
+						<li><p:commandButton class="ui-button2" value="LOGOUT" action="#{userController.userLogout()}" /></li>
 					</ul>
 				</div>
 			</div>
@@ -279,7 +289,7 @@
    				</h:panelGroup>
    				
    				
-   				<p:panelMenu style="width:800px">
+   				<p:panelMenu itemStyle="text-align:center" responsive="true">
 			        <p:submenu label="Your Payment" rendered="#{proposalController.uProposal.payStatus != 0}">
 			        	<p:menuitem>
 			        		<p:panelGrid columns="2" style="width:100%;">
@@ -293,7 +303,7 @@
 					            <h:outputText value="cardNo : " />
 					            <h:outputText value="#{proposalController.uProposal.cardNo}" />
 					 
-				        		<h:outputText value="expiredDate : " />
+				        		<h:outputText value="Expired Date : " />
 				        		<h:outputText value="#{proposalController.uProposal.expiredDateFormat}" />
 			        		
 			        			
@@ -364,11 +374,28 @@
         </h:form>
 
         <!-- Footer -->
-        <footer>
-	        <div class="container">
+        <footer class="bg-success">
+	        <div class="container bg-success">
 	        	<div class="row">
+	        		<div class="col-sm-4">
+	        			<i class="fa fa-phone-square text-info" style="font-size:30px;"></i>
+	        			<h4>+959790869503</h4>	        			
+	        		</div>
+	        		<div class="col-sm-4">
+	        			<i class="fa fa-envelope-o text-info" style="font-size:30px;"></i>
+	        			<h4>travelinsurance.talent@gmail.com</h4>
+	        			</div>
+	        		<div class="col-sm-4">
+	        			<i class="fa fa-map-marker text-info" style="font-size:30px;"></i>
+	        			<h4>Building (5), 3th floor, MICT Park, Hlaing Township, Yangon </h4>
+                    </div>
+                </div>
+                <div class="row">
 	        		<div class="col-sm-12 footer-copyright">
                     	&copy; Bootstrap Navbar Template by <a href="http://azmind.com">AZMIND</a>
+	        			<i class="fa fa-facebook-official"></i>
+	        			<i class="fa fa-instagram"></i>
+	        			<i class="fa fa-twitter"></i>
                     </div>
                 </div>
 	        </div>

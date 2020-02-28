@@ -36,6 +36,16 @@
 				width:100%;
 				height: 40px;
 			}
+			body .ui-button2  {
+			    background-color: #63a736;
+			    border: 1px solid #63a736;
+			    margin-top:8px;
+			}
+			body .ui-button2.ui-state-hover{
+				background-color: #63a736;
+			    color: #fff;
+			    border: 1px solid #63a736;
+			}
 		</style>
     </h:head>
 
@@ -62,7 +72,7 @@
 						<li><p:commandLink value="Claim" action="#{claimController.claim()}" /></li>
 						<li><p:commandLink value="Detail List" action="#{listController.list()}" /></li>
 						<li><p:commandLink value="My Account" action="#{userController.myAcc()}" /></li>
-						<li><p:commandButton class="btn btn-link-3" value="Logout" action="#{userController.userLogout()}" /></li>
+						<li><p:commandButton class="btn btn-link-3" value="LOGOUT" action="#{userController.userLogout()}" /></li>
 					</ul>
 				</div>
 			</div>
