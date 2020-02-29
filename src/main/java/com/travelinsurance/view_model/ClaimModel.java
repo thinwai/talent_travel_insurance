@@ -22,6 +22,7 @@ public class ClaimModel {
 	private int claimType;
 	private String propoId;
 	private int payStatus;
+	private String cliamAmountFormat;
 	private int claimMessage;
 	
 	private int claimTypeAmount;
@@ -103,6 +104,12 @@ public class ClaimModel {
 	}
 	public void setClaimTypeAmount(int claimTypeAmount) {
 		this.claimTypeAmount = claimTypeAmount;
+	}
+	public String getCliamAmountFormat() {
+		return cliamAmountFormat;
+	}
+	public void setCliamAmountFormat(String cliamAmountFormat) {
+		this.cliamAmountFormat = cliamAmountFormat;
 	}
 	public int getClaimMessage() {
 		return claimMessage;

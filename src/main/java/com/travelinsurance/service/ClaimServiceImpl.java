@@ -156,7 +156,9 @@ public class ClaimServiceImpl implements ClaimService{
 		
 		
 		//for UI
-		cModel.setClaimAmount((double)(proposal.getUnit() * cModel.getClaimTypeAmount() * proposal.getPlan().getPlanId()));
+		int totalAmount=(proposal.getUnit() * cModel.getClaimTypeAmount() * proposal.getPlan().getPlanId());
+		cModel.setClaimAmount((double)totalAmount);
+		cModel.setCliamAmountFormat(String.valueOf(totalAmount));
 		System.out.println("Total Amount | "+cModel.getClaimAmount());
 		return cModel;
 	}
