@@ -1,0 +1,23 @@
+insert into talent_travel_insurance.vehicle values(1,'Plane');
+insert into talent_travel_insurance.vehicle values(2,'Express');
+insert into talent_travel_insurance.vehicle values(3,'Train');
+insert into talent_travel_insurance.vehicle values(4,'Ship');
+
+insert into talent_travel_insurance.plan values(1,5000, 'Basic');
+insert into talent_travel_insurance.plan values(2,10000,'Advance');
+
+insert into talent_travel_insurance.claim_type values(1, 5000000, 'Accidence(death)');
+insert into talent_travel_insurance.claim_type values(2, 2080000, 'Accidence(hospitalization)');
+insert into talent_travel_insurance.claim_type values(3, 500000, 'Trip Cancle/Interruption');
+insert into talent_travel_insurance.claim_type values(4, 250000, 'Trip Delay');
+insert into talent_travel_insurance.claim_type values(5, 100000, 'Lagguage Loss');
+
+
+insert into talent_travel_insurance.plan_id values(1,1);
+insert into talent_travel_insurance.plan_id values(2,1);
+insert into talent_travel_insurance.plan_id values(3,1);
+insert into talent_travel_insurance.plan_id values(1,2);
+insert into talent_travel_insurance.plan_id values(2,2);
+insert into talent_travel_insurance.plan_id values(3,2);
+insert into talent_travel_insurance.plan_id values(4,2);
+insert into talent_travel_insurance.plan_id values(5,2);

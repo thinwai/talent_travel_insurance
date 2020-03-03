@@ -32,6 +32,11 @@ public class UserController {
 		return "homePage.xhtml?faces-redirect=true";
 	}
 	
+	public String pd() {
+		System.out.println("Back__________");
+		return "product.xhtml?faces-redirect=true";
+	}
+	
 	public String userLoginPage() {
 		user=new UserModel();
 		return "loginPage.xhtml?faces-redirect=true";
